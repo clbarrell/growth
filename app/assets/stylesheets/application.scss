@@ -10,33 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  */
+// @import "mixins/*" is how to glob!
 
-
-@import "materialize/components/color";
-$primary-color: color("teal", "base") !default;
-$primary-color-light: lighten($primary-color, 15%) !default;
-$primary-color-dark: darken($primary-color, 15%) !default;
-
-$secondary-color: color("indigo", "base") !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
-// $secondary-color: color("indigo", "lighten-1") !default;
-@import 'materialize';
+@import "materialize";
+$secondary-color: color("indigo", "lighten-1") !default;
 @import "materialize/extras/nouislider";
 
-/**
-navbar {
-  outline: inherit;
-  background: none;
-  border: none;
-} **/
+//@import 'purecss';
+//@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+
 
 // HEADER
 
 // LINKS
-
-a:hover {
-    background-color: none;
-    @extend .grey-text, .text-lighten-1;
-}
