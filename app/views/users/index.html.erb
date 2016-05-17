@@ -1,0 +1,13 @@
+
+
+<h4 class="center-align">All Users</h4>
+<div class="collection">
+  <% @users.each do |user| %>
+    <%= link_to user, class: "collection-item" do %>
+      <%= user.name %>
+      <span class="grey-text text-lighten-1"><%= user.email %></span>
+      <span class='badge'> <%= pluralize(user.goals.count, "goals") %></span>
+    <% end %>
+  <% end %>
+  <%= link_to 'New User', new_user_path, class: "collection-item" %>
+</div>

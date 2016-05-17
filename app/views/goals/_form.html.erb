@@ -1,0 +1,67 @@
+<div class="row">
+<%= form_for(@goal) do |f| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h5>
+      <ul>
+      <% @goal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+<div class="row">
+  <div class="input-field">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'validate' %>
+  </div>
+  <div class="input-field">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'materialize-textarea' %>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <%= f.label :frequency %><br /><br />
+    <div class="col m2 s4 offset-s1">
+      <%= f.radio_button :frequency, 'Daily', name: 'frequency' %>
+      <%= f.label :frequency, 'Daily', value: "daily" %>
+    </div>
+    <div class="col m2 s4">
+      <%= f.radio_button :frequency, 'Weekly', name: 'frequency'  %>
+      <%= f.label :frequency, 'Weekly', value: 'weekly' %>
+    </div>
+    <div class="col m2 s4">
+      <%= f.radio_button :frequency, 'Fortnightly', name: 'frequency'  %>
+      <%= f.label :frequency, 'Fortnightly', value: 'fortnightly' %>
+    </div>
+    <div class="col m2 s4">
+      <%= f.radio_button :frequency, 'Monthly', name: 'frequency'  %>
+      <%= f.label :frequency, 'Monthly', value: 'monthly' %>
+    </div>
+    <div class="col m2 s4">
+      <%= f.radio_button :frequency, 'Quarterly', name: 'frequency'  %>
+      <%= f.label :frequency, 'Quarterly', value: 'quarterly' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <%= f.label :goaltype %><br /><br />
+    <div class="col s2 offset-s4">
+      <%= f.radio_button :goaltype, 'Type1', name: 'goaltype' %>
+      <%= f.label :goaltype, 'Type1', value: "type1" %>
+    </div>
+    <div class="col s2">
+      <%= f.radio_button :goaltype, 'Type2', name: 'goaltype'  %>
+      <%= f.label :goaltype, 'Type2', value: 'type2' %>
+    </div>
+  </div>
+</div>
+<div class="row"><br>
+  <div class="actions input-field">
+    <%= f.submit class: "btn" %>
+  </div>
+<% end %>
+</div>

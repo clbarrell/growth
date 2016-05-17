@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @comment_answer.answer %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @comment_answer.date %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @comment_answer.question %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @comment_answer.goal %>
+</p>
+
+<%= link_to 'Edit', edit_comment_answer_path(@comment_answer) %> |
+<%= link_to 'Back', comment_answers_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @rating_answer.answer %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @rating_answer.date %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @rating_answer.question %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @rating_answer.goal %>
+</p>
+
+<%= link_to 'Edit', edit_rating_answer_path(@rating_answer) %> |
+<%= link_to 'Back', rating_answers_path %>

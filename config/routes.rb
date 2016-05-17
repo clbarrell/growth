@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+
+  get 'home/home'
+  get 'home/help'
+  root 'home#home'
+  resources :users
+  resources :comment_answers
+  resources :rating_answers
+  resources :goals
+  resources :questions
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

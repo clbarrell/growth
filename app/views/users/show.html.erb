@@ -1,0 +1,48 @@
+<div class="row">
+  <h3 class='center-align'>Your Goals</h3>
+</div>
+<% @user.goals.each do |goal| %>
+  <div class="row">
+    <div class="col s12 l11">
+      <div class="card hoverable">
+        <div class="card-content">
+          <span class="card-title truncate"><%= goal.title %></span>
+          <p class="truncate"><%= goal.description %></p><br />
+          <p>
+            Number of comment answers: <%= goal.comment_answers.count %>
+          </p>
+          <p>
+            Number of rating answers: <%= goal.rating_answers.count %>
+          </p>
+        </div>
+        <div class="card-action">
+          <%= link_to(goal_path, class: "btn-flat") do %>
+            View <i class="material-icons left">launch</i>
+          <% end %>
+          <small>
+            Last updated <%= distance_of_time_in_words_to_now(goal.updated_at) %> ago
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @user.goals.empty? %>
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel hoverable">
+        <p class="center-align">
+          You have not made any goals yet.
+        </p>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col s12">
+    <%= link_to(new_goal_path, class: "btn") do %>
+      New Goal <i class="material-icons left">input</i>
+    <% end %>
+  </div>
+</div>
