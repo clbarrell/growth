@@ -2,64 +2,37 @@
 <html>
 <head>
   <title>GrowthApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-  <!-- NAV -->
-  <nav>
-    <div class="nav-wrapper" role="navigation">
-      <div class="container">
-        <%= link_to "Growth", root_path, class: 'brand-logo center' %>
-        <ul id="nav-mobile" class="left hide-on-small-only">
-          <li><%= link_to "My Goals", user_path(1)%></li>
-          <!-- MY GOALS PATH??? -->
-        </ul>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <!-- NAV -->
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout__title"><%= link_to "Growth", root_path %></span>
+        <div class="mdl-layout-spacer">      </div>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#">Nav link 1</a>
+          <%= link_to "My Goals", user_path(1), class: "mdl-navigation__link mdl-typography--text-uppercase"%>
+        </nav>
       </div>
-    </div>
-  </nav>
-  <!-- main -->
-  <main>
-    <div class="section">
-      <div class="container">
-        <p id="notice"><%= notice %></p>
-        <div class="row">
-          <div class="col m8 s12 offset-m2">
-            <!-- YIELD -->
-            <%= yield %>
-          </div>
+    </header>
+    <!-- MAIN -->
+    <main class="mdl-layout__content">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset">
+          <!-- YIELD -->
+          <%= yield %>
         </div>
       </div>
-    </div>
-</main>
-  <!-- FOOTER -->
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Footer Content</h5>
-          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      © 2014 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-      </div>
-    </div>
-  </footer>
+    </main>
+    <!-- FOOTER -->
+    <%= render 'layouts/footer' %>
+
+  </div>
 
 
 </body>
