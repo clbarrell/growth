@@ -1,31 +1,22 @@
-<div class="centre-middle ">
-  <div class="mdl-typography--display-2">
-    Home
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Welcome to home!</h3>
+    <p>
+      Tablehis is where you belong.
+    </p>
   </div>
-  <p>Some quick example text to build on
-  the card title and make up the bulk of the card's content.</p>
 </div>
-
 
 <div class="row">
-  <p>
-    <%= link_to 'Users', users_path %>
-  </p>
-  <p>
-    <%= link_to 'Goals', goals_path %>
-  </p>
-  <p>
-    <%= link_to 'Questions', questions_path %>
-  </p>
-  <p>
-    <%= link_to 'Rating Answers', rating_answers_path %>
-  </p>
-  <p>
-    <%= link_to 'Comment Answers', comment_answers_path %>
-  </p>
-</div>
-<div class="">
-  <p>
-    hello!
-  </p>
+  <div class="col-md-12">
+
+
+  <div class="list-group">
+    <%= link_to 'Users', users_path, class: "list-group-item" %>
+    <%= link_to 'Goals', goals_path, class: "list-group-item" %>
+    <%= link_to 'Questions', questions_path, class: "list-group-item" %>
+    <%= link_to 'Rating Answers', rating_answers_path, class: "list-group-item" %>
+    <%= link_to 'Comment Answers', comment_answers_path, class: "list-group-item" %>
+  </div>
+  </div>
 </div>

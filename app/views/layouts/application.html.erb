@@ -8,32 +8,45 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
+  <div class="container">
+
+    <header>
       <!-- NAV -->
-      <div class="mdl-layout__header-row">
-        <span class="mdl-layout__title"><%= link_to "Growth", root_path %></span>
-        <div class="mdl-layout-spacer">      </div>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#">Nav link 1</a>
-          <%= link_to "My Goals", user_path(1), class: "mdl-navigation__link mdl-typography--text-uppercase"%>
-        </nav>
-      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Growth</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+              <li class="active"><%= link_to "Home", root_path, class: "nav-item nav-link" %></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <!-- MAIN -->
-    <main class="mdl-layout__content">
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset">
+    <main>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
           <!-- YIELD -->
           <%= yield %>
         </div>
       </div>
     </main>
     <!-- FOOTER -->
+    </div>
     <%= render 'layouts/footer' %>
-
-  </div>
-
-
 </body>
 </html>
