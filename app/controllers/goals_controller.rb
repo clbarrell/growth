@@ -17,7 +17,6 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
-    @freq = %w(daily weekly fortnightly monthly quarterly)
   end
 
   # GET /goals/1/edit
@@ -30,7 +29,6 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
     @goal.user = User.find(1)
-
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }

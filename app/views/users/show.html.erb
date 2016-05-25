@@ -1,30 +1,37 @@
-<div class="centre-middle">
-  <p class="mdl-typography--display-2 text-center">
-    Your Goals
-  </p>
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="text-center with-padding">Your Goals</h3>
+  </div>
 </div>
-
 <% @user.goals.each do |goal| %>
   <div class="row">
-    <div class="col s12 l11">
-      <div class="card hoverable">
-        <div class="card-content">
-          <span class="card-title truncate"><%= goal.title %></span>
-          <p class="truncate"><%= goal.description %></p><br />
-          <p>
-            Number of comment answers: <%= goal.comment_answers.count %>
-          </p>
-          <p>
-            Number of rating answers: <%= goal.rating_answers.count %>
-          </p>
+    <div class="col-sm-12 col-md-11">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= goal.title %></h3>
         </div>
-        <div class="card-action">
-          <%= link_to(goal_path, class: "btn-flat") do %>
-            View <i class="material-icons left">launch</i>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-8">
+              <p><%= goal.description %></p>
+            </div>
+            <div class="col-sm-4">
+              <p>
+                <%= goal.comment_answers.count %> comments
+              </p>
+              <p>
+                <%= goal.rating_answers.count %> ratings
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <%= link_to(goal_path) do %>
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> VIEW
           <% end %>
-          <small>
+          <span class="pull-right text-muted">
             Last updated <%= distance_of_time_in_words_to_now(goal.updated_at) %> ago
-          </small>
+          </span>
         </div>
       </div>
     </div>
@@ -32,20 +39,19 @@
 <% end %>
 <% if @user.goals.empty? %>
   <div class="row">
-    <div class="col s12">
-      <div class="card-panel hoverable">
-        <p class="center-align">
-          You have not made any goals yet.
-        </p>
+    <div class="col-sm-12">
+      <div class="well well-lg">
+            You have not made any goals yet.
       </div>
-
     </div>
   </div>
 <% end %>
 <div class="row">
-  <div class="col s12">
-    <%= link_to(new_goal_path, class: "btn") do %>
-      New Goal <i class="material-icons left">input</i>
+  <div class="col-sm-12">
+    <p>
+    <%= link_to(new_goal_path, { class: "btn", "data-no-turbolink" => "true" }) do %>
+      New Goal <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     <% end %>
+  </p>
   </div>
 </div>

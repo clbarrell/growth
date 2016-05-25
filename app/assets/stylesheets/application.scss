@@ -19,6 +19,8 @@
 @import "bootstrap";
 // https://github.com/twbs/bootstrap-sass
 
+@import 'bootswatch';
+@import 'variables';
 // https://github.com/rubysamurai/material_design_lite-sass
 
 //@import 'purecs// @import 'paper';
@@ -34,9 +36,7 @@
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  @extend .has-error;
 }
 
 #error_explanation {

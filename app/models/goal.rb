@@ -11,7 +11,7 @@ class Goal < ActiveRecord::Base
 
   # VALIDATIONS
   validates :title, :description, :user, :goaltype, presence: true
-  validates :frequency, inclusion: { in: %w(daily weekly fortnightly monthly quarterly),
+  validates :frequency, inclusion: { in: %w(Daily Weekly Fortnightly Monthly Quarterly),
     message: "%{value} is not a valid frequency" }
   # not validating goaltype yet
 
