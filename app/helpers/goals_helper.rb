@@ -1,7 +1,7 @@
 module GoalsHelper
 
   def goal_type
-    %w(Contextual Standard)
+    %w(Standard Contextual)
   end
 
   def freq_options

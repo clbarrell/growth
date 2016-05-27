@@ -29,6 +29,8 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
     @goal.user = User.find(1)
+    @goal.update_last_checkin
+
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
