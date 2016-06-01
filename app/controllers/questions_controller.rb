@@ -1,10 +1,12 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+    @checkin_questions = Question.checkin
+    @review_questions = Question.review
   end
 
   # GET /questions/1
@@ -26,11 +28,12 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @question.set_default_order
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
+        format.html { redirect_to questions_url, notice: 'Question was successfully created.' }
+        format.json { render :index, status: :created, location: @question }
       else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -43,8 +46,8 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
+        format.html { redirect_to questions_url, notice: 'Question was successfully updated.' }
+        format.json { render :index, status: :ok, location: @question }
       else
         format.html { render :edit }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -70,6 +73,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :qntype)
+      params.require(:question).permit(:question, :qntype, :scale, :default_order)
     end
 end

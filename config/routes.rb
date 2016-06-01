@@ -7,8 +7,21 @@ Rails.application.routes.draw do
   resources :users
   resources :comment_answers
   resources :rating_answers
-  resources :goals
+  resources :goals do
+    member do
+      get 'checkin'
+      get 'reset_order'
+    end
+
+  end
   resources :questions
+  resources :actual_questions do
+    member do
+      put 'increase'
+      put 'decrease'
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

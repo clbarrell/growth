@@ -19,6 +19,22 @@ class GoalsController < ApplicationController
     @goal = Goal.new
   end
 
+  # goals/ID/checkin
+  def checkin
+    # view for checkin
+    @goal = Goal.find(params[:id])
+
+  end
+
+  def reset_order
+    # reset order of actual_questions
+    # how to rest the order ofi t allow
+    # ActualQuestion.find_each { |qn| qn.update(qnorder: qn.question.default_order) }
+    @goal = Goal.find(params[:id])
+    @goal.actual_questions.find_each { |qn| qn.update(qnorder: qn.question.default_order) }
+    redirect_to @goal
+  end
+
   # GET /goals/1/edit
   def edit
   end

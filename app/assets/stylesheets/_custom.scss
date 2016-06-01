@@ -30,3 +30,9 @@ body {
 h3 {
   padding-bottom: 15px;
 }
+
+// -- ID NOTICE -----
+
+#notice {
+  @extend .has-error;
+}

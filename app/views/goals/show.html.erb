@@ -1,4 +1,4 @@
-<!-- %= render 'layouts/notice' if notice? % -->
+
 <div class="row">
   <div class="col-sm-12">
     <h3 class="text-center"><%= @goal.title %></h3>
@@ -6,28 +6,94 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
+    <p id="notice" class="text-center"><%= notice %></p>
     <div class="well">
-      <%= @goal.description %><br>
-      <span class="label label-default"><%= @goal.frequency %></span>
+      <%= @goal.description %><br><br>
+      <span class="label label-info"><%= @goal.frequency %></span>
       <span class="label label-default"><%= @goal.goaltype %></span>
     </div>
   </div>
 </div>
+<!-- YOU"VE CEHCKED IN X TIMES -->
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-      <p>
-        You've checked into this goal <%= pluralize(@goal.checkin_count, "time") %>.
+  <div class="col-sm-3">
+    <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-link" %>
+  </div>
+  <div class="col-sm-6">
+      <p class="text-center">
+        You've checked into this goal <strong><%= pluralize(@goal.checkin_count, "time") %></strong>.
       </p>
-      <h5>Questions</h5>
   </div>
   <div class="col-sm-3">
-    <div class="pull-right text-right">
-      <ul class="list-unstyled">
-        <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
-        <li><%= link_to 'Delete', @goal,
-              data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
-      </ul>
+    <div class="pull-right">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle" type="button" id="sidegoalmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="sidegoalmenu">
+          <li class="dropdown-header">Goal</li>
+          <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
+          <li><%= link_to 'Delete', @goal,
+                data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
+          <li class="dropdown-header">Actual Questions</li>
+          <li><%= link_to "Reset order", reset_order_goal_path(@goal.id) %></li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
+<!-- CHECKIN QUESTIONS -->
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="text-center">Checkin Questions</h4>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="col-sm-2">#</th>
+          <th class="col-sm-8">Question</th>
+          <th class="col-sm-2">          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goal.actual_questions.checkins.each do |aq| %>
+          <tr>
+            <td><%= aq.qnorder%>
+              <div class="btn-group btn-group-xs">
+                <%= link_to "+", increase_actual_question_path(aq.id), class: "btn btn-default btn-group-xs", method: :put %>
+                <%= link_to "-", decrease_actual_question_path(aq.id), class: "btn btn-default btn-group-xs", method: :put %>
+              </div></td>
+            <td><%= aq.question.question %></td>
+            <td><small class="text-muted"><%= aq.question.scale %></small></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- REVIEW QUESTIONS -->
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="text-center">Review Questions</h4>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="col-sm-2">#</th>
+          <th class="col-sm-8">Question</th>
+          <th class="col-sm-2">          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goal.actual_questions.reviews.each do |aq| %>
+          <tr>
+            <td><%= aq.qnorder%> <div class="btn-group">
+              <%= link_to "+", increase_actual_question_path(aq.id), class: "btn btn-default btn-xs", method: :put %>
+              <%= link_to "-", decrease_actual_question_path(aq.id), class: "btn btn-default btn-xs", method: :put %>
+            </div></td>
+            <td><%= aq.question.question %></td>
+            <td><small class="text-muted"><%= aq.question.scale %></small></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

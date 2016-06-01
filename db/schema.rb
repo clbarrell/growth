@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527225845) do
+ActiveRecord::Schema.define(version: 20160529212628) do
+
+  create_table "actual_questions", force: :cascade do |t|
+    t.integer "goal_id"
+    t.integer "question_id"
+    t.integer "qnorder"
+  end
+
+  add_index "actual_questions", ["goal_id"], name: "index_actual_questions_on_goal_id"
+  add_index "actual_questions", ["question_id"], name: "index_actual_questions_on_question_id"
 
   create_table "comment_answers", force: :cascade do |t|
     t.text     "answer"
@@ -39,20 +48,13 @@ ActiveRecord::Schema.define(version: 20160527225845) do
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id"
 
-  create_table "goals_questions", id: false, force: :cascade do |t|
-    t.integer "goal_id"
-    t.integer "question_id"
-  end
-
-  add_index "goals_questions", ["goal_id"], name: "index_goals_questions_on_goal_id"
-  add_index "goals_questions", ["question_id"], name: "index_goals_questions_on_question_id"
-
   create_table "questions", force: :cascade do |t|
     t.string   "question"
     t.string   "qntype"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.text     "scale"
+    t.integer  "default_order"
   end
 
   create_table "rating_answers", force: :cascade do |t|
