@@ -5,7 +5,7 @@ class ActualQuestion < ActiveRecord::Base
   has_many :rating_answers
   has_many :comment_answers
   has_many :boolean_answers
-  
+
   # ~~ COLUMNS ~~
   # goal_id
   # question_id
@@ -61,9 +61,9 @@ class ActualQuestion < ActiveRecord::Base
   def self.answer
     # retrive appropriate type of answer model
     # text / agreement / True/False
-    if self.question.scale == "Text"
+    if question.scale == "Text"
       # do something
-
+      includes(:comment_answers).now
     elsif question.scale == "Agreement"
       # do something
 

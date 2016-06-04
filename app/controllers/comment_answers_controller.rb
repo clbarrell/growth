@@ -69,6 +69,6 @@ class CommentAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_answer_params
-      params.require(:comment_answer).permit(:answer, :date, :question_id, :goal_id)
+      params.require(:comment_answer).permit(:answer, :actual_question_id)
     end
 end

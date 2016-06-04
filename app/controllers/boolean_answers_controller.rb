@@ -69,6 +69,6 @@ class BooleanAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def boolean_answer_params
-      params.require(:boolean_answer).permit(:answer, :goal_id, :question_id)
+      params.require(:boolean_answer).permit(:answer, :actual_question_id)
     end
 end

@@ -1,5 +1,4 @@
 class BooleanAnswer < ActiveRecord::Base
-  belongs_to :goal
   belongs_to :actual_question
 
 #  create_table "boolean_answers", force: :cascade do |t|

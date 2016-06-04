@@ -1,6 +1,5 @@
 class RatingAnswer < ActiveRecord::Base
   belongs_to :actual_question
-  belongs_to :goal
 
   # => create_table "rating_answers", force: :cascade do |t|
   #    t.integer  "answer"#

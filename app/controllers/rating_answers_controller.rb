@@ -69,6 +69,6 @@ class RatingAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_answer_params
-      params.require(:rating_answer).permit(:answer, :date, :question_id, :goal_id)
+      params.require(:rating_answer).permit(:answer, :actual_question_id)
     end
 end
