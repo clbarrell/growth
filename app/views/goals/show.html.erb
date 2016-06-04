@@ -17,11 +17,11 @@
 <!-- YOU"VE CEHCKED IN X TIMES -->
 <div class="row">
   <div class="col-sm-3">
-    <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-link" %>
+    <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary" %>
   </div>
   <div class="col-sm-6">
-      <p class="text-center">
-        You've checked into this goal <strong><%= pluralize(@goal.checkin_count, "time") %></strong>.
+      <p class="text-center lead">
+        You've checked into this goal <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
       </p>
   </div>
   <div class="col-sm-3">
@@ -29,7 +29,7 @@
       <div class="dropdown">
         <button class="btn btn-link dropdown-toggle" type="button" id="sidegoalmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="sidegoalmenu">
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
           <li class="dropdown-header">Goal</li>
           <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
           <li><%= link_to 'Delete', @goal,

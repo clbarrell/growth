@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @boolean_answer.answer %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @boolean_answer.goal %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @boolean_answer.question %>
+</p>
+
+<%= link_to 'Edit', edit_boolean_answer_path(@boolean_answer) %> |
+<%= link_to 'Back', boolean_answers_path %>

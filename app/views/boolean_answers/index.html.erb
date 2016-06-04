@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Boolean Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Answer</th>
+      <th>Goal</th>
+      <th>Question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boolean_answers.each do |boolean_answer| %>
+      <tr>
+        <td><%= boolean_answer.answer %></td>
+        <td><%= boolean_answer.goal %></td>
+        <td><%= boolean_answer.question %></td>
+        <td><%= link_to 'Show', boolean_answer %></td>
+        <td><%= link_to 'Edit', edit_boolean_answer_path(boolean_answer) %></td>
+        <td><%= link_to 'Destroy', boolean_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Boolean answer', new_boolean_answer_path %>

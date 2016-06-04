@@ -1,6 +1,51 @@
-<h3>Check in to the goal!</h3>
-<h4>Goal: <%= @goal.title %></h4>
+<div class="row">
+  <div class="col-sm-11">
+    <h2 class="text-center text-uppercase"><%= @goal.title %> <small>checkin</small></h2>
+  </div>
+  <div class="col-sm-1">
+    <div class="pull-right">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle match-heading" type="button" id="sidegoalmenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu2">
+          <li class="dropdown-header">Goal</li>
+          <li><%= link_to 'Show goal', goal_path(@goal) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <p id="notice" class="text-center"><%= notice %></p>
+    <div class="well">
+      <%= @goal.description %><br><br>
+      <span class="label label-info"><%= @goal.frequency %></span>
+      <span class="label label-default"><%= @goal.goaltype %></span>
+    </div>
+  </div>
+</div>
+<!-- CHECKIN QUESTINOS -->
+<% if @goal.is_it_checkin_time? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <% @goal.actual_questions.checkins.each do |actq| %>
+      <div class="well">
+        <%= actq.question.question %>
+        <%= text_field_tag 'text tage' %>
+      </div>
 
-<p>
-  helo!
-</p>
+      <% end %>
+
+    </div>
+  </div>
+<% else %>
+<!-- NOTHIGN TO CHECK IN -->
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="lead text-center">
+        You're all checked in!
+      </p>
+    </div>
+  </div>
+<% end %>

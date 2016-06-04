@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529212628) do
+ActiveRecord::Schema.define(version: 20160604204010) do
 
   create_table "actual_questions", force: :cascade do |t|
     t.integer "goal_id"
@@ -22,17 +22,27 @@ ActiveRecord::Schema.define(version: 20160529212628) do
   add_index "actual_questions", ["goal_id"], name: "index_actual_questions_on_goal_id"
   add_index "actual_questions", ["question_id"], name: "index_actual_questions_on_question_id"
 
-  create_table "comment_answers", force: :cascade do |t|
-    t.text     "answer"
-    t.date     "date"
-    t.integer  "question_id"
+  create_table "boolean_answers", force: :cascade do |t|
+    t.boolean  "answer"
     t.integer  "goal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "actual_question_id"
   end
 
+  add_index "boolean_answers", ["actual_question_id"], name: "index_boolean_answers_on_actual_question_id"
+  add_index "boolean_answers", ["goal_id"], name: "index_boolean_answers_on_goal_id"
+
+  create_table "comment_answers", force: :cascade do |t|
+    t.text     "answer"
+    t.integer  "goal_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "actual_question_id"
+  end
+
+  add_index "comment_answers", ["actual_question_id"], name: "index_comment_answers_on_actual_question_id"
   add_index "comment_answers", ["goal_id"], name: "index_comment_answers_on_goal_id"
-  add_index "comment_answers", ["question_id"], name: "index_comment_answers_on_question_id"
 
   create_table "goals", force: :cascade do |t|
     t.string   "title"
@@ -59,15 +69,14 @@ ActiveRecord::Schema.define(version: 20160529212628) do
 
   create_table "rating_answers", force: :cascade do |t|
     t.integer  "answer"
-    t.date     "date"
-    t.integer  "question_id"
     t.integer  "goal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "actual_question_id"
   end
 
+  add_index "rating_answers", ["actual_question_id"], name: "index_rating_answers_on_actual_question_id"
   add_index "rating_answers", ["goal_id"], name: "index_rating_answers_on_goal_id"
-  add_index "rating_answers", ["question_id"], name: "index_rating_answers_on_question_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

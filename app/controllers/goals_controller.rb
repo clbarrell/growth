@@ -19,11 +19,16 @@ class GoalsController < ApplicationController
     @goal = Goal.new
   end
 
-  # goals/ID/checkin
+  # goals/1/checkin
   def checkin
     # view for checkin
     @goal = Goal.find(params[:id])
+    @ac_questions = @goal.actual_questions.checkins
 
+    @ac_questions.each do |acq|
+      # create answers for each question
+      
+    end
   end
 
   def reset_order
@@ -45,7 +50,6 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
     @goal.user = User.find(1)
-    @goal.update_last_checkin
 
     respond_to do |format|
       if @goal.save

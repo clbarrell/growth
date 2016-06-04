@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :boolean_answers
   get 'home/home'
   get 'home/help'
   root 'home#home'

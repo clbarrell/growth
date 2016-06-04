@@ -1,9 +1,10 @@
 class Goal < ActiveRecord::Base
-  has_many :rating_answers
-  has_many :comment_answers
   belongs_to :user
   has_many :questions, :through => :actual_questions
   has_many :actual_questions
+  has_many :rating_answers, :through => :actual_questions
+  has_many :comment_answers, :through => :actual_questions
+  has_many :boolean_answers, :through => :actual_questions
 
   # SCOPES ~~~~
   # scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: "Checkin"})}
@@ -17,20 +18,34 @@ class Goal < ActiveRecord::Base
   validates :title, :description, :user, :goaltype, presence: true
   validates :frequency, inclusion: { in: %w(Daily Weekly Fortnightly Monthly Quarterly),
     message: "%{value} is not a valid frequency" }
+  validates :goaltype, inclusion: { in: %w(Standard Contextual)}
   # not validating goaltype yet
 
   after_create :assign_questions
 
   # METHODS
 
-  def update_last_checkin
-    self.last_checkin = Time.now
-  end
-
   def new_checkin
-    self.checkin_count += 1
+    self.update(checkin_count: checkin_count + 1, last_checkin: Time.now)
   end
 
+  def is_it_checkin_time?
+    # true if enough time has elapsed since last checkin
+    # calculate time since according to frequency
+    if frequency == "Daily"
+      (Time.now.to_date - last_checkin.to_date) > 1 ? true : false
+    elsif frequency == "Weekly"
+      (Time.now.to_date - last_checkin.to_date) > 7 ? true : false
+    elsif frequency == "Fortnightly"
+      (Time.now.to_date - ast_checkin.to_date) > 14 ? true : false
+    elsif frequency == "Monthly"
+      (Time.now.to_date - last_checkin.to_date) > 30 ? true : false
+    elsif frequency == "Quarterly"
+      (Time.now.to_date - last_checkin.to_date) > 90 ? true : false
+    elsif frequency.nil?
+      true
+    end
+  end
 
   def assign_questions
     # method to assign all questions to goal

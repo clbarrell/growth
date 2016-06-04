@@ -8,4 +8,8 @@ module GoalsHelper
     %w(Daily Weekly Fortnightly Monthly Quarterly)
   end
 
+  # CHECKIN HELPERS
+
+
+
 end

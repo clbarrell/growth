@@ -23,6 +23,8 @@ body {
   padding-bottom: 15px;
 }
 
+
+
 .debug_dump {
   margin-top: 45px;
 }
@@ -35,4 +37,8 @@ h3 {
 
 #notice {
   @extend .has-error;
+}
+
+#sidegoalmenu2.btn {
+  margin-top: 20px;
 }
