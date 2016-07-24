@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529212628) do
+ActiveRecord::Schema.define(version: 20160724113647) do
 
   create_table "actual_questions", force: :cascade do |t|
     t.integer "goal_id"
@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20160529212628) do
     t.string   "frequency"
     t.string   "goaltype"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.datetime "last_checkin"
-    t.integer  "checkin_count", default: 0
+    t.integer  "checkin_count",       default: 0
+    t.text     "success_description"
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id"
