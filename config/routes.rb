@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :boolean_answers
   get 'home/home'
   get 'home/help'
   root 'home#home'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     member do
       get 'checkin'
       get 'reset_order'
+      patch 'update_checkin'
     end
 
   end

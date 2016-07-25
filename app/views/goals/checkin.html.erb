@@ -1,6 +1,88 @@
-<h3>Check in to the goal!</h3>
-<h4>Goal: <%= @goal.title %></h4>
+<div class="row">
+  <div class="col-sm-11">
+    <h2 class="text-center text-uppercase"><%= @goal.title %> <small>checkin</small></h2>
+  </div>
+  <div class="col-sm-1">
+    <div class="pull-right">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle match-heading" type="button" id="sidegoalmenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu2">
+          <li class="dropdown-header">Goal</li>
+          <li><%= link_to 'Show goal', goal_path(@goal) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <p id="notice" class="text-center"><%= notice %></p>
+    <div class="well">
+      <%= @goal.description %><br><br>
+      <span class="label label-info"><%= @goal.frequency %></span>
+      <span class="label label-default"><%= @goal.goaltype %></span>
+    </div>
+  </div>
+</div>
+<!-- CHECKIN QUESTINOS -->
+<!--
+THIS IS parameters RETURND
+"goal"=>
+	{"actual_questions"=>
+		{"boolean_answers"=>
+			{"answer"=>"3"}
+		}
+	} -->
 
-<p>
-  helo!
-</p>
+
+<% if @goal.is_it_checkin_time? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_for @goal, url: {action: "update_checkin"} do |f| %>
+        <%= f.fields_for :actual_questions, @ac_questions do |aq_fields| %>
+
+
+          <label class="control-label"><h5><%= aq_fields.object.take.question.question %></h5></label>
+          <% if aq_fields.object.take.question.scale == "Text" %>
+            <%= aq_fields.fields_for :comment_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.text_field(:answer, class: "form-control") %>
+            <% end %>
+          <% end %>
+
+          <% if aq_fields.object.take.question.scale == "Agreement" %>
+            <%= aq_fields.fields_for :rating_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
+            <% end %>
+          <% end %>
+
+          <% if aq_fields.object.take.question.scale == "True/False" %>
+            <%= aq_fields.fields_for :boolean_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
+            <% end %>
+          <% end %>
+
+        <% end %>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+<!-- NOTHIGN TO CHECK IN -->
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="lead text-center">
+        You're all checked in! Thanks friend!
+      </p>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <p class="text-center">
+      <button class="btn btn-disabled">View Answers</button>
+    </p>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin]
 
 
   # GET /goals
@@ -19,11 +19,41 @@ class GoalsController < ApplicationController
     @goal = Goal.new
   end
 
-  # goals/ID/checkin
+  # goals/1/checkin
   def checkin
     # view for checkin
     @goal = Goal.find(params[:id])
+    @ac_questions = @goal.actual_questions.checkins
 
+  end
+
+  def checkin_successful
+    # NOT USING THIS
+    # when checknin is successfull
+    @goal = Goal.find(params[:id])
+
+  end
+
+  def update_checkin
+    # for receiving checkin params
+
+    Rails.logger.debug params.inspect
+    #@goal = Goal.new(goal_params)
+    # eventually use 'current_user'
+    #@goal.user = User.find(1)
+
+    respond_to do |format|
+      if @goal.update(goal_params)
+        @goal.new_checkin
+        format.html { redirect_to checkin_goal_url(params[:id])}
+        # if params.comment_answer.present? then redirect to whereve
+        # we want the checkin to goafterwards
+        format.json { render :checkin_successful, status: :ok, location: @goal }
+      else
+        format.html { render :checkin }
+        format.json { render json: @goal.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def reset_order
@@ -45,10 +75,10 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
     @goal.user = User.find(1)
-    @goal.update_last_checkin
 
     respond_to do |format|
       if @goal.save
+        @goal.create_default_questions
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
@@ -61,6 +91,7 @@ class GoalsController < ApplicationController
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
   def update
+    Rails.logger.debug params.inspect
     respond_to do |format|
       if @goal.update(goal_params)
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
@@ -90,6 +121,9 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:title, :description, :frequency, :goaltype, :user_id)
+      params.require(:goal).permit(:title, :description, :frequency, :goaltype, :user_id,
+      rating_answers_attributes: [:id, :answer],
+      comment_answers_attributes: [:id, :answer],
+      boolean_answers_attributes: [:id, :answer])
     end
 end

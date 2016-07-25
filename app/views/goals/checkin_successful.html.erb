@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-11">
+    <h2 class="text-center text-uppercase"><%= @goal.title %> <small>checkin</small></h2>
+  </div>
+  <div class="col-sm-1">
+    <div class="pull-right">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle match-heading" type="button" id="sidegoalmenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu2">
+          <li class="dropdown-header">Goal</li>
+          <li><%= link_to 'Show goal', goal_path(@goal) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <%= @goal.description %><br><br>
+      <span class="label label-info"><%= @goal.frequency %></span>
+      <span class="label label-default"><%= @goal.goaltype %></span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="text-center">Thanks for checking in dude!</h3>
+  </div>
+</div>

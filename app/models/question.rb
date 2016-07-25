@@ -1,6 +1,5 @@
 class Question < ActiveRecord::Base
-  has_many :rating_answers
-  has_many :comment_answers
+
   has_many :goals, :through => :actual_question
   has_many :actual_questions
 
@@ -9,7 +8,7 @@ class Question < ActiveRecord::Base
   # -- FIELDS --
   # question - text of question
   # qntype - checkin / review
-  # scale - text / rating / agreement
+  # scale - text / agreement / True/False
   # default_order
 
   def set_default_order
