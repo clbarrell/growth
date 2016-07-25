@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       get 'checkin'
       get 'reset_order'
+      patch 'update_checkin'
     end
 
   end

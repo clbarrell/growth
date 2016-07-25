@@ -84,6 +84,9 @@ class ActualQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def actual_question_params
-      params.require(:actual_question).permit(:order, :goal_id, :question_id)
+      params.require(:actual_question).permit(:order, :goal_id, :question_id,
+        rating_answers_attributes: [:id, :answer],
+        comment_answers_attributes: [:id, :answer],
+        boolean_answers_attributes: [:id, :answer])
     end
 end

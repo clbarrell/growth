@@ -26,17 +26,47 @@
   </div>
 </div>
 <!-- CHECKIN QUESTINOS -->
+<!--
+THIS IS parameters RETURND
+"goal"=>
+	{"actual_questions"=>
+		{"boolean_answers"=>
+			{"answer"=>"3"}
+		}
+	} -->
+
+
 <% if @goal.is_it_checkin_time? %>
   <div class="row">
     <div class="col-sm-12">
-      <% @goal.actual_questions.checkins.each do |actq| %>
-      <div class="well">
-        <%= actq.question.question %>
-        <%= text_field_tag 'text tage' %>
-      </div>
+      <%= form_for @goal, url: {action: "update_checkin"} do |f| %>
+        <%= f.fields_for :actual_questions, @ac_questions do |aq_fields| %>
 
+
+          <label class="control-label"><h5><%= aq_fields.object.take.question.question %></h5></label>
+          <% if aq_fields.object.take.question.scale == "Text" %>
+            <%= aq_fields.fields_for :comment_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.text_field(:answer, class: "form-control") %>
+            <% end %>
+          <% end %>
+
+          <% if aq_fields.object.take.question.scale == "Agreement" %>
+            <%= aq_fields.fields_for :rating_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
+            <% end %>
+          <% end %>
+
+          <% if aq_fields.object.take.question.scale == "True/False" %>
+            <%= aq_fields.fields_for :boolean_answers, aq_fields.object.take.answer do |answer_fields| %>
+              <%= answer_fields.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
+            <% end %>
+          <% end %>
+
+        <% end %>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
       <% end %>
-
     </div>
   </div>
 <% else %>
@@ -44,8 +74,15 @@
   <div class="row">
     <div class="col-sm-12">
       <p class="lead text-center">
-        You're all checked in!
+        You're all checked in! Thanks friend!
       </p>
     </div>
   </div>
 <% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <p class="text-center">
+      <button class="btn btn-disabled">View Answers</button>
+    </p>
+  </div>
+</div>

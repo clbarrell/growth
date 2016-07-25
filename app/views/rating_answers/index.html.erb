@@ -6,9 +6,7 @@
   <thead>
     <tr>
       <th>Answer</th>
-      <th>Date</th>
       <th>Question</th>
-      <th>Goal</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +15,7 @@
     <% @rating_answers.each do |rating_answer| %>
       <tr>
         <td><%= rating_answer.answer %></td>
-        <td><%= rating_answer.date %></td>
-        <td><%= rating_answer.question %></td>
-        <td><%= rating_answer.goal %></td>
+        <td><%= rating_answer.actual_question.question.question %></td>
         <td><%= link_to 'Show', rating_answer %></td>
         <td><%= link_to 'Edit', edit_rating_answer_path(rating_answer) %></td>
         <td><%= link_to 'Destroy', rating_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

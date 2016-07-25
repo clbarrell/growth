@@ -1,6 +1,8 @@
 class CommentAnswer < ActiveRecord::Base
   belongs_to :actual_question
 
+  validates :actual_question, presence: true
+
 #  create_table "comment_answers", force: :cascade do |t|
 #    t.text     "answer"
 #    t.date     "date"
@@ -10,9 +12,6 @@ class CommentAnswer < ActiveRecord::Base
 #    t.datetime "updated_at",  null: false
 #  end
 
-  def self.now
-    # to pull an answer for now
-    # where.not(value: '')
-    where("answer = ? AND updated_at < ?", '', Time.now - 1.day)
-  end
+ scope :empty, -> { where(answer: nil) }
+
 end
