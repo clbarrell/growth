@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
 
-  resources :boolean_answers
+
   get 'home/home'
   get 'home/help'
   root 'home#home'
   resources :users
   resources :comment_answers
   resources :rating_answers
+  resources :boolean_answers
   resources :goals do
     member do
       get 'checkin'
