@@ -12,6 +12,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 
+
+
 #gem 'material_design_lite-sass'
 # https://github.com/rubysamurai/material_design_lite-sass
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -40,6 +42,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
+  gem 'pry-rails'
+  gem 'quiet_assets'
 end
 
 group :development do
