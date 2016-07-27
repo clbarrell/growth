@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724113647) do
+ActiveRecord::Schema.define(version: 20160727111303) do
 
   create_table "actual_questions", force: :cascade do |t|
     t.integer "goal_id"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 20160724113647) do
   end
 
   add_index "rating_answers", ["actual_question_id"], name: "index_rating_answers_on_actual_question_id"
+
+  create_table "template_questions", force: :cascade do |t|
+    t.string   "text"
+    t.string   "qntype"
+    t.string   "scale"
+    t.integer  "default_order"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
