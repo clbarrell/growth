@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @template_question.text %>
+</p>
+
+<p>
+  <strong>Qntype:</strong>
+  <%= @template_question.qntype %>
+</p>
+
+<p>
+  <strong>Scale:</strong>
+  <%= @template_question.scale %>
+</p>
+
+<p>
+  <strong>Default order:</strong>
+  <%= @template_question.default_order %>
+</p>
+
+<%= link_to 'Edit', edit_template_question_path(@template_question) %> |
+<%= link_to 'Back', template_questions_path %>

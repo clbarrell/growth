@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :template_questions
   get 'home/home'
   get 'home/help'
   root 'home#home'
