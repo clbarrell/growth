@@ -13,12 +13,16 @@ Rails.application.routes.draw do
   resources :goals do
     member do
       get 'checkin'
-      get 'reset_order'
       patch 'update_checkin'
     end
 
   end
-  resources :questions
+  resources :questions do
+    member do
+      put 'increase'
+      put 'decrease'
+    end
+  end
   resources :actual_questions do
     member do
       put 'increase'

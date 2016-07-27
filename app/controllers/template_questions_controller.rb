@@ -5,6 +5,8 @@ class TemplateQuestionsController < ApplicationController
   # GET /template_questions.json
   def index
     @template_questions = TemplateQuestion.all
+    @checkin_questions = TemplateQuestion.checkin
+    @review_questions = TemplateQuestion.review
   end
 
   # GET /template_questions/1
@@ -25,6 +27,7 @@ class TemplateQuestionsController < ApplicationController
   # POST /template_questions.json
   def create
     @template_question = TemplateQuestion.new(template_question_params)
+    @question.set_default_order
 
     respond_to do |format|
       if @template_question.save

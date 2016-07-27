@@ -31,27 +31,9 @@ class Goal < ActiveRecord::Base
   # METHODS
   def create_default_questions
     # set the default list of questions
-    # hard coded questions - will make own thing later
-
-    # DOESN'T WORK BECAUSE OF THE WHOLE actual_questions THING!!!!!
-    questions = [
-      {question: "I paid sufficient attention to this goal", qntype: "Checkin", scale: "Agreement", default_order: 4},
-      {question: "I made acceptable progress on this goal", qntype: "Checkin", scale: "Agreement", default_order: 1},
-      {question: "I focussed on this goal", qntype: "Checkin", scale: "Agreement", default_order: 2},
-      {question: "Describe your progress", qntype: "Checkin", scale: "Text", default_order: 6},
-      {question: "Describe your progress over this period", qntype: "Review", scale: "Text", default_order: 4},
-      {question: "I prioritised this goal enough", qntype: "Checkin", scale: "Agreement", default_order: 3},
-      {question: "I've made this goal enough of a priority", qntype: "Review", scale: "Agreement", default_order: 3},
-      {question: "Are you closer to your next milestone?", qntype: "Checkin", scale: "True/False", default_order: 5},
-      {question: "I've progressed on this goal", qntype: "Review", scale: "True/False", default_order: 1},
-      {question: "I am satisfied with this progress", qntype: "Review", scale: "Agreement", default_order: 2},
-      {question: "How much closer are you to your next milestone? What's required to get you there?", qntype: "Review", scale: "Text", default_order: 5},
-      {question: "How will you rectify this next %frequency%?", qntype: "Review", scale: "Text", default_order: 6}
-    ]
-
-    questions.each do |q|
-      qn = Question.new(goal_id: self.id, question: q[:question],
-                        qntype: q[:qntype], scale: q[:scale], default_order: q[:default_order])
+    TemplateQuestions.all.each do |q|
+      Question.new(goal_id: self.id, question: q.text,
+                        qntype: q.qntype, scale: q.scale, default_order: q.default_order)
     end
   end
 
