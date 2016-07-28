@@ -3,7 +3,7 @@
 ## To do next
 
 - get rid of actual_questions
-  1. get **Questions** to replicate **ActualQuestions** in model, controller, views?
+  1. get **Questions** to replicate **ActualQuestions** in ~~model~~, ~~controller~~, views?
   2. Make relational changes in Model
   3. Make relational changes in DB
   4. Update Goal.rb & GoalsController.rb

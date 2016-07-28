@@ -24,12 +24,43 @@ class QuestionsController < ApplicationController
   def edit
   end
 
+  def increase
+      # increase question order
+      @question = Question.find(params[:id])
+      @goal = @question.goal
+      # find maximum
+      @max_qn_order = @goal.checkin_questions.maximum(:qnorder)
+      if @question.qnorder == 1 || @question.qnorder == @max_qn_order
+          redirect_to goal_path(@question.goal.id), notice: 'Error: order is already at start or maximum.'
+      else
+          @question.increase_order
+          redirect_to goal_path(@question.goal.id), notice: 'Order successfully changed.'
+      end
+      # end with a redirect
+  end
+
+  def decrease
+      # increase question o`rder
+      @question = Question.find(params[:id])
+      @goal = @question.goal
+      # find maximum
+      @max_qn_order = @goal.checkin_questions.maximum(:qnorder)
+      if @question.qnorder == 1 || @question.qnorder == @max_qn_order
+          redirect_to goal_path(@question.goal.id), notice: 'Error: order is already at start or maximum.'
+      else
+          @question.decrease_order
+          redirect_to goal_path(@question.goal.id), notice: 'Order successfully changed.'
+      end
+      # end with a redirect`
+  end
+
+
+
+
   # POST /questions
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    @question.set_default_order
-
     respond_to do |format|
       if @question.save
         format.html { redirect_to questions_url, notice: 'Question was successfully created.' }

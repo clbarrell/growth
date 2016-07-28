@@ -12,6 +12,13 @@ class Goal < ActiveRecord::Base
   accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
 
   # SCOPES ~~~~
+  scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: "Checkin"}).order(:qnorder)}
+  scope :review_questions, -> { includes(:questions).where(questions: { qntype: "Review"}).order(:qnorder)}
+  # will this work?? test it!
+
+
+  #scope :reviews, -> { where(questions.qntype: 'Review').order(:qnorder) }
+
   # scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: "Checkin"})}
   #* title / s
   #* description / text
@@ -26,12 +33,12 @@ class Goal < ActiveRecord::Base
   validates :goaltype, inclusion: { in: %w(Standard Contextual)}
   # not validating goaltype yet
 
-  after_create :assign_questions
+  after_create :create_default_questions
 
   # METHODS
   def create_default_questions
     # set the default list of questions
-    TemplateQuestions.all.each do |q|
+    TemplateQuestions.find_each do |q|
       Question.new(goal_id: self.id, question: q.text,
                         qntype: q.qntype, scale: q.scale, default_order: q.default_order)
     end
@@ -59,14 +66,5 @@ class Goal < ActiveRecord::Base
       true
     end
   end
-
-  def assign_questions
-    # method to assign all questions to goal
-    Question.find_each do |qn|
-      ActualQuestion.create(goal_id: self.id, question_id: qn.id, qnorder: qn.default_order)
-    end
-
-  end
-
 
 end
