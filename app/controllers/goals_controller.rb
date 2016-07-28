@@ -12,6 +12,8 @@ class GoalsController < ApplicationController
   # GET /goals/1.json
   def show
     @goal = Goal.find(params[:id])
+    @checkin_questions = @goal.checkin_questions
+    @review_questions = @goal.review_questions
   end
 
   # GET /goals/new
@@ -66,10 +68,8 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
     @goal.user = User.find(1)
-
     respond_to do |format|
       if @goal.save
-        @goal.create_default_questions
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else

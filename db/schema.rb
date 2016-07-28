@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728115609) do
+ActiveRecord::Schema.define(version: 20160728123109) do
 
   create_table "boolean_answers", force: :cascade do |t|
     t.boolean  "answer"
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20160728115609) do
   create_table "questions", force: :cascade do |t|
     t.string   "question"
     t.string   "qntype"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text     "scale"
-    t.integer  "default_order"
+    t.integer  "qnorder"
     t.integer  "goal_id"
   end
 

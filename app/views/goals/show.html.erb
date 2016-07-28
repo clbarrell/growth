@@ -31,12 +31,9 @@
                     <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
-                    <li class="dropdown-header">Goal</li>
                     <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
                     <li><%= link_to 'Delete', @goal,
                 data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
-                    <li class="dropdown-header">Actual Questions</li>
-                    <li><%= link_to "Reset order", reset_order_goal_path(@goal.id) %></li>
                 </ul>
             </div>
         </div>
@@ -57,17 +54,17 @@
                 </tr>
             </thead>
             <tbody>
-                <% @goal.actual_questions.checkins.each do |aq| %>
+                <% @checkin_questions.each do |checkin_question| %>
                 <tr>
-                    <td><%= aq.qnorder%>
+                    <td><%= checkin_question.qnorder%>
                         <div class="btn-group btn-group-xs">
-                            <%= link_to "+", increase_actual_question_path(aq.id), class: "btn btn-default btn-group-xs", method: :put %>
-                            <%= link_to "-", decrease_actual_question_path(aq.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "+", increase_actual_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "-", decrease_actual_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
                         </div>
                     </td>
-                    <td><%= aq.question.question %></td>
+                    <td><%= checkin_question.question %></td>
                     <td>
-                        <small class="text-muted"><%= aq.question.scale %></small>
+                        <small class="text-muted"><%= checkin_question.scale %></small>
                     </td>
                 </tr>
                 <% end %>
@@ -88,17 +85,17 @@
                 </tr>
             </thead>
             <tbody>
-                <% @goal.actual_questions.reviews.each do |aq| %>
+                <% @review_questions.each do |review_question| %>
                 <tr>
-                    <td><%= aq.qnorder%>
+                    <td><%= review_question.qnorder%>
                         <div class="btn-group">
-                            <%= link_to "+", increase_actual_question_path(aq.id), class: "btn btn-default btn-xs", method: :put %>
-                            <%= link_to "-", decrease_actual_question_path(aq.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "+", increase_actual_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "-", decrease_actual_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
                         </div>
                     </td>
-                    <td><%= aq.question.question %></td>
+                    <td><%= review_question.question %></td>
                     <td>
-                        <small class="text-muted"><%= aq.question.scale %></small>
+                        <small class="text-muted"><%= review_question.scale %></small>
                     </td>
                 </tr>
                 <% end %>

@@ -21,7 +21,7 @@
         <%= link_to goal, class: "list-group-item" do %>
           <h4 class="list-group-item-heading"><%= goal.title %></h4>
           <p class="list-group-item-text"><%= goal.description %></p>
-          <p class="list-group-item-text text-right">Last checkin <%= distance_of_time_in_words_to_now(goal.last_checkin) %> ago</p>
+          <p class="list-group-item-text text-right">Last checkin <%= timewordslastcheckin(goal) %></p>
           <% end %>
       <% end %>
       <!-- NEW GOAL -->
