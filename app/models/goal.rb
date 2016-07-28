@@ -14,7 +14,6 @@ class Goal < ActiveRecord::Base
   scope :review_questions, -> { includes(:questions).where(questions: { qntype: "Review"}).order(:qnorder)}
   # will this work?? test it!
 
-
   #scope :reviews, -> { where(questions.qntype: 'Review').order(:qnorder) }
 
   # scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: "Checkin"})}

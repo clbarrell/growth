@@ -22,6 +22,10 @@ questions = [
   {text: "How will you rectify this next %frequency%?", qntype: "Review", scale: "Text", default_order: 6}
 ]
 
-questions.each do |question| 
+questions.each do |question|
   TemplateQuestion.create(question)
 end
+
+# user
+
+User.create(name: "Chris Barrell", email: "clbarrell@gmail.com")
