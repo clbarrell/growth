@@ -3,8 +3,8 @@
 ## To do next
 
 - get rid of actual_questions
-  1. get **Questions** to replicate **ActualQuestions** in ~~model~~, ~~controller~~, views?
-  2. Make relational changes in Model
+  ~~1. get **Questions** to replicate **ActualQuestions** in ~~model~~, ~~controller~~, ~~views?~~~~
+  ~~2. Make relational changes in Model~~
   3. Make relational changes in DB
   4. Update Goal.rb & GoalsController.rb
   5. Update goal views
@@ -24,6 +24,6 @@
 
 - %goal% variable replacement in question wording
 
-## Completed
+## Completed!
 
-- ~~templated questions that can be copied to new goals~~
+- templated questions that can be copied to new goals

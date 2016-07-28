@@ -1,6 +1,10 @@
 class Question < ActiveRecord::Base
-    has_many :goals, through: :actual_question
-    has_many :actual_questions
+
+    belongs_to :goal
+    has_many :rating_answers
+    has_many :comment_answers
+    has_many :boolean_answers
+
 
     validates :question, :qntype, :scale, presence: true
 

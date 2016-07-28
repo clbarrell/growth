@@ -1,11 +1,10 @@
 class Goal < ActiveRecord::Base
   belongs_to :user
 
-  has_many :actual_questions
-  has_many :questions, :through => :actual_questions
-  has_many :rating_answers, :through => :actual_questions
-  has_many :comment_answers, :through => :actual_questions
-  has_many :boolean_answers, :through => :actual_questions
+  has_many :questions
+  has_many :rating_answers, :through => :questions
+  has_many :comment_answers, :through => :questions
+  has_many :boolean_answers, :through => :questions
 
   accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
   accepts_nested_attributes_for :comment_answers, reject_if: :all_blank

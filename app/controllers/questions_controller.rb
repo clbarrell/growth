@@ -4,9 +4,6 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
-    @checkin_questions = Question.checkin
-    @review_questions = Question.review
   end
 
   # GET /questions/1
