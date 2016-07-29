@@ -80,7 +80,8 @@
 <div class="row">
     <div class="col-sm-12">
         <p class="text-center">
-            <button class="btn btn-disabled">View Answers</button>
+            <%= link_to 'Show goal', goal_path(@goal), class: "btn btn-default" %>
+            <button class="btn btn-primary">View Answers</button>
         </p>
     </div>
 </div>

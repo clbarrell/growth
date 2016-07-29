@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
 
 
   # GET /goals
@@ -26,13 +26,10 @@ class GoalsController < ApplicationController
     # view for checkin
     @goal = Goal.find(params[:id])
     @questions = @goal.checkin_questions
-
-
   end
 
   def reset
     # to reset all the goal's questions
-    @goal = Goal.find(params[:id])
     @goal.questions.delete_all
     @goal.create_default_questions
 
@@ -48,7 +45,6 @@ class GoalsController < ApplicationController
     # for receiving checkin params
 
     Rails.logger.debug params.inspect
-    @goal = Goal.find(params[:id])
     # eventually use 'current_user'
     #@goal.user = User.find(1)
 
@@ -71,7 +67,6 @@ class GoalsController < ApplicationController
   end
 
   def undo_checkin
-    @goal = Goal.find(params[:id])
     @goal.undo_checkin
     respond_to do |format|
       format.html { redirect_to checkin_goal_url(params[:id]), notice: 'Check in was un done' }

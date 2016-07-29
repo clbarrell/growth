@@ -63,7 +63,7 @@ class Goal < ActiveRecord::Base
         elsif frequency == 'Weekly'
             (Time.now.to_date - last_checkin.to_date) > 7 ? true : false
         elsif frequency == 'Fortnightly'
-            (Time.now.to_date - ast_checkin.to_date) > 14 ? true : false
+            (Time.now.to_date - last_checkin.to_date) > 14 ? true : false
         elsif frequency == 'Monthly'
             (Time.now.to_date - last_checkin.to_date) > 30 ? true : false
         elsif frequency == 'Quarterly'

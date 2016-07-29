@@ -55,37 +55,6 @@ class Question < ActiveRecord::Base
       self.update(qnorder: self.qnorder + 1)
     end
 
-    def answer
-      # retrive appropriate type of answer model
-      # text / agreement / True/False
-      # WILL RETIRE THIS AND USE BUILD INSTEAD!
-      if question.scale == "Text"
-        # do something
-        if comment_answers.empty.any?
-          comment_answers.empty.take
-        else
-          CommentAnswer.create(actual_question_id: self.id)
-          comment_answers.empty.take
-        end
-      elsif question.scale == "Agreement"
-        # do something
-        if rating_answers.empty.any?
-          rating_answers.empty.take
-        else
-          RatingAnswer.create(actual_question_id: self.id)
-          rating_answers.empty.take
-        end
-      elsif question.scale == "True/False"
-        # do something
-        if boolean_answers.empty.any?
-          boolean_answers.empty.take
-        else
-          BooleanAnswer.create(actual_question_id: self.id)
-          boolean_answers.empty.take
-        end
-      end
-    end
-
     def to_s
       question
     end
