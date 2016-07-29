@@ -1,4 +1,0 @@
-module ActualQuestionsHelper
-
-  
-end
