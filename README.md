@@ -7,7 +7,7 @@
   ~~2. Make relational changes in Model~~
   ~~3. Make relational changes in DB~~
   ~~4. Update Goal.rb & GoalsController.rb~~
-  5. Update goal views (checkin!)
+  5. Update goal views (~~goalshow~~, checkin!)
   6. test test test? write tests?
 - use `@goal.questions.build` instead of Question.answer (question.rb)
 - fix the goal checkin with proper nested forms (where's the link? Evernote?)

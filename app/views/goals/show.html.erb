@@ -33,7 +33,9 @@
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
                     <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
                     <li><%= link_to 'Delete', @goal,
-                data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
+                    data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'Reset questions', reset_goal_path(@goal) %></li>
                 </ul>
             </div>
         </div>
@@ -58,8 +60,8 @@
                 <tr>
                     <td><%= checkin_question.qnorder%>
                         <div class="btn-group btn-group-xs">
-                            <%= link_to "+", increase_actual_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
-                            <%= link_to "-", decrease_actual_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "+", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "-", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
                         </div>
                     </td>
                     <td><%= checkin_question.question %></td>
@@ -89,8 +91,8 @@
                 <tr>
                     <td><%= review_question.qnorder%>
                         <div class="btn-group">
-                            <%= link_to "+", increase_actual_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
-                            <%= link_to "-", decrease_actual_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "+", increase_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "-", decrease_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
                         </div>
                     </td>
                     <td><%= review_question.question %></td>

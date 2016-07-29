@@ -27,11 +27,11 @@ class Goal < ActiveRecord::Base
     after_create :create_default_questions
 
     def checkin_questions
-      questions.where(qntype: "Checkin")
+      questions.where(qntype: "Checkin").order(:qnorder)
     end
 
     def review_questions
-      questions.where(qntype: "Review")
+      questions.where(qntype: "Review").order(:qnorder)
     end
 
     # METHODS
