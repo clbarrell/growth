@@ -13,7 +13,7 @@ module GoalsHelper
   end
 
   def boolean_options
-    %w(True False)
+    [["True", 'true'], ["False", 'false']]
   end
 
   # CHECKIN HELPERS

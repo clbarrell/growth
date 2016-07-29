@@ -5,6 +5,9 @@ class Question < ActiveRecord::Base
     has_many :comment_answers
     has_many :boolean_answers
 
+    accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
+    accepts_nested_attributes_for :comment_answers, reject_if: :all_blank
+    accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
 
     validates :question, :qntype, :scale, presence: true
 
@@ -81,6 +84,10 @@ class Question < ActiveRecord::Base
           boolean_answers.empty.take
         end
       end
+    end
+
+    def to_s
+      question
     end
 
 end

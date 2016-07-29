@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'checkin'
       patch 'update_checkin'
       get 'reset'
+      get 'undo_checkin'
     end
 
   end

@@ -1,7 +1,7 @@
 class CommentAnswer < ActiveRecord::Base
-  belongs_to :actual_question
+  belongs_to :question
 
-  validates :actual_question, presence: true
+  validates :question, presence: true
 
 #  create_table "comment_answers", force: :cascade do |t|
 #    t.text     "answer"

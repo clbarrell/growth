@@ -25,7 +25,8 @@ class GoalsController < ApplicationController
   def checkin
     # view for checkin
     @goal = Goal.find(params[:id])
-    @ac_questions = @goal.actual_questions.checkins
+    @questions = @goal.checkin_questions
+
 
   end
 
@@ -47,7 +48,7 @@ class GoalsController < ApplicationController
     # for receiving checkin params
 
     Rails.logger.debug params.inspect
-    #@goal = Goal.new(goal_params)
+    @goal = Goal.find(params[:id])
     # eventually use 'current_user'
     #@goal.user = User.find(1)
 
@@ -67,6 +68,15 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
+  end
+
+  def undo_checkin
+    @goal = Goal.find(params[:id])
+    @goal.undo_checkin
+    respond_to do |format|
+      format.html { redirect_to checkin_goal_url(params[:id]), notice: 'Check in was un done' }
+      format.json { render :checkin }
+    end
   end
 
   # POST /goals
@@ -120,8 +130,10 @@ class GoalsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
       params.require(:goal).permit(:title, :description, :frequency, :goaltype, :user_id,
-      rating_answers_attributes: [:id, :answer],
-      comment_answers_attributes: [:id, :answer],
-      boolean_answers_attributes: [:id, :answer])
+        questions_attributes: [:id, :question,
+          rating_answers_attributes: [:id, :answer, :question_id],
+          comment_answers_attributes: [:id, :answer, :question_id],
+          boolean_answers_attributes: [:id, :answer, :question_id]
+        ])
     end
 end

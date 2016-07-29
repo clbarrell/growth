@@ -1,13 +1,15 @@
 class Goal < ActiveRecord::Base
     belongs_to :user
     has_many :questions
+
     has_many :rating_answers, through: :questions
     has_many :comment_answers, through: :questions
     has_many :boolean_answers, through: :questions
 
-    accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
-    accepts_nested_attributes_for :comment_answers, reject_if: :all_blank
-    accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
+    accepts_nested_attributes_for :questions
+    #accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
+    #accepts_nested_attributes_for :comment_answers, reject_if: :all_blank
+    #accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
 
     # SCOPES ~~~~
     #scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: 'Checkin' }).order(:qnorder) }
@@ -40,17 +42,23 @@ class Goal < ActiveRecord::Base
         TemplateQuestion.find_each do |q|
             Question.create(goal_id: id, question: q.text,
                          qntype: q.qntype, scale: q.scale, qnorder: q.default_order)
-        end
+       end
     end
 
     def new_checkin
         update(checkin_count: checkin_count + 1, last_checkin: Time.now)
     end
 
+    def undo_checkin
+      update(last_checkin: 2.weeks.ago, checkin_count: checkin_count - 1)
+    end
+
     def is_it_checkin_time?
         # true if enough time has elapsed since last checkin
         # calculate time since according to frequency
-        if frequency == 'Daily'
+        if frequency.nil? || last_checkin.nil?
+          true
+        elsif frequency == 'Daily'
             (Time.now.to_date - last_checkin.to_date) > 1 ? true : false
         elsif frequency == 'Weekly'
             (Time.now.to_date - last_checkin.to_date) > 7 ? true : false
@@ -60,8 +68,6 @@ class Goal < ActiveRecord::Base
             (Time.now.to_date - last_checkin.to_date) > 30 ? true : false
         elsif frequency == 'Quarterly'
             (Time.now.to_date - last_checkin.to_date) > 90 ? true : false
-        elsif frequency.nil?
-            true
         end
     end
 end
