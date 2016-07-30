@@ -3,14 +3,13 @@ class CommentAnswer < ActiveRecord::Base
 
   validates :question, presence: true
 
-#  create_table "comment_answers", force: :cascade do |t|
-#    t.text     "answer"
-#    t.date     "date"
-#    t.integer  "question_id"
-#    t.integer  "goal_id"
-#    t.datetime "created_at",  null: false
-#    t.datetime "updated_at",  null: false
-#  end
+  # -- MDOEL --
+  # id: integer
+  # answer: text
+  # created_at: datetime
+  # updated_at: datetime
+  # question_id: integer
+  # belongs_to :question
 
  scope :empty, -> { where(answer: nil) }
 

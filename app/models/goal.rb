@@ -7,9 +7,24 @@ class Goal < ActiveRecord::Base
     has_many :boolean_answers, through: :questions
 
     accepts_nested_attributes_for :questions
-    #accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
-    #accepts_nested_attributes_for :comment_answers, reject_if: :all_blank
-    #accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
+
+    # MODEL
+    # id: integer
+    # title: string
+    # description: text
+    # frequency: string
+    # goaltype: string
+    # user_id: integer
+    # created_at: datetime
+    # updated_at: datetime
+    # last_checkin: datetime
+    # checkin_count: integer
+    # success_description: text
+    # belongs_to :user
+    # has_many :boolean_answers (through :questions)
+    # has_many :comment_answers (through :questions)
+    # has_many :questions
+    # has_many :rating_answers (through :questions)
 
     # SCOPES ~~~~
     #scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: 'Checkin' }).order(:qnorder) }

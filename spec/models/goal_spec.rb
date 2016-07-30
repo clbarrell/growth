@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Goal, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "makes a new goal", :focus => true do
+    goal = Goal.new
+
+    expect(goal.checkin_count).to eq(0)
+
+  end
+
 end

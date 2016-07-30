@@ -11,11 +11,19 @@ class Question < ActiveRecord::Base
 
     validates :question, :qntype, :scale, presence: true
 
-    # -- FIELDS --
-    # question - text of question
-    # qntype - checkin / review
-    # scale - text / agreement / True/False
-    # default_order
+    # -- MODEL --
+    # id: integer
+    # question: string
+    # qntype: string
+    # created_at: datetime
+    # updated_at: datetime
+    # scale: text
+    # qnorder: integer
+    # goal_id: integer
+    # belongs_to :goal
+    # has_many :boolean_answers
+    # has_many :comment_answers
+    # has_many :rating_answers
 
     # ~~ SCOPE ~~
     scope :checkins, -> { where(qntype: 'Checkin').order(:qnorder) }
