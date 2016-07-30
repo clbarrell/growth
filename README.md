@@ -18,6 +18,7 @@
   - http://bootsnipp.com/snippets/featured/checkboxradio-css-only
 - allow addition of questions to a goal
 - create 'View Answers' page - pseudo reporting
+- install a login / logout method - cancancan, devise, clearance https://github.com/thoughtbot/clearance
 
 ## Someday features
 
