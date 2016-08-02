@@ -1,4 +1,6 @@
 FactoryGirl.define do
+  # More info here:
+  # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
   factory :user do
     name "Chris Barrell"
     sequence(:email) { |n| "person#{n}@example.com" }

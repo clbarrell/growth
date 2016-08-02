@@ -23,13 +23,8 @@ RSpec.describe BooleanAnswersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # BooleanAnswer. As you add validations to BooleanAnswer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) { {:answer => nil} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -38,7 +33,7 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
   describe "GET #index" do
     it "assigns all boolean_answers as @boolean_answers" do
-      boolean_answer = BooleanAnswer.create! valid_attributes
+      boolean_answer = build(:boolean_answer)
       get :index, {}, valid_session
       expect(assigns(:boolean_answers)).to eq([boolean_answer])
     end
@@ -46,7 +41,7 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested boolean_answer as @boolean_answer" do
-      boolean_answer = BooleanAnswer.create! valid_attributes
+      boolean_answer = build(:boolean_answer)
       get :show, {:id => boolean_answer.to_param}, valid_session
       expect(assigns(:boolean_answer)).to eq(boolean_answer)
     end
@@ -61,7 +56,7 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested boolean_answer as @boolean_answer" do
-      boolean_answer = BooleanAnswer.create! valid_attributes
+      boolean_answer = build(:boolean_answer)
       get :edit, {:id => boolean_answer.to_param}, valid_session
       expect(assigns(:boolean_answer)).to eq(boolean_answer)
     end
@@ -71,18 +66,18 @@ RSpec.describe BooleanAnswersController, type: :controller do
     context "with valid params" do
       it "creates a new BooleanAnswer" do
         expect {
-          post :create, {:boolean_answer => valid_attributes}, valid_session
+          post :create, {:boolean_answer => attributes_for(:boolean_answer)}, valid_session
         }.to change(BooleanAnswer, :count).by(1)
       end
 
       it "assigns a newly created boolean_answer as @boolean_answer" do
-        post :create, {:boolean_answer => valid_attributes}, valid_session
+        post :create, {:boolean_answer => attributes_for(:boolean_answer)}, valid_session
         expect(assigns(:boolean_answer)).to be_a(BooleanAnswer)
         expect(assigns(:boolean_answer)).to be_persisted
       end
 
       it "redirects to the created boolean_answer" do
-        post :create, {:boolean_answer => valid_attributes}, valid_session
+        post :create, {:boolean_answer => attributes_for(:boolean_answer)}, valid_session
         expect(response).to redirect_to(BooleanAnswer.last)
       end
     end
@@ -102,25 +97,23 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { attributes_for(:boolean_answer) }
 
       it "updates the requested boolean_answer" do
-        boolean_answer = BooleanAnswer.create! valid_attributes
+        boolean_answer = build_stubbed(:boolean_answer)
         put :update, {:id => boolean_answer.to_param, :boolean_answer => new_attributes}, valid_session
         boolean_answer.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested boolean_answer as @boolean_answer" do
-        boolean_answer = BooleanAnswer.create! valid_attributes
+        boolean_answer = build_stubbed(:boolean_answer)
         put :update, {:id => boolean_answer.to_param, :boolean_answer => valid_attributes}, valid_session
         expect(assigns(:boolean_answer)).to eq(boolean_answer)
       end
 
       it "redirects to the boolean_answer" do
-        boolean_answer = BooleanAnswer.create! valid_attributes
+        boolean_answer = build_stubbed(:boolean_answer)
         put :update, {:id => boolean_answer.to_param, :boolean_answer => valid_attributes}, valid_session
         expect(response).to redirect_to(boolean_answer)
       end
@@ -128,13 +121,13 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
     context "with invalid params" do
       it "assigns the boolean_answer as @boolean_answer" do
-        boolean_answer = BooleanAnswer.create! valid_attributes
+        boolean_answer = build_stubbed(:boolean_answer)
         put :update, {:id => boolean_answer.to_param, :boolean_answer => invalid_attributes}, valid_session
         expect(assigns(:boolean_answer)).to eq(boolean_answer)
       end
 
       it "re-renders the 'edit' template" do
-        boolean_answer = BooleanAnswer.create! valid_attributes
+        boolean_answer = build_stubbed(:boolean_answer)
         put :update, {:id => boolean_answer.to_param, :boolean_answer => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +136,14 @@ RSpec.describe BooleanAnswersController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested boolean_answer" do
-      boolean_answer = BooleanAnswer.create! valid_attributes
+      boolean_answer = build_stubbed(:boolean_answer)
       expect {
         delete :destroy, {:id => boolean_answer.to_param}, valid_session
       }.to change(BooleanAnswer, :count).by(-1)
     end
 
     it "redirects to the boolean_answers list" do
-      boolean_answer = BooleanAnswer.create! valid_attributes
+      boolean_answer = build_stubbed(:boolean_answer)
       delete :destroy, {:id => boolean_answer.to_param}, valid_session
       expect(response).to redirect_to(boolean_answers_url)
     end
