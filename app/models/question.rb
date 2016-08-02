@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
     accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
 
     validates :question, :qntype, :scale, presence: true
+    validates :qntype, inclusion: { in: %w(Checkin Review) }
+    validates :scale, inclusion: { in: %w(Agreement Comment True/False) }
 
     # -- MODEL --
     # id: integer
@@ -28,14 +30,6 @@ class Question < ActiveRecord::Base
     # ~~ SCOPE ~~
     scope :checkins, -> { where(qntype: 'Checkin').order(:qnorder) }
     scope :reviews, -> { where(qntype: 'Review').order(:qnorder) }
-
-    def self.checkin
-        where(qntype: 'Checkin').order(:default_order)
-    end
-
-    def self.review
-        where(qntype: 'Review').order(:default_order)
-    end
 
     # INSTANCE METHODS
 
@@ -61,6 +55,10 @@ class Question < ActiveRecord::Base
         end
       end
       self.update(qnorder: self.qnorder + 1)
+    end
+
+    def set_default_order
+      self.qnorder = goal.questions.where(qntype: qntype).maximum("qnorder") + 1
     end
 
     def to_s

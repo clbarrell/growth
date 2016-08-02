@@ -1,13 +1,12 @@
 require 'rails_helper'
-
+# setup
+# EXERCISE
+# VERIFY
 RSpec.describe Goal, type: :model do
   before(:context) do
      # run one time only, before all of the examples in a group
-     @goal = Goal.new(title: "title",
-                      frequency: "Daily",
-                      goaltype: "Standard",
-                      description: "descirp kdl gl")
-    User.create(name: "Hello first", email: "email@example.com")
+    @goal = build(:goal)
+    @user = @goal.user
   end
 
   describe "creating a basic goal" do
@@ -26,15 +25,9 @@ RSpec.describe Goal, type: :model do
     end
 
     it "shouldn't allow wrong errors" do
-      goal1 = @goal
-      goal1.title = ""
-      expect(goal1).not_to be_valid
-      goal2 = @goal
-      goal2.frequency = "something"
-      expect(goal1).not_to be_valid
-      goal3 = @goal
-      goal3.goaltype = "a new goaltypw"
-      expect(goal1).not_to be_valid
+      expect(build_stubbed(:goal, title: nil)).not_to be_valid
+      expect(build_stubbed(:goal, frequency: nil)).not_to be_valid
+      expect(build_stubbed(:goal, goaltype: "yesito")).not_to be_valid
     end
   end
   describe "testing the main methods" do
@@ -47,22 +40,24 @@ RSpec.describe Goal, type: :model do
   end
   context "checking in" do
     it "should increase checkin count" do
-      @goal.new_checkin
-      expect(@goal.checkin_count).to eq 1
+      goal = build(:goal, :just_checked_in)
+      expect(goal.checkin_count).to_not eq 0
     end
     it "undo should decrease checkin count" do
-      @goal.undo_checkin
-      expect(@goal.checkin_count).to eq 0
-      expect(@goal.last_checkin).to be < 1.week.ago
+      goal = build(:goal, checkin_count: 1)
+      goal.undo_checkin
+      expect(goal.checkin_count).to eq 0
+      expect(goal.last_checkin).to be < 1.week.ago
     end
   end
   context "#is_it_checkin_time?" do
     it "should return true" do
-      expect(@goal.is_it_checkin_time?).to be true
-      @goal.last_checkin = 2.days.ago
-      expect(@goal.is_it_checkin_time?).to be true
-      @goal.last_checkin = 20.minutes.ago
-      expect(@goal.is_it_checkin_time?).to be false
+      goal = build(:goal, frequency: "Daily")
+      expect(goal.is_it_checkin_time?).to be true
+      checkedin_goal = build(:goal, :just_checked_in)
+      expect(checkedin_goal.is_it_checkin_time?).to be false
+      goal.new_checkin
+      expect(goal.is_it_checkin_time?).to be false
     end
   end
 
