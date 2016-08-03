@@ -28,6 +28,13 @@ class GoalsController < ApplicationController
     @questions = @goal.checkin_questions
   end
 
+  # goals/1/checkin_answers
+  def checkin_answers
+    # view for looking at checkin answers
+    @goal = Goal.find(params[:id])
+    @questions = @goal.checkin_questions
+  end
+
   def reset
     # to reset all the goal's questions
     @goal.questions.delete_all
@@ -49,7 +56,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       if @goal.update(goal_params)
         @goal.new_checkin
-        format.html { redirect_to checkin_goal_url(params[:id])}
+        format.html { redirect_to checkin_goal_path(params[:id])}
         # if params.comment_answer.present? then redirect to whereve
         # we want the checkin to goafterwards
         format.json { render :checkin, status: :ok, location: @goal }

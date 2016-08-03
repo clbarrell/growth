@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       patch 'update_checkin'
       get 'reset'
       get 'undo_checkin'
+      get 'checkin_answers'
     end
   end
   resources :questions do

@@ -1,0 +1,19 @@
+<%= render 'goal_head' %>
+<%= render 'success_description' if @goal.success_description? %>
+<div class="row">
+    <div class="col-sm-3">
+        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary" %>
+    </div>
+    <div class="col-sm-6">
+        <p class="text-center lead">
+            You've checked into this goal
+            <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
+        </p>
+    </div>
+<% @questions.each do |question| %>
+  <div class="row">
+    <p class="text-center">
+      <%= question %>
+    </p>
+  </div>
+<% end %>
