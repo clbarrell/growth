@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
+<h3><small>goal</small><br><%= @question.goal %></h3>
+<div class="well">
+  <strong>Question:</strong> <%= @question %>
+</div>
 
 <p>
   <strong>Type:</strong>
   <%= @question.qntype %>
 </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Edit', edit_question_path(@question), "data-no-turbolink" => "true" %> | <%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<p>
+  <%= link_to 'Back', goal_path(@question.goal) %>
+</p>

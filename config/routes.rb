@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-  resources :template_questions
   get 'home/home'
   get 'home/help'
   root 'home#home'
@@ -11,13 +9,13 @@ Rails.application.routes.draw do
   resources :rating_answers
   resources :boolean_answers
   resources :goals do
+    resources :questions, only: [:new]
     member do
       get 'checkin'
       patch 'update_checkin'
       get 'reset'
       get 'undo_checkin'
     end
-
   end
   resources :questions do
     member do
@@ -25,6 +23,7 @@ Rails.application.routes.draw do
       put 'decrease'
     end
   end
+  resources :template_questions
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -58,7 +58,7 @@
             <tbody>
                 <% @checkin_questions.each do |checkin_question| %>
                 <tr>
-                    <td><%= checkin_question.qnorder%>
+                    <td><%= link_to checkin_question.qnorder, checkin_question %>
                         <div class="btn-group btn-group-xs">
                             <%= link_to "+", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
                             <%= link_to "-", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
@@ -89,7 +89,7 @@
             <tbody>
                 <% @review_questions.each do |review_question| %>
                 <tr>
-                    <td><%= review_question.qnorder%>
+                    <td><%= link_to review_question.qnorder, review_question %>
                         <div class="btn-group">
                             <%= link_to "+", increase_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
                             <%= link_to "-", decrease_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
@@ -109,5 +109,6 @@
 <div class="row">
     <div class="col-sm-12">
         <%= link_to 'Back', @goal.user, class: "btn btn-default" %>
+        <%= link_to 'Add a question', new_goal_question_path(@goal), class: "btn btn-primary", "data-no-turbolink" => "true" %>
     </div>
 </div>

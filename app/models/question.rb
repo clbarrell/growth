@@ -58,7 +58,7 @@ class Question < ActiveRecord::Base
     end
 
     def set_default_order
-      self.qnorder = goal.questions.where(qntype: qntype).maximum("qnorder") + 1
+      self.qnorder = self.goal.questions.where(qntype: qntype).maximum("qnorder") + 1
     end
 
     def to_s

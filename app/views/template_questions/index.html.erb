@@ -28,7 +28,7 @@
               <td><%= question.text %></td>
               <td><%= question.scale %></td>
               <td><%= question.default_order %></td>
-              <td><%= link_to 'Edit', edit_question_path(question), "data-no-turbolink" => "true" %> |
+              <td><%= link_to 'Edit', edit_template_question_path(question), "data-no-turbolink" => "true" %> |
                 <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
@@ -54,7 +54,7 @@
               <td>
                 <%= question.default_order %>
               </td>
-              <td><%= link_to 'Edit', edit_question_path(question), "data-no-turbolink" => "true" %> |
+              <td><%= link_to 'Edit', edit_template_question_path(question), "data-no-turbolink" => "true" %> |
                 <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
@@ -67,4 +67,4 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path, "data-no-turbolink" => "true", class: "btn btn-default" %>
+<%= link_to 'New Question', new_template_question_path, "data-no-turbolink" => "true", class: "btn btn-default" %>

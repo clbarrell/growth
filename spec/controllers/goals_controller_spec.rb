@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
 RSpec.describe GoalsController, type: :controller do
   context "Can render main paths" do
     it "index has a 200 status code" do

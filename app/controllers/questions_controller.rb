@@ -4,6 +4,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    @checkin_questions = Question.checkins
+    @review_questions = Question.reviews
   end
 
   # GET /questions/1
@@ -13,12 +15,16 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/new
+  # GET /goals/:goal_id/questions/new(.:format)
   def new
     @question = Question.new
+    @goal = Goal.find(params[:goal_id])
+    # new_goal_question is HELPER
   end
 
   # GET /questions/1/edit
   def edit
+
   end
 
   def increase
@@ -59,8 +65,8 @@ class QuestionsController < ApplicationController
     @question.set_default_order if @question.qnorder.nil?
     respond_to do |format|
       if @question.save
-        format.html { redirect_to questions_url, notice: 'Question was successfully created.' }
-        format.json { render :index, status: :created, location: @question }
+        format.html { redirect_to goal_url(@question.goal), notice: 'Question was successfully created.' }
+        format.json { render :show, status: :created, location: @question.goal }
       else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -73,8 +79,8 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to questions_url, notice: 'Question was successfully updated.' }
-        format.json { render :index, status: :ok, location: @question }
+        format.html { redirect_to goal_url(@question.goal), notice: 'Question was successfully updated.' }
+        format.json { render :show, status: :ok, location: @question.goal }
       else
         format.html { render :edit }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -87,7 +93,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to goal_url(@question.goal), notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -96,6 +102,7 @@ class QuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
+      @goal = @question.goal
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -45,8 +45,6 @@ class GoalsController < ApplicationController
     # for receiving checkin params
 
     Rails.logger.debug params.inspect
-    # eventually use 'current_user'
-    #@goal.user = User.find(1)
 
     respond_to do |format|
       if @goal.update(goal_params)

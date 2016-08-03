@@ -3,11 +3,20 @@
 ## To do next
 
 - allow addition of questions to a goal
+  - goal/id/questions/new now works! to Questions#new
+- install groupdate & chartkick
+  - https://github.com/ankane/groupdate
+  - http://chartkick.com/
+  - http://www.chartjs.org/docs/#line-chart-introduction
+
 - create 'View Answers' page - pseudo reporting
 
 
 ## Coming Up
 
+- basic controller specs for the routes & actions (increase for ex)
+  - http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
+- integration tests to ensure whole thing operates as expected
 - Replacing dropdown question with radios
   - http://stackoverflow.com/questions/15060268/how-to-use-radio-button-correctly-in-rails
   - http://bootsnipp.com/snippets/featured/checkboxradio-css-only

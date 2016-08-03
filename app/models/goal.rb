@@ -85,4 +85,8 @@ class Goal < ActiveRecord::Base
             (Time.now.to_date - last_checkin.to_date) > 90 ? true : false
         end
     end
+
+    def to_s
+      title
+    end
 end
