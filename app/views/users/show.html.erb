@@ -25,7 +25,7 @@
           <% end %>
       <% end %>
       <!-- NEW GOAL -->
-      <%= link_to(new_goal_path, { class: "list-group-item", "data-no-turbolink" => "true" }) do %>
+      <%= link_to(new_goal_path, { class: "list-group-item", "data-turbolinks" => "false" }) do %>
         <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Goal</h4>
       <% end %>
     </div>

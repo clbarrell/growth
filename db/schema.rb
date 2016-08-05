@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160728123109) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boolean_answers", force: :cascade do |t|
     t.boolean  "answer"
     t.datetime "created_at",  null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.integer  "question_id"
   end
 
-  add_index "boolean_answers", ["question_id"], name: "index_boolean_answers_on_question_id"
+  add_index "boolean_answers", ["question_id"], name: "index_boolean_answers_on_question_id", using: :btree
 
   create_table "comment_answers", force: :cascade do |t|
     t.text     "answer"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.integer  "question_id"
   end
 
-  add_index "comment_answers", ["question_id"], name: "index_comment_answers_on_question_id"
+  add_index "comment_answers", ["question_id"], name: "index_comment_answers_on_question_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.string   "title"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.text     "success_description"
   end
 
-  add_index "goals", ["user_id"], name: "index_goals_on_user_id"
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "question"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.integer  "goal_id"
   end
 
-  add_index "questions", ["goal_id"], name: "index_questions_on_goal_id"
+  add_index "questions", ["goal_id"], name: "index_questions_on_goal_id", using: :btree
 
   create_table "rating_answers", force: :cascade do |t|
     t.integer  "answer"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.integer  "question_id"
   end
 
-  add_index "rating_answers", ["question_id"], name: "index_rating_answers_on_question_id"
+  add_index "rating_answers", ["question_id"], name: "index_rating_answers_on_question_id", using: :btree
 
   create_table "template_questions", force: :cascade do |t|
     t.string   "text"
@@ -83,4 +86,5 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "goals", "users"
 end

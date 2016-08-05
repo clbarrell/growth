@@ -2,6 +2,10 @@
 
 ## To do next
 
+- upgrade to PostGreSql
+  - https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-ubuntu-14-04
+  - https://medium.com/@helenflam/how-to-change-your-rails-app-database-from-sqlite-to-postgresql-before-deploying-to-heroku-ae2acc25c7ac#.3nmmnn4ph
+  - http://ifyouseeit.org/blog/2013/08/07/switch-db-from-sqlite3-to-postgres-in-rails-app/
 - install groupdate & chartkick
   - https://github.com/ankane/groupdate
   - http://chartkick.com/

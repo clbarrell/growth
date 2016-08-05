@@ -19,7 +19,7 @@ questions = [
   {text: "I've progressed on this goal", qntype: "Review", scale: "True/False", default_order: 1},
   {text: "I am satisfied with this progress", qntype: "Review", scale: "Agreement", default_order: 2},
   {text: "How much closer are you to your next milestone? What's required to get you there?", qntype: "Review", scale: "Text", default_order: 5},
-  {text: "How will you rectify this next %frequency%?", qntype: "Review", scale: "Text", default_order: 6}
+  {text: "How will you rectify this by next checkin?", qntype: "Review", scale: "Text", default_order: 6}
 ]
 
 questions.each do |question|
@@ -27,5 +27,4 @@ questions.each do |question|
 end
 
 # user
-
 User.create(name: "Chris Barrell", email: "clbarrell@gmail.com")

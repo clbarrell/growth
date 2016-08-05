@@ -10,10 +10,19 @@
             <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
         </p>
     </div>
+</div>
 <% @questions.each do |question| %>
   <div class="row">
-    <p class="text-center">
+    <h4 class="text-center">
       <%= question %>
-    </p>
+    </h4>
+  </div>
+  <div class="row">
+    <div class="graph-block">
+      <p class="text-center">centre align
+      <br><br>
+        put graph here...
+      </p>
+    </div>
   </div>
 <% end %>
