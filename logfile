@@ -2,3 +2,8 @@ LOG:  database system was shut down at 2016-08-05 22:01:04 AEST
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+ERROR:  column "question" does not exist at character 51
+HINT:  Perhaps you meant to reference the column "rating_answers.question_id".
+STATEMENT:  SELECT COUNT(*) AS count_all, (DATE_TRUNC('day', (question::timestamptz - INTERVAL '0 second') AT TIME ZONE 'Etc/UTC') + INTERVAL '0 second') AT TIME ZONE 'Etc/UTC' AS day FROM "rating_answers" WHERE (question IS NOT NULL) GROUP BY (DATE_TRUNC('day', (question::timestamptz - INTERVAL '0 second') AT TIME ZONE 'Etc/UTC') + INTERVAL '0 second') AT TIME ZONE 'Etc/UTC'
+ERROR:  cannot cast type integer to timestamp with time zone at character 62
+STATEMENT:  SELECT COUNT(*) AS count_all, (DATE_TRUNC('day', (question_id::timestamptz - INTERVAL '0 second') AT TIME ZONE 'Etc/UTC') + INTERVAL '0 second') AT TIME ZONE 'Etc/UTC' AS day FROM "rating_answers" WHERE (question_id IS NOT NULL) GROUP BY (DATE_TRUNC('day', (question_id::timestamptz - INTERVAL '0 second') AT TIME ZONE 'Etc/UTC') + INTERVAL '0 second') AT TIME ZONE 'Etc/UTC'

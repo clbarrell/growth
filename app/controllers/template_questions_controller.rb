@@ -27,7 +27,7 @@ class TemplateQuestionsController < ApplicationController
   # POST /template_questions.json
   def create
     @template_question = TemplateQuestion.new(template_question_params)
-    @question.set_default_order
+    @template_question.set_default_order
 
     respond_to do |format|
       if @template_question.save
@@ -72,6 +72,6 @@ class TemplateQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_question_params
-      params.require(:template_question).permit(:text, :qntype, :scale, :default_order)
+      params.require(:template_question).permit(:text, :qntype, :scale)
     end
 end

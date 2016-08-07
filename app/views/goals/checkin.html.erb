@@ -2,37 +2,47 @@
 <% if @goal.is_it_checkin_time? %>
   <div class="row">
       <div class="col-sm-12">
+        <div class="form-horizontal">
+
+
           <%= form_for @goal, url: {action: "update_checkin"} do |f| %>
             <% @questions.each do |question| %>
-              <label class="control-label">
+            <div class="form-group">
+
+
+              <label class="control-label col-sm-5">
                   <p><%= question %></p>
               </label>
-              <%= f.fields_for :questions, question do |q| %>
-
-                <% if question.scale == "Text" %>
-                  <%= q.fields_for :comment_answers, question.comment_answers.find_or_initialize_by(question: question) do |answer| %>
-                    <BR><%= answer.text_area :answer, class: "form-control" %>
-                    <%= answer.hidden_field :question_id, :value => question.id %>
-                  <% end %>
-                <% elsif question.scale === "Agreement" %>
-                  <%= q.fields_for :rating_answers, question.rating_answers.find_or_initialize_by(question: question) do |answer| %>
-                    <%= answer.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
-                    <%= answer.hidden_field :question_id, :value => question.id %>
-                  <% end %>
-                <% elsif question.scale === "True/False" %>
-                  <%= q.fields_for :boolean_answers, question.boolean_answers.find_or_initialize_by(question: question) do |answer| %>
-                    <%= answer.select(:answer, boolean_options, { prompt: true }, { class: "form-control" }) %>
-                    <%= answer.hidden_field :question_id, :value => question.id %>
+              <div class="col-sm-7">
+                <%= f.fields_for :questions, question do |q| %>
+                  <% if question.scale == "Comment" %>
+                    <%= q.fields_for :comment_answers, question.comment_answers.build(question: question) do |answer| %>
+                      <BR><%= answer.text_area :answer, class: "form-control" %>
+                      <%= answer.hidden_field :question_id, :value => question.id %>
+                    <% end %>
+                  <% elsif question.scale === "Agreement" %>
+                    <%= q.fields_for :rating_answers, question.rating_answers.build(question: question) do |answer| %>
+                      <%= answer.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
+                      <%= answer.hidden_field :question_id, :value => question.id %>
+                    <% end %>
+                  <% elsif question.scale === "True/False" %>
+                    <%= q.fields_for :boolean_answers, question.boolean_answers.build(question: question) do |answer| %>
+                      <%= answer.select(:answer, boolean_options, { prompt: true }, { class: "form-control" }) %>
+                      <%= answer.hidden_field :question_id, :value => question.id %>
+                    <% end %>
                   <% end %>
                 <% end %>
-
-              <% end %>
+              </div>
               <br>
+              </div>
             <% end %>
             <div class="form-group">
-                <%= f.submit "Submit Checkin", class: 'btn btn-primary' %>
+              <div class="col-sm-7 col-sm-offest-5">
+                <%= f.submit "Sumbit Checkin", class: 'btn btn-primary' %>
+              </div>
             </div>
           <% end %>
+          </div>
       </div>
   </div>
 <% else %>

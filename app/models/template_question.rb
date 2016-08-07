@@ -1,7 +1,9 @@
 class TemplateQuestion < ActiveRecord::Base
   # Class for the hardcoded template questions
-  
+
   validates :text, :qntype, :scale, presence: true
+  validates :qntype, inclusion: { in: %w(Checkin Review) }
+  validates :scale, inclusion: { in: %w(Agreement Comment True/False) }
 
   # FIELDS
   # TemplateQuestion
@@ -14,7 +16,7 @@ class TemplateQuestion < ActiveRecord::Base
   #   updated_at: datetime
 
   def set_default_order
-    self.default_order = Question.maximum("default_order") + 1
+    self.default_order = TemplateQuestion.where(qntype: qntype).maximum("default_order") + 1
   end
 
   def self.checkin

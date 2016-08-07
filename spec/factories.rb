@@ -24,12 +24,19 @@ FactoryGirl.define do
     end
   end
 
+  factory :template_question do
+    text "Have you made progress today?"
+    qntype "Checkin"
+    scale "Agreement"
+    sequence(:default_order) { |x| x }
+  end
+
   factory :question do
     # set default attributes
     question "Have you made progress today?"
     qntype "Checkin"
     scale "Agreement"
-    qnorder 3
+    sequence(:qnorder) { |x| x }
     goal #belongs_to relationship
 
     trait :checkin do

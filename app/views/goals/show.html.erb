@@ -32,7 +32,7 @@
                     <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
-                    <li><%= link_to 'Edit', edit_goal_path(@goal), "data-no-turbolink" => "true" %></li>
+                    <li><%= link_to 'Edit', edit_goal_path(@goal), "data-turbolink" => "false" %></li>
                     <li><%= link_to 'Delete', @goal,
                     data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
                     <li class="divider"></li>
@@ -110,6 +110,6 @@
 <div class="row">
     <div class="col-sm-12">
         <%= link_to 'Back', @goal.user, class: "btn btn-default" %>
-        <%= link_to 'Add a question', new_goal_question_path(@goal), class: "btn btn-primary", "data-no-turbolink" => "true" %>
+        <%= link_to 'Add a question', new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
     </div>
 </div>
