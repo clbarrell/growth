@@ -37,7 +37,7 @@
               </div>
             <% end %>
             <div class="form-group">
-              <div class="col-sm-7 col-sm-offest-5">
+              <div class="col-sm-7 col-sm-offset-5">
                 <%= f.submit "Sumbit Checkin", class: 'btn btn-primary' %>
               </div>
             </div>
@@ -62,7 +62,7 @@
     <div class="col-sm-12">
         <p class="text-center">
             <%= link_to 'Show goal', goal_path(@goal), class: "btn btn-default" %>
-            <button class="btn btn-primary">View Answers</button>
+            <%= link_to 'View Answers', checkin_answers_goal_path(@goal), class: "btn btn-info" %>
         </p>
     </div>
 </div>

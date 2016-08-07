@@ -65,4 +65,9 @@ class Question < ActiveRecord::Base
       question
     end
 
+    def rating_answers_to_graph
+      # to get into proper array
+
+    end
+
 end

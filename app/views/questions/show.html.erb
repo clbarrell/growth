@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
-<h3><small>goal</small><br><%= @question.goal %></h3>
+<%= render '/goals/goal_breadcrumb' %>
 <div class="well">
-  <strong>Question:</strong> <%= @question %>
+  <p>
+    <strong>Question:</strong> <%= @question %>
+  </p>
+  <p>
+    <strong>Type:</strong>
+    <%= @question.qntype %>
+  </p>
 </div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @question.qntype %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question), "data-no-turbolink" => "true" %> | <%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_question_path(@question), "data-turblinks" => "false" %> | <%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
 <p>
   <%= link_to 'Back', goal_path(@question.goal) %>
 </p>

@@ -2,7 +2,8 @@
 <%= render 'success_description' if @goal.success_description? %>
 <div class="row">
     <div class="col-sm-3">
-        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary" %>
+        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary btn-sm" %>
+        <%= link_to "View Goal", goal_path(@goal.id), class: "btn btn-primary btn-sm" %>
     </div>
     <div class="col-sm-6">
         <p class="text-center lead">
@@ -19,9 +20,8 @@
   </div>
   <div class="row">
     <div class="graph-block">
-      <p class="text-center">centre align
-      <br><br>
-        put graph here...
+      <p class="text-center">
+        graph goes here
       </p>
     </div>
   </div>

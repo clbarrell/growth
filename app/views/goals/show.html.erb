@@ -32,7 +32,7 @@
                     <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
-                    <li><%= link_to 'Edit', edit_goal_path(@goal), "data-turbolink" => "false" %></li>
+                    <li><%= link_to 'Edit', edit_goal_path(@goal), "data-turbolinks" => "false" %></li>
                     <li><%= link_to 'Delete', @goal,
                     data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
                     <li class="divider"></li>

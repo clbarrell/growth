@@ -2,18 +2,14 @@
 
 ## To do next
 
-
-
-- install groupdate & chartkick
-  - https://github.com/ankane/groupdate
-  - http://chartkick.com/
-  - http://www.chartjs.org/docs/#line-chart-introduction
-
+- create a single feature specs
+  - when a user creates a goal
 - create 'View Answers' page - pseudo reporting
-
+  - http://www.chartjs.org/docs/#line-chart-introduction
 
 ## Coming Up
 
+- create checkin_log table
 - basic controller specs for the routes & actions (increase for ex)
   - http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
 - integration tests to ensure whole thing operates as expected
@@ -36,3 +32,5 @@
 - get rid of actual_questions
 - allow addition of questions to a goal
 - migrate to PostGreSql
+- install groupdate & chartkick
+- clean up new question page
