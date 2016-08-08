@@ -19,6 +19,11 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'factory_girl_rails'
 require 'capybara/rspec'
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
 #require 'factories' DONT NEED IT
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

@@ -18,11 +18,11 @@ RSpec.feature "GoalCreations", type: :feature do
       expect(page).to have_button "Create Goal"
     end
   end
-  context "goal#new" do
+  context "goal#new", js: true do
     it "page should create goal" do
       visit(new_goal_path)
-      page.fill_in('Title', :with => 'This is my new goal')
-      page.fill_in('Description', :with => 'This is the description of my new goal')
+      page.fill_in('goal_title', :with => 'This is my new goal')
+      page.fill_in('goal_description', :with => 'This is the description of my new goal')
       page.select('Daily', :from => 'Frequency')
       page.select('Standard', :from => 'Goaltype')
       click_on('Create Goal')
