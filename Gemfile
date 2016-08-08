@@ -43,6 +43,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'capybara'
 end
 
 group :development do
