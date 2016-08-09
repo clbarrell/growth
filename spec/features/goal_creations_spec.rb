@@ -4,6 +4,9 @@ RSpec.feature "GoalCreations", type: :feature do
 
   before(:context) do
     @user = create(:user)
+    @user_with_goal = create(:user)
+    create(:goal, title: "This is a goal title", user: @user_with_goal)
+    create(:goal, title: "This is goal two", user: @user_with_goal)
   end
   context "user#show" do
     it "should list no goals" do
@@ -26,16 +29,16 @@ RSpec.feature "GoalCreations", type: :feature do
       page.select('Daily', :from => 'Frequency')
       page.select('Standard', :from => 'Goaltype')
       click_on('Create Goal')
-      print page.html
       expect(page).to have_content "This is my new goal"
       expect(page).to have_content "This is the description of my new goal"
       expect(page).to have_content "Goal was successfully created"
       expect(page).to have_content "You've checked into this goal 0 times"
     end
     it "should list all the goals" do
-      create(:goal, title: "This is a goal title", user: @user)
-      visit user_path(@user)
+      visit user_path(@user_with_goal)
       expect(page).to have_content "This is a goal title"
+      expect(page).to have_content "This is goal two"
+      expect(page).to have_content "New Goal"
     end
   end
 
