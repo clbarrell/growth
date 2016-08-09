@@ -2,10 +2,6 @@
 
 ## To do next
 
-- create a single feature specs
-  - when a user creates a goal
-  - http://www.chrisdpeters.com/introduction-feature-specs-rspec/
-  - https://robots.thoughtbot.com/rspec-integration-tests-with-capybara
 - create 'View Answers' page - pseudo reporting
   - http://www.chartjs.org/docs/#line-chart-introduction
 
@@ -36,3 +32,4 @@
 - migrate to PostGreSql
 - install groupdate & chartkick
 - clean up new question page
+- create a single feature specs
