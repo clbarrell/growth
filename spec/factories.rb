@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :checkin_log do
+    sequence(:date) { |x| x.days.ago }
+    goal
+  end
   # More info here:
   # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
   factory :user do

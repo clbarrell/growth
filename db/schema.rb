@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728123109) do
+ActiveRecord::Schema.define(version: 20160811111611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160728123109) do
   end
 
   add_index "boolean_answers", ["question_id"], name: "index_boolean_answers_on_question_id", using: :btree
+
+  create_table "checkin_logs", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "checkin_logs", ["goal_id"], name: "index_checkin_logs_on_goal_id", using: :btree
 
   create_table "comment_answers", force: :cascade do |t|
     t.text     "answer"
@@ -86,5 +95,6 @@ ActiveRecord::Schema.define(version: 20160728123109) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "checkin_logs", "goals"
   add_foreign_key "goals", "users"
 end

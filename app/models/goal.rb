@@ -1,6 +1,7 @@
 class Goal < ActiveRecord::Base
     belongs_to :user
     has_many :questions
+    has_many :checkin_logs
 
     has_many :rating_answers, through: :questions
     has_many :comment_answers, through: :questions

@@ -1,0 +1,2 @@
+class CheckinLogController < ApplicationController
+end
