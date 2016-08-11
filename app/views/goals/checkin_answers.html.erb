@@ -12,6 +12,7 @@
         </p>
     </div>
 </div>
+<!-- QUESTION GRPAHS -->
 <% @questions.each do |question| %>
   <div class="row">
     <h4 class="text-center">
@@ -21,7 +22,16 @@
   <div class="row">
     <div class="graph-block">
       <p class="text-center">
-        graph goes here
+        <% if question.scale != "Comment" %>
+          <%= graph_question(question) %>
+        <% else %>
+          <dl class="dl-horizontal">
+            <% question.comment_answers.each do |c| %>
+              <dt><%= c.created_at.strftime('%h %d') %></dt>
+              <dd><%= c.answer %></dd>
+            <% end %>
+          </dl>
+        <% end %>
       </p>
     </div>
   </div>

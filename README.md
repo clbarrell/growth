@@ -3,19 +3,19 @@
 ## To do next
 
 - create 'View Answers' page - pseudo reporting
-  - http://www.chartjs.org/docs/#line-chart-introduction
+- create checkin_log table
+
 
 ## Coming Up
 
-- create checkin_log table
+- Replacing dropdown question with radios
+- http://stackoverflow.com/questions/15060268/how-to-use-radio-button-correctly-in-rails
+- http://bootsnipp.com/snippets/featured/checkboxradio-css-only
 - basic controller specs for the routes & actions (increase for ex)
   - http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
-- integration tests to ensure whole thing operates as expected
+- Feature tests to ensure whole thing operates as expected
   - https://github.com/jnicklas/capybara
   - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
-- Replacing dropdown question with radios
-  - http://stackoverflow.com/questions/15060268/how-to-use-radio-button-correctly-in-rails
-  - http://bootsnipp.com/snippets/featured/checkboxradio-css-only
 - install a login / logout method - cancancan, devise, clearance https://github.com/thoughtbot/clearance
 
 ## Someday features

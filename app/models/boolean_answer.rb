@@ -10,5 +10,8 @@ class BooleanAnswer < ActiveRecord::Base
   # question_id: integer
   # belongs_to :question
 
-  scope :empty, -> { where(answer: nil) }
+  def to_numbers
+    answer ? 1 : 0
+  end
+
 end

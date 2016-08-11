@@ -32,7 +32,6 @@ class Question < ActiveRecord::Base
     scope :reviews, -> { where(qntype: 'Review').order(:qnorder) }
 
     # INSTANCE METHODS
-
     def increase_order()
       # increase order of AQ
       qen = Question.where("goal_id = ? AND qnorder = ?", self.goal.id, self.qnorder - 1)
@@ -65,9 +64,15 @@ class Question < ActiveRecord::Base
       question
     end
 
-    def rating_answers_to_graph
+    def answer_data_for_graph
       # to get into proper array
-
+      if scale == "Agreement"
+        # RATING ANSWERSS
+        rating_answers.map { |x| [x.created_at.to_date, x.answer] }
+      elsif scale == "True/False"
+        # BOOLEAN
+        boolean_answers.map { |x| [x.created_at.to_date, x.to_numbers] }
+      end
     end
 
 end
