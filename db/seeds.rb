@@ -33,7 +33,7 @@ user = User.create(name: "Chris Barrell", email: "clbarrell@gmail.com")
 goal = Goal.create(description: "I want to speak clearly, concisely and with impact. I don't want to muddle my words.",
             frequency: "Daily", goaltype: "Standard",
             success_description: "To be successful, I will have created this awesome interface....", title: "I am a goal!", user: user)
-goal.update(checkin_count: 5)
+
 # CHECKIN
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus sapien nec ultricies feugiat. "
 goal.checkin_questions.each do |q|
@@ -47,3 +47,5 @@ goal.checkin_questions.each do |q|
     5.times { |x| CommentAnswer.create(answer: text * rand(1..3), created_at: x.days.ago, question: q)}
   end
 end
+5.times { |x| CheckinLog.create(date: (x + 1).days.ago, goal: goal) }
+CheckinLog.create(date: Date.today, goal: goal)

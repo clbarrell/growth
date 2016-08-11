@@ -18,8 +18,6 @@ class Goal < ActiveRecord::Base
     # user_id: integer
     # created_at: datetime
     # updated_at: datetime
-    # last_checkin: datetime
-    # checkin_count: integer
     # success_description: text
     # belongs_to :user
     # has_many :boolean_answers (through :questions)
@@ -61,12 +59,20 @@ class Goal < ActiveRecord::Base
        end
     end
 
+    def checkin_count
+      checkin_logs.count
+    end
+
     def new_checkin
-        update(checkin_count: checkin_count + 1, last_checkin: Time.now)
+      checkin_logs.create(date: Date.today)
+    end
+
+    def last_checkin
+      checkin_logs.try(:last).try(:date)
     end
 
     def undo_checkin
-      update(last_checkin: 2.weeks.ago, checkin_count: checkin_count - 1)
+      checkin_logs.try(:last).try(:destroy)
     end
 
     def is_it_checkin_time?
@@ -75,15 +81,15 @@ class Goal < ActiveRecord::Base
         if frequency.nil? || last_checkin.nil?
           true
         elsif frequency == 'Daily'
-            (Time.now.to_date - last_checkin.to_date) > 1 ? true : false
+            (Date.today - last_checkin) > 1 ? true : false
         elsif frequency == 'Weekly'
-            (Time.now.to_date - last_checkin.to_date) > 7 ? true : false
+            (Date.today - last_checkin) > 7 ? true : false
         elsif frequency == 'Fortnightly'
-            (Time.now.to_date - last_checkin.to_date) > 14 ? true : false
+            (Date.today - last_checkin) > 14 ? true : false
         elsif frequency == 'Monthly'
-            (Time.now.to_date - last_checkin.to_date) > 30 ? true : false
+            (Date.today - last_checkin) > 30 ? true : false
         elsif frequency == 'Quarterly'
-            (Time.now.to_date - last_checkin.to_date) > 90 ? true : false
+            (Date.today - last_checkin) > 90 ? true : false
         end
     end
 

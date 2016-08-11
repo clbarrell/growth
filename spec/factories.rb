@@ -80,14 +80,6 @@ FactoryGirl.define do
     trait :with_success_desc do
       success_description "TO be successful I will..."
     end
-    trait :just_checked_in do
-      last_checkin { Time.now }
-      checkin_count 1
-    end
-    trait :old_checkin do
-      last_checkin { 6.weeks.ago }
-      checkin_count 1
-    end
     # user_with_posts will create post data after the user has been created
     factory :goal_with_questions do
       # posts_count is declared as a transient attribute and available in

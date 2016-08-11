@@ -43,22 +43,23 @@ RSpec.describe Goal, type: :model do
   end
   context "checking in" do
     it "should increase checkin count" do
-      goal = create(:goal, :just_checked_in)
+      goal = create(:goal)
+      expect(goal.checkin_count).to eq 0
+      goal.new_checkin
       expect(goal.checkin_count).to_not eq 0
     end
     it "undo should decrease checkin count" do
-      goal = create(:goal, checkin_count: 1)
+      goal = create(:goal)
+      goal.new_checkin
+      expect(goal.checkin_count).to_not eq 0
       goal.undo_checkin
       expect(goal.checkin_count).to eq 0
-      expect(goal.last_checkin).to be < 1.week.ago
     end
   end
   context "#is_it_checkin_time?" do
     it "should return true" do
       goal = create(:goal, frequency: "Daily")
       expect(goal.is_it_checkin_time?).to be true
-      checkedin_goal = create(:goal, :just_checked_in)
-      expect(checkedin_goal.is_it_checkin_time?).to be false
       goal.new_checkin
       expect(goal.is_it_checkin_time?).to be false
     end
