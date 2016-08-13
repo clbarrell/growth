@@ -22,40 +22,12 @@
                     <% end %>
                   <% elsif question.scale === "Agreement" %>
                     <%= q.fields_for :rating_answers, question.rating_answers.build(question: question) do |answer| %>
-                      <div class="btn-group" data-toggle="buttons">
-                        <%= answer.label :answer, :value => 1, class: "btn btn-rating-1", 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Strongly Disagree", 'data-container' => 'body' do %>
-                          <span class="glyphicon glyphicon-ok"></span>
-                          <%= answer.radio_button :answer, 1 %>
-                        <% end %>
-                        <%= answer.label :answer, :value => 2, class: "btn btn-rating-2", 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Disagree", 'data-container' => 'body' do %>
-                          <span class="glyphicon glyphicon-ok"></span>
-                          <%= answer.radio_button :answer, 2 %>
-                        <% end %>
-                        <%= answer.label :answer, :value => 3, class: "btn btn-rating-3", 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Neutral", 'data-container' => 'body' do %>
-                          <span class="glyphicon glyphicon-ok"></span>
-                          <%= answer.radio_button :answer, 3 %>
-                        <% end %>
-                        <%= answer.label :answer, :value => 4, class: "btn btn-rating-4", 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Agree", 'data-container' => 'body' do %>
-                          <span class="glyphicon glyphicon-ok"></span>
-                          <%= answer.radio_button :answer, 4 %>
-                        <% end %>
-                        <%= answer.label :answer, :value => 5, class: "btn btn-rating-5", 'data-toggle' => "tooltip", 'data-placement' => "top", title: "Strongly Agree", 'data-container' => 'body' do %>
-                          <span class="glyphicon glyphicon-ok"></span>
-                          <%= answer.radio_button :answer, 5 %>
-                        <% end %>
-                      </div>
+                      <%= answer.select(:answer, agreement_options, { prompt: true }, { class: "form-control" }) %>
                       <%= answer.hidden_field :question_id, :value => question.id %>
                     <% end %>
                   <% elsif question.scale === "True/False" %>
                     <%= q.fields_for :boolean_answers, question.boolean_answers.build(question: question) do |answer| %>
-                      <div class="btn-group" data-toggle="buttons">
-                      <%= answer.label :answer, "No", :value => "false", class: "btn btn-rating-1" do  %>
-                        No<%= answer.radio_button :answer, false %>
-                      <% end %>
-                      <%= answer.label :answer, "Yes", :value => "true", class: "btn btn-rating-5" do  %>
-                        Yes<%= answer.radio_button :answer, true %>
-                      <% end %>
-                      </div>
+                      <%= answer.select(:answer, boolean_options, { prompt: true }, { class: "form-control" }) %>
                       <%= answer.hidden_field :question_id, :value => question.id %>
                     <% end %>
                   <% end %>

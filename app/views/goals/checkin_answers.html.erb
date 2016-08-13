@@ -2,7 +2,7 @@
 <%= render 'success_description' if @goal.success_description? %>
 <div class="row">
     <div class="col-sm-3">
-        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary btn-sm" %>
+        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary btn-sm", 'data-turbolinks' => false %>
         <%= link_to "View Goal", goal_path(@goal.id), class: "btn btn-primary btn-sm" %>
     </div>
     <div class="col-sm-6">
@@ -26,7 +26,7 @@
           <%= graph_question(question) %>
         <% else %>
           <dl class="dl-horizontal">
-            <% question.comment_answers.each do |c| %>
+            <% question.comment_answers.order(created_at: :desc).each do |c| %>
               <dt><%= c.created_at.strftime('%h %d') %></dt>
               <dd><%= c.answer %></dd>
             <% end %>

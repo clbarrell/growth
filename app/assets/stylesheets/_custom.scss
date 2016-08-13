@@ -66,3 +66,41 @@ dd, dt {
 #checkin_log_graph {
   padding-bottom: 8px;
 }
+
+// CHECKIN FORM
+
+.btn span.glyphicon {
+	opacity: 0;
+}
+.btn.active span.glyphicon {
+	opacity: 1;
+}
+
+input[type="radio"], .radio input[type="radio"], .radio-inline input[type="radio"] {
+  display: none;
+}
+
+.btn-rating-1 {
+  width: 55px;
+  background-color: #de825b;
+}
+
+.btn-rating-2 {
+  width: 55px;
+  background-color: #BD995C;
+}
+
+.btn-rating-3 {
+  width: 55px;
+  background-color: #9CB05D;
+}
+
+.btn-rating-4 {
+  width: 55px;
+  background-color: #7BC75E;
+}
+
+.btn-rating-5 {
+  width: 55px;
+  background-color: #5BDE60;
+}
