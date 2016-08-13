@@ -21,4 +21,19 @@ module ApplicationHelper
     User.find(1)
   end
 
+  # to use active LI
+  def link_to_in_li(body, url, html_options = {})
+    active = "active" if current_page?(url)
+    content_tag :li, class: active do
+      link_to body, url, html_options
+    end
+  end
+
+  def link_to_in_li_with_span(body, url, span, html_options = {})
+    active = "active" if current_page?(url)
+    text = "#{body} <span class='badge'>#{span}</span>".html_safe
+    content_tag :li, class: active do
+      link_to text, url, html_options
+    end
+  end
 end

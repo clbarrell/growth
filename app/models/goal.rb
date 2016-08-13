@@ -50,6 +50,7 @@ class Goal < ActiveRecord::Base
       questions.where(qntype: "Review").order(:qnorder)
     end
 
+
     # METHODS
     def create_default_questions
         # set the default list of questions

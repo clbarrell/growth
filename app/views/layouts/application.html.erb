@@ -26,12 +26,11 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Home", root_path, class: "nav-item nav-link" %></li>
-              <li><%= link_to "My Goals", user_path(1), class: "nav-item nav-link"  %></li>
-              <li><!-- CHECKIN DROPDOWN WITH GOALS --></li>
+              <%= link_to_in_li "Goals", user_path(1), class: "nav-item nav-link" %>
+              <%= link_to_in_li_with_span "Checkin", user_path(1), 4, class: "nav-item nav-link" %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Questions", template_questions_path, class: "nav-item nav-link"%></li>
+              <%= link_to_in_li "Temp. Ques.", template_questions_path, class: "nav-item nav-link" %>
             </ul>
           </div>
         </div>
