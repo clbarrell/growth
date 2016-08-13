@@ -32,15 +32,38 @@
         <div class="form-group">
             <%= f.label :frequency, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
-                <%= f.select(:frequency, freq_options, { prompt: true }, { class: "form-control" }) %>
+                <div class="btn-group" data-toggle="buttons">
+                  <%= f.label :frequency, value: "Daily", class: "btn btn-info" do %>
+                  <%= f.radio_button :frequency, "Daily" %>Daily
+                  <% end %>
+                  <%= f.label :frequency, value: "Weekly", class: "btn btn-info" do %>
+                  <%= f.radio_button :frequency, "Weekly" %>Weekly
+                  <% end %>
+                  <%= f.label :frequency, value: "Fortnightly", class: "btn btn-info" do %>
+                  <%= f.radio_button :frequency, "Fortnightly" %>Fortnightly
+                  <% end %>
+                  <%= f.label :frequency, value: "Monthly", class: "btn btn-info" do %>
+                  <%= f.radio_button :frequency, "Monthly" %>Monthly
+                  <% end %>
+                  <%= f.label :frequency, value: "Quarterly", class: "btn btn-info" do %>
+                  <%= f.radio_button :frequency, "Quarterly" %>Quarterly
+                  <% end %>
+                </div>
                 <span class="help-block">How frequently do you want to check in against this goal?</span>
             </div>
         </div>
         <div class="form-group">
             <%= f.label :goaltype, class: 'control-label col-sm-2' %>
             <div class="col-sm-10">
-                <%= f.select(:goaltype, goal_type, { prompt: true }, { class: "form-control" }) %>
-                <span class="help-block">Is this goal contextual or absolute?</span>
+                <div class="btn-group" data-toggle="buttons">
+                  <%= f.label :goaltype, value: "Standard", class: "btn btn-success" do %>
+                  <%= f.radio_button :goaltype, "Standard" %>Standard
+                  <% end %>
+                  <%= f.label :goaltype, value: "Contextual", class: "btn btn-success" do %>
+                  <%= f.radio_button :goaltype, "Contextual" %>Contextual
+                  <% end %>
+                </div>
+                <span class="help-block">Is this goal contextual (When X happens, I'll do Y) or standard?</span>
             </div>
         </div>
         <div class="form-group">
