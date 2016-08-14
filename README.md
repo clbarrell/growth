@@ -2,10 +2,6 @@
 
 ## To do next
 
-
-- Make checkin count 0 for days without checkins
-
-
 - Move checkin_ready_goals to a User column variable
   - on GOALS create a REQUIRES_CHECKIN flag
     - would use background jobs to flick the switch?
@@ -78,3 +74,4 @@
 - Check original notes for personal development journal
 - dont' include answers from checkins where answer = nil
 - move Goal's questions to it's own page
+- Make checkin count 0 for days without checkins

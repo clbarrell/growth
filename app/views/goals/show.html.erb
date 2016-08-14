@@ -1,15 +1,7 @@
 <%= render 'goal_head' %>
 <!-- YOU"VE CEHCKED IN X TIMES -->
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-        <p class="text-center lead">
-            You've checked into this goal
-            <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
-        </p>
-        <!-- CHECKIN LOG -->
-        <%= checkin_log_graph(@goal) %>
-    </div>
-    <div class="col-sm-3">
+    <div class="col-sm-12">
         <div class="pull-right">
             <div class="dropdown">
                 <button class="btn btn-link dropdown-toggle" type="button" id="sidegoalmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -23,7 +15,15 @@
                 </ul>
             </div>
         </div>
+        <p class="text-center lead">
+          You've checked into this goal
+          <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
+        </p>
     </div>
+</div>
+<div class="row">
+    <!-- CHECKIN LOG -->
+    <%= checkin_log_graph(@goal) %>
 </div>
 <!-- SUCCESS -->
 <%= render 'success_description' if @goal.success_description? %>
