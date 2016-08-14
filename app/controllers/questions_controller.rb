@@ -4,8 +4,9 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @checkin_questions = Question.checkins
-    @review_questions = Question.reviews
+    @goal = Goal.find(params[:goal_id])
+    @checkin_questions = @goal.checkin_questions
+    @review_questions = @goal.review_questions
   end
 
   # GET /questions/1
@@ -65,8 +66,8 @@ class QuestionsController < ApplicationController
     @question.set_default_order if @question.qnorder.nil?
     respond_to do |format|
       if @question.save
-        format.html { redirect_to goal_url(@question.goal), notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question.goal }
+        format.html { redirect_to goal_questions_url(@question.goal), notice: 'Question was successfully created.' }
+        format.json { render :index, status: :created }
       else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }

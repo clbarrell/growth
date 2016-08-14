@@ -2,8 +2,9 @@
 
 ## To do next
 
+
 - Make checkin count 0 for days without checkins
-- dont' include answers from checkins where answer = nil
+
 
 - Move checkin_ready_goals to a User column variable
   - on GOALS create a REQUIRES_CHECKIN flag
@@ -11,6 +12,9 @@
   - on User
     - have a flag - recalculates at each login, checkin, etc.
 - Create a card layout for the goals
+  - https://dribbble.com/shots/890839-Sneak-Peek
+  - big red header where goal title goes?
+  - https://dribbble.com/shots/1698678-Apps-Dashboard
 - clicking on 'Checkin' only shows goals that need to be checked in
 
 
@@ -25,7 +29,13 @@
     - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
   - more background pictures - minimal vibes
   - http://demos.creative-tim.com/light-bootstrap-dashboard-pro/examples/dashboard.html
-  - move Goal's questions to it's own page
+  - colour
+    - https://www.materialui.co/colors
+  - fix the sizing problems of header
+  - Add your own class to the <div class="special-container"> and override the width property at one or more viewport sizes.
+  - For example:  
+    - @media (min-width: 768px) { ... }
+
 - install a login / logout method - cancancan, devise, clearance
   - https://github.com/thoughtbot/clearance
   - design the experience flow
@@ -65,3 +75,5 @@
 - remove goal columns: checkin_count and last_checkin
 - Replacing dropdown question with radios
 - Check original notes for personal development journal
+- dont' include answers from checkins where answer = nil
+- move Goal's questions to it's own page

@@ -4,6 +4,7 @@
   <title>GrowthApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <meta name="viewport" content="width=device-width">
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -37,6 +38,7 @@
                 <% end %>
                 <%= link_to_in_li "View", goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Checkin Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
+                <%= link_to_in_li "Questions", goal_questions_path(@goal), class: "nav-item nav-link" %>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -40,8 +40,10 @@ module ApplicationHelper
   def display_goal_name?
     if controller.controller_name == "goals" || controller.controller_name == "questions"
       # controller
-      if ["show", "edit", "checkin", "checkin_answers"].include?(controller.action_name)
+      if ["show", "edit", "checkin", "checkin_answers", "index"].include?(controller.action_name)
         # ACTION
+        true
+      elsif controller.controller_name == "questions" && controller.action_name == "new"
         true
       else
         false

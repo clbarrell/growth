@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :rating_answers
   resources :boolean_answers
   resources :goals do
-    resources :questions, only: [:new]
+    resources :questions, only: [:new, :index]
     member do
       get 'checkin'
       patch 'update_checkin'

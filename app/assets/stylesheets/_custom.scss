@@ -13,13 +13,21 @@ footer {
 
 body {
   padding-top: 75px;
-  background-image: image-url("photo-forestmountains.jpeg");
+  background-image: image-url("photo-forestmountains2.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
+  background-position: 50%;
   p {
     font-size: 16px;
   }
 }
+
+/** for transparent shit
+linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1)
+  ),  */
 
 table {
   font-size: 16px;
@@ -32,7 +40,6 @@ table {
 .with-padding {
   padding-bottom: 15px;
 }
-
 
 
 .debug_dump {
@@ -116,7 +123,11 @@ input[type="radio"], .radio input[type="radio"], .radio-inline input[type="radio
 .navbar-default .navbar-text {
   color: #5ebb64;
   text-transform: uppercase;
-  letter-spacing: .2em;
+  letter-spacing: .1em;
+  width: 290px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 a.list-group-item, button.list-group-item {
@@ -125,9 +136,14 @@ a.list-group-item, button.list-group-item {
 
 textarea.form-control, input[type=text].form-control {
   padding-left: 5px;
-  background: transparent;
+  background: rgba(94, 163, 233, 0.05);
 }
 
 .well {
-  border-radius: 10px;
+
+}
+
+
+.goal-title {
+  text-shadow: 0 1px 1px rgba(0,0,0,.15);
 }
