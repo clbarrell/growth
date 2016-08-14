@@ -23,7 +23,7 @@
 - Feature tests to ensure whole thing operates as expected
   - https://github.com/jnicklas/capybara
   - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
-- Redesign layout - make it more appy
+- **Redesign layout - make it more appy**
   - Side bar
     - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
     - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
@@ -32,9 +32,10 @@
   - colour
     - https://www.materialui.co/colors
   - fix the sizing problems of header
-  - Add your own class to the <div class="special-container"> and override the width property at one or more viewport sizes.
-  - For example:  
-    - @media (min-width: 768px) { ... }
+    - Add your own class to the <div class="special-container"> and override the width property at one or more viewport sizes.
+    - For example:  
+      - @media (min-width: 768px) { ... }
+    - http://www.bootply.com/109653
 
 - install a login / logout method - cancancan, devise, clearance
   - https://github.com/thoughtbot/clearance
