@@ -36,4 +36,18 @@ module ApplicationHelper
       link_to text, url, html_options
     end
   end
+
+  def display_goal_name?
+    if controller.controller_name == "goals" || controller.controller_name == "questions"
+      # controller
+      if ["show", "edit", "checkin", "checkin_answers"].include?(controller.action_name)
+        # ACTION
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
 end

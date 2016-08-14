@@ -6,6 +6,13 @@
 - dont' include answers from checkins where answer = nil
 
 - Move checkin_ready_goals to a User column variable
+  - on GOALS create a REQUIRES_CHECKIN flag
+    - would use background jobs to flick the switch?
+  - on User
+    - have a flag - recalculates at each login, checkin, etc.
+- Create a card layout for the goals
+- clicking on 'Checkin' only shows goals that need to be checked in
+
 
 ## Coming Up
 

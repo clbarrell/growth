@@ -1,11 +1,7 @@
 <%= render 'goal_head' %>
 <%= render 'success_description' if @goal.success_description? %>
 <div class="row">
-    <div class="col-sm-3">
-        <%= link_to "Check in", checkin_goal_path(@goal.id), class: "btn btn-primary btn-sm", 'data-turbolinks' => false %>
-        <%= link_to "View Goal", goal_path(@goal.id), class: "btn btn-primary btn-sm" %>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-sm-offset-3">
         <p class="text-center lead">
             You've checked into this goal
             <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
