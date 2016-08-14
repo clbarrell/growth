@@ -38,7 +38,6 @@
   - design the experience flow
   - ensure page flow is good. Adjust as needed.
 - adjust checkin_log graph depending on goal.frequency & amount of checkins
-  - Don't show until checkin_count eq 2
   - set a maximum time frame to capture
 - setup mailer
   - email'd reminders
