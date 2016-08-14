@@ -4,7 +4,8 @@
 
 - Make checkin count 0 for days without checkins
 - dont' include answers from checkins where answer = nil
-- Chcek original notes for personal development journal
+
+- Move checkin_ready_goals to a User column variable
 
 ## Coming Up
 
@@ -13,8 +14,11 @@
   - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
 - Redesign layout - make it more appy
   - Side bar
+    - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
+    - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
   - more background pictures - minimal vibes
   - http://demos.creative-tim.com/light-bootstrap-dashboard-pro/examples/dashboard.html
+  - move Goal's questions to it's own page
 - install a login / logout method - cancancan, devise, clearance
   - https://github.com/thoughtbot/clearance
   - design the experience flow
@@ -41,7 +45,7 @@
 
 ## Completed!
 
-- templated questions that can be copied to new goals
+- Template questions (sep) that can be copied to new goals
 - checkins actually work
 - get rid of actual_questions
 - allow addition of questions to a goal
@@ -53,3 +57,4 @@
 - create checkin_log table
 - remove goal columns: checkin_count and last_checkin
 - Replacing dropdown question with radios
+- Check original notes for personal development journal

@@ -13,6 +13,9 @@ footer {
 
 body {
   padding-top: 70px;
+  background-image: image-url("photo-forestmountains.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   p {
     font-size: 16px;
   }
@@ -69,10 +72,10 @@ dd, dt {
 
 // CHECKIN FORM
 
-.btn span.glyphicon {
+.btn-group .btn span.glyphicon {
 	opacity: 0;
 }
-.btn.active span.glyphicon {
+.btn-group .btn.active span.glyphicon {
 	opacity: 1;
 }
 
@@ -103,4 +106,29 @@ input[type="radio"], .radio input[type="radio"], .radio-inline input[type="radio
 .btn-rating-5 {
   width: 55px;
   background-color: #5BDE60;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.navbar-default .navbar-text {
+  color: #5ebb64;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+a.list-group-item, button.list-group-item {
+  background: transparent;
+}
+
+textarea.form-control, input[type=text].form-control {
+  padding-left: 5px;
+  padding-top: 2px;
+  background: transparent;
+}
+
+.well {
+  border-radius: 10px;
 }

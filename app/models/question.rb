@@ -5,9 +5,9 @@ class Question < ActiveRecord::Base
     has_many :comment_answers
     has_many :boolean_answers
 
-    accepts_nested_attributes_for :rating_answers, reject_if: :all_blank
-    accepts_nested_attributes_for :comment_answers, reject_if: :all_blank
-    accepts_nested_attributes_for :boolean_answers, reject_if: :all_blank
+    accepts_nested_attributes_for :rating_answers, reject_if: proc { |attributes| attributes['answer'].blank? }
+    accepts_nested_attributes_for :comment_answers, reject_if: proc { |attributes| attributes['answer'].blank? }
+    accepts_nested_attributes_for :boolean_answers, reject_if: proc { |attributes| attributes['answer'].blank? }
 
     validates :question, :qntype, :scale, presence: true
     validates :qntype, inclusion: { in: %w(Checkin Review) }

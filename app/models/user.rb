@@ -5,8 +5,15 @@ class User < ActiveRecord::Base
     self.name
   end
 
+
+  # TURN THIS INTO A COLUMN variable
+  # takes too much data loading
   def checkin_ready_goals
-    goals.where(is_it_checkin_time?: true).count
+    count = 0
+    goals.each do |x|
+      count += 1 if x.is_it_checkin_time?
+    end
+    count
   end
 
 

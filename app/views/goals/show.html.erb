@@ -5,7 +5,9 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <p id="notice" class="text-center"><%= notice %></p>
+        <div class="alert">
+          <p id="notice" class="text-center"><%= notice %></p>
+        </div>
         <div class="well">
             <%= @goal.description %><br><br>
             <span class="label label-info"><%= @goal.frequency %></span>

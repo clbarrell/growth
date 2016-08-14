@@ -34,10 +34,11 @@ class Goal < ActiveRecord::Base
 
 
     # VALIDATIONS
-    validates :title, :description, :user, :goaltype, presence: true
+    validates :title, :description, :user, presence: true
     validates :frequency, inclusion: { in: %w(Daily Weekly Fortnightly Monthly Quarterly),
-                                       message: '%{value} is not a valid frequency' }
-    validates :goaltype, inclusion: { in: %w(Standard Contextual) }
+                                       message: "You haven't picked a valid frequency" }
+    validates :goaltype, inclusion: { in: %w(Standard Contextual),
+                                      message: "You haven't picked a valid Goal Type"}
     # not validating goaltype yet
 
     after_create :create_default_questions
