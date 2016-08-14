@@ -7,8 +7,7 @@
             <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
         </p>
         <!-- CHECKIN LOG -->
-        <h4 class="text-center">Checkin Log</h4>
-        <%= line_chart CheckinLog.where(goal: @goal).group_by_day(:date).count, height: "100px", id: "checkin_log_graph" %>
+        <%= checkin_log_graph(@goal) %>
     </div>
     <div class="col-sm-3">
         <div class="pull-right">
@@ -17,12 +16,10 @@
                     <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sidegoalmenu">
-                    <li><%= link_to 'Edit', edit_goal_path(@goal), "data-turbolinks" => "false" %></li>
-                    <li><%= link_to 'Delete', @goal,
+                    <li><%= link_to 'Edit goal', edit_goal_path(@goal), "data-turbolinks" => "false" %></li>
+                    <li><%= link_to 'Delete goal', @goal,
                     data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
                     <li><%= link_to "Check in", checkin_goal_path(@goal.id), "data-turbolinks" => false %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to 'Reset questions', reset_goal_path(@goal) %></li>
                 </ul>
             </div>
         </div>

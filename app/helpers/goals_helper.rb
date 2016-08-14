@@ -16,4 +16,10 @@ module GoalsHelper
     [["True", 'true'], ["False", 'false']]
   end
 
+  def checkin_log_graph(goal)
+    if goal.checkin_count > 1
+      content_tag(:h4, "Checkin Log", class: "text-center")
+      line_chart CheckinLog.where(goal: goal).group_by_day(:date).count, height: "100px", id: "checkin_log_graph"
+    end
+  end
 end
