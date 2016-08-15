@@ -2,17 +2,17 @@
 
 ## To do next
 
-- Move checkin_ready_goals to a User column variable
-  - on GOALS create a REQUIRES_CHECKIN flag
-    - would use background jobs to flick the switch?
-  - on User
-    - have a flag - recalculates at each login, checkin, etc.
+
 - Create a card layout for the goals
   - https://dribbble.com/shots/890839-Sneak-Peek
   - big red header where goal title goes?
   - https://dribbble.com/shots/1698678-Apps-Dashboard
 - clicking on 'Checkin' only shows goals that need to be checked in
-
+- install a login / logout method - cancancan, devise, clearance
+  - https://github.com/thoughtbot/clearance
+  - GOOOGLE SSO oauth
+  - design the experience flow
+  - ensure page flow is good. Adjust as needed.
 
 ## Coming Up
 
@@ -32,11 +32,11 @@
     - For example:  
       - @media (min-width: 768px) { ... }
     - http://www.bootply.com/109653
-
-- install a login / logout method - cancancan, devise, clearance
-  - https://github.com/thoughtbot/clearance
-  - design the experience flow
-  - ensure page flow is good. Adjust as needed.
+- Move checkin_ready_goals to a User column variable
+  - on GOALS create a REQUIRES_CHECKIN flag
+    - would use background jobs to flick the switch?
+  - on User
+    - have a flag - recalculates at each login, checkin, etc.
 - adjust checkin_log graph depending on goal.frequency & amount of checkins
   - set a maximum time frame to capture
 - setup mailer
@@ -74,3 +74,4 @@
 - dont' include answers from checkins where answer = nil
 - move Goal's questions to it's own page
 - Make checkin count 0 for days without checkins
+- created users page

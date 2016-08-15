@@ -5,7 +5,8 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @user = User.find(1)
+    @goal = @user.goals
   end
 
   # GET /goals/1

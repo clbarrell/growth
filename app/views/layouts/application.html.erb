@@ -27,9 +27,9 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-              <%= link_to_in_li "Goals", user_path(1), class: "nav-item nav-link" %>
+              <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
               <% if current_user.checkin_ready_goals > 0 %>
-                <%= link_to_in_li_with_span "Checkin", user_path(1), current_user.checkin_ready_goals, class: "nav-item nav-link" %>
+                <%= link_to_in_li_with_span "Checkin", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
               <% end %>
               <% if display_goal_name? %>
                 <p class='navbar-text goal'><span class='glyphicon glyphicon-record'></span> <%= @goal %></p>
@@ -44,6 +44,7 @@
                 <%= link_to_in_li "Checkin Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Questions", goal_questions_path(@goal), class: "nav-item nav-link" %>
               <% end %>
+              <%= link_to_in_li cog_icon, user_path(current_user), class: "nav-item nav-link" %>
               <%= link_to_in_li "TQ", template_questions_path, class: "nav-item nav-link" %>
             </ul>
           </div>
