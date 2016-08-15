@@ -9,7 +9,6 @@
   - https://dribbble.com/shots/1698678-Apps-Dashboard
 - clicking on 'Checkin' only shows goals that need to be checked in
 - install a login / logout method - cancancan, devise, clearance
-  - https://github.com/thoughtbot/clearance
   - GOOOGLE SSO oauth
   - design the experience flow
   - ensure page flow is good. Adjust as needed.
@@ -42,6 +41,7 @@
 - setup mailer
   - email'd reminders
   - include calendar invites t0 force people to make space for this
+  - What kinds of emails requried?
 
 
 ## Someday features

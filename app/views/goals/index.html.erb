@@ -19,7 +19,7 @@
       <!-- GOALS -->
       <% @user.goals.each do |goal| %>
         <%= link_to goal, class: "list-group-item" do %>
-          <h4 class="list-group-item-heading"><%= goal.title %></h4>
+          <h4 class="list-group-item-heading"><%= checkin_warning(goal) %> <%= goal.title %></h4>
           <p class="list-group-item-text"><%= goal.description %></p>
           <p class="list-group-item-text text-right">Last checkin <%= timewordslastcheckin(goal) %></p>
           <% end %>

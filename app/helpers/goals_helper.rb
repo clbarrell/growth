@@ -27,4 +27,11 @@ module GoalsHelper
   def timewordslastcheckin(goal)
     goal.checkin_count > 0 ? "#{distance_of_time_in_words_to_now(goal.checkin_logs.try(:last).try(:created_at))} ago" : "never"
   end
+
+  def checkin_warning(goal)
+    if goal.is_it_checkin_time?
+      content_tag :span, class: "glyphicon glyphicon-flag text-info", 'aria-hidden' => "true" do
+      end
+    end
+  end
 end
