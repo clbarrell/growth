@@ -30,7 +30,7 @@ module GoalsHelper
 
   def checkin_warning(goal)
     if goal.is_it_checkin_time?
-      content_tag :span, class: "glyphicon glyphicon-flag text-info", 'aria-hidden' => "true" do
+      content_tag :span, class: "glyphicon glyphicon-flag text-primary", 'aria-hidden' => "true" do
       end
     end
   end

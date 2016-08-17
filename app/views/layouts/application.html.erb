@@ -22,14 +22,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand big-brand" href="#">Growth</a>
+            <%= link_to "Growth", root_path, class: "navbar-brand big-brand" %>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
               <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
               <% if current_user.checkin_ready_goals > 0 %>
-                <%= link_to_in_li_with_span "Checkin", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
+                <%= link_to_in_li_with_span "Checkins: ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
               <% end %>
               <% if display_goal_name? %>
                 <p class='navbar-text goal'> <%= @goal %></p>
@@ -55,6 +55,8 @@
     <main>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
+          <% if notice %><div class="alert-info notice"><p id="notice" class="text-center"><%= notice %></p></div><% end %>
+          <% if alert %><div class="alert-warning alert"><p id="alert" class="text-center"><%= alert %></p></div><% end %>
           <!-- YIELD -->
           <%= yield %>
         </div>

@@ -3,21 +3,31 @@
 ## To do next
 
 
-- Create a card layout for the goals
-  - https://dribbble.com/shots/890839-Sneak-Peek
-  - big red header where goal title goes?
-  - https://dribbble.com/shots/1698678-Apps-Dashboard
-- clicking on 'Checkin' only shows goals that need to be checked in
 - install a login / logout method - cancancan, devise, clearance
   - GOOOGLE SSO oauth
   - design the experience flow
   - ensure page flow is good. Adjust as needed.
+- update home page w. philosophy and text
+- clicking on 'Checkin' only shows goals that need to be checked in
+  - use params[:checkin_only] = true
+- comment answers background **make it readable**
+
+my sample goal: Personal Development (focussign on )
+
 
 ## Coming Up
 
+- setup mailer
+  - email'd reminders
+  - include calendar invites t0 force people to make space for this
+  - What kinds of emails requried?
 - Feature tests to ensure whole thing operates as expected
   - https://github.com/jnicklas/capybara
   - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
+- Create a card layout for the goals
+  - https://dribbble.com/shots/890839-Sneak-Peek
+  - big red header where goal title goes?
+  - https://dribbble.com/shots/1698678-Apps-Dashboard
 - **Redesign layout - make it more appy**
   - Side bar
     - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
@@ -38,10 +48,7 @@
     - have a flag - recalculates at each login, checkin, etc.
 - adjust checkin_log graph depending on goal.frequency & amount of checkins
   - set a maximum time frame to capture
-- setup mailer
-  - email'd reminders
-  - include calendar invites t0 force people to make space for this
-  - What kinds of emails requried?
+
 
 
 ## Someday features
