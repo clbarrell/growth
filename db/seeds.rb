@@ -27,7 +27,7 @@ questions.each do |question|
 end
 
 # user
-user = User.create(name: "Chris Barrell", email: "clbarrell@gmail.com")
+user = User.create(name: "Chris Barrell", email: "clbarrell@gmail.com", password: "kankyman")
 
 # GOAL
 goal = Goal.create(description: "I want to speak clearly, concisely and with impact. I don't want to muddle my words.",

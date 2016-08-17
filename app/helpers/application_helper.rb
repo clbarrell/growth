@@ -39,7 +39,7 @@ module ApplicationHelper
       if ["show", "edit", "checkin", "checkin_answers"].include?(controller.action_name)
         # ACTION
         true
-      elsif controller.controller_name == "questions" && controller.action_name == "new"
+      elsif controller.controller_name == "questions" && ["new", "index"].include?(controller.action_name)
         true
       else
         false
@@ -51,6 +51,12 @@ module ApplicationHelper
 
   def cog_icon
     content_tag :span, class: "glyphicon glyphicon-cog", 'aria-hidden' => "true" do
+    end
+  end
+
+  def show_checkins?
+    if current_user.checkin_ready_goals > 0 && @goal.is_it_checkin_time? == false
+      true
     end
   end
 end

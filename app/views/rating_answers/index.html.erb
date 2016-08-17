@@ -15,7 +15,7 @@
     <% @rating_answers.each do |rating_answer| %>
       <tr>
         <td><%= rating_answer.answer %></td>
-        <td><%= rating_answer.actual_question.question.question %></td>
+        <td><%= rating_answer.question %></td>
         <td><%= link_to 'Show', rating_answer %></td>
         <td><%= link_to 'Edit', edit_rating_answer_path(rating_answer) %></td>
         <td><%= link_to 'Destroy', rating_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

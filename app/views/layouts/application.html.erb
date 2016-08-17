@@ -29,8 +29,8 @@
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
                 <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
-                <% if current_user.checkin_ready_goals > 0 %>
-                  <%= link_to_in_li_with_span "Checkins: ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
+                <% if show_checkins? %>
+                  <%= link_to_in_li_with_span "Checkins ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
                 <% end %>
                 <% if display_goal_name? %>
                   <p class='navbar-text goal'> <%= @goal %></p>
@@ -43,18 +43,20 @@
                   <%= link_to_in_li_with_span "Checkin", checkin_goal_path(@goal), "!", class: "nav-item nav-link text-success", "data-turbolinks" => false %>
                 <% end %>
                 <%= link_to_in_li "View", goal_path(@goal), class: "nav-item nav-link" %>
-                <%= link_to_in_li "Checkin Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
+                <%= link_to_in_li "Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Questions", goal_questions_path(@goal), class: "nav-item nav-link" %>
               <% end %>
               <% if user_signed_in? %>
-                <li class="dropdown"
+                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= cog_icon %> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <%= link_to_in_li "Profile", user_path(current_user) %>
-                    <%= link_to_in_li "Sign out", destroy_user_session(current_user) %>
+                    <%= link_to_in_li "Sign out", destroy_user_session_path, method: :delete, "data-turbolinks" => false %>
                   </ul>
                 </li>
-              <%= link_to_in_li "TQ", template_questions_path, class: "nav-item nav-link" %>
+                <% if current_user.email == "clbarrell@gmail.com" %>
+                  <%= link_to_in_li "TQ", template_questions_path, class: "nav-item nav-link" %>
+                <% end %>
               <% end %>
             </ul>
           </div>
@@ -65,8 +67,12 @@
     <main>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <% if notice %><div class="alert-info notice"><p id="notice" class="text-center"><%= notice %></p></div><% end %>
-          <% if alert %><div class="alert-warning alert"><p id="alert" class="text-center"><%= alert %></p></div><% end %>
+          <% if notice %><div class="alert-info alert alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p id="notice" class="text-center"><%= notice %></p></div><% end %>
+          <% if alert %><div class="alert-warning alert alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p id="alert" class="text-center"><%= alert %></p></div><% end %>
           <!-- YIELD -->
           <%= yield %>
         </div>

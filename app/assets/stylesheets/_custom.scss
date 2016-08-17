@@ -125,7 +125,7 @@ input[type="radio"], .radio input[type="radio"], .radio-inline input[type="radio
   color: #5ebb64;
   text-transform: uppercase;
   letter-spacing: .1em;
-  width: 350px;
+  max-width: 375px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
