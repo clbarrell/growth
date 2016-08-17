@@ -1,6 +1,6 @@
 class BooleanAnswersController < ApplicationController
   before_action :set_boolean_answer, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /boolean_answers
   # GET /boolean_answers.json
   def index

@@ -1,7 +1,8 @@
 <div class="jumbotron">
   <h2>How do you track your progress?</h2>
   <p><b>Growth</b> is for keeping your development goals in focus and tracking your progress.</p>
-  <p><a class="btn btn-primary btn-lg">Log In</a> <a class="btn btn-link">Sign In</a></p>
+  <p><%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-link" %></a></p>
 </div>
 
 <div class="row">

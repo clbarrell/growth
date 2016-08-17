@@ -1,6 +1,6 @@
 class CommentAnswersController < ApplicationController
   before_action :set_comment_answer, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /comment_answers
   # GET /comment_answers.json
   def index

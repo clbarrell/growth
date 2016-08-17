@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/help'
   root 'home#home'
   resources :users
+  get '/users' => 'users#index', as: :user_root #devise root path
   resources :comment_answers
   resources :rating_answers
   resources :boolean_answers

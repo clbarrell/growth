@@ -1,11 +1,11 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
-
+  before_action :authenticate_user!
 
   # GET /goals
   # GET /goals.json
   def index
-    @user = User.find(1)
+    @user = current_user
     @goal = @user.goals
   end
 
@@ -85,7 +85,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     # eventually use 'current_user'
-    @goal.user = User.find(1)
+    @goal.user = current_user
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }

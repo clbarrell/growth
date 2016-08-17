@@ -17,10 +17,6 @@ module ApplicationHelper
     end
   end
 
-  def current_user
-    User.find(1)
-  end
-
   # to use active LI
   def link_to_in_li(body, url, html_options = {})
     active = "active" if current_page?(url)

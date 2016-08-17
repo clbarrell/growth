@@ -27,25 +27,35 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-              <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
-              <% if current_user.checkin_ready_goals > 0 %>
-                <%= link_to_in_li_with_span "Checkins: ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
-              <% end %>
-              <% if display_goal_name? %>
-                <p class='navbar-text goal'> <%= @goal %></p>
+              <% if user_signed_in? %>
+                <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
+                <% if current_user.checkin_ready_goals > 0 %>
+                  <%= link_to_in_li_with_span "Checkins: ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
+                <% end %>
+                <% if display_goal_name? %>
+                  <p class='navbar-text goal'> <%= @goal %></p>
+                <% end %>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if display_goal_name? %>
                 <% if @goal.is_it_checkin_time? %>
-                  <%= link_to_in_li_with_span "Checkin", checkin_goal_path(@goal), "!", class: "nav-item nav-link", "data-turbolinks" => false %>
+                  <%= link_to_in_li_with_span "Checkin", checkin_goal_path(@goal), "!", class: "nav-item nav-link text-success", "data-turbolinks" => false %>
                 <% end %>
                 <%= link_to_in_li "View", goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Checkin Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Questions", goal_questions_path(@goal), class: "nav-item nav-link" %>
               <% end %>
-              <%= link_to_in_li cog_icon, user_path(current_user), class: "nav-item nav-link" %>
+              <% if user_signed_in? %>
+                <li class="dropdown"
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= cog_icon %> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <%= link_to_in_li "Profile", user_path(current_user) %>
+                    <%= link_to_in_li "Sign out", destroy_user_session(current_user) %>
+                  </ul>
+                </li>
               <%= link_to_in_li "TQ", template_questions_path, class: "nav-item nav-link" %>
+              <% end %>
             </ul>
           </div>
         </div>

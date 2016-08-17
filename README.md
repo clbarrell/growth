@@ -4,9 +4,10 @@
 
 
 - install a login / logout method - cancancan, devise, clearance
-  - GOOOGLE SSO oauth
   - design the experience flow
   - ensure page flow is good. Adjust as needed.
+- GOOOGLE SSO oauth
+  - https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 - update home page w. philosophy and text
 - clicking on 'Checkin' only shows goals that need to be checked in
   - use params[:checkin_only] = true

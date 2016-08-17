@@ -1,6 +1,6 @@
 class TemplateQuestionsController < ApplicationController
   before_action :set_template_question, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /template_questions
   # GET /template_questions.json
   def index

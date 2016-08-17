@@ -1,6 +1,6 @@
 class RatingAnswersController < ApplicationController
   before_action :set_rating_answer, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /rating_answers
   # GET /rating_answers.json
   def index
