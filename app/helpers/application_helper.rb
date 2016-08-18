@@ -55,8 +55,16 @@ module ApplicationHelper
   end
 
   def show_checkins?
-    if current_user.checkin_ready_goals > 0 && @goal.is_it_checkin_time? == false
-      true
+    if current_user.checkin_ready_goals > 0
+      if controller.controller_name == "goals"
+        if @goal.is_it_checkin_time? == false
+          false
+        end
+      else
+        true
+      end
+    else
+      false
     end
   end
 end
