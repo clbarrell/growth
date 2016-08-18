@@ -1,6 +1,16 @@
 <div class="jumbotron">
   <h2>How do you track your progress?</h2>
   <p><b>Growth</b> is for keeping your development goals in focus and tracking your progress.</p>
-  <p><%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-link" %></a></p>
+  <p>
+    <% if user_signed_in? %>
+      <% if current_user.checkin_ready_goals > 0 %>
+        <%= link_to "You have #{current_user.checkin_ready_goals} checkin ready goals!", goals_path, class: "btn-primary btn" %>
+      <% else %>
+        <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+    <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-link" %>
+    <% end %>
+    </p>
 </div>

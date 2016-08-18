@@ -40,11 +40,10 @@
             <ul class="nav navbar-nav navbar-right">
               <% if display_goal_name? %>
                 <% if @goal.is_it_checkin_time? %>
-                  <%= link_to_in_li_with_span "Checkin", checkin_goal_path(@goal), "!", class: "nav-item nav-link text-success", "data-turbolinks" => false %>
+                  <%= link_to_in_li time_icon.concat(" Checkin"), checkin_goal_path(@goal), class: "nav-item nav-link", "data-turbolinks" => false, id: 'checkin-link' %>
                 <% end %>
                 <%= link_to_in_li "View", goal_path(@goal), class: "nav-item nav-link" %>
                 <%= link_to_in_li "Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
-                <%= link_to_in_li "Questions", goal_questions_path(@goal), class: "nav-item nav-link" %>
               <% end %>
               <% if user_signed_in? %>
                 <li class="dropdown">

@@ -54,9 +54,14 @@ module ApplicationHelper
     end
   end
 
+  def time_icon
+    content_tag :span, class: "glyphicon glyphicon-time", 'aria-hidden' => "true" do
+    end
+  end
+
   def show_checkins?
     if current_user.checkin_ready_goals > 0
-      if controller.controller_name == "goals"
+      if display_goal_name?
         if @goal.is_it_checkin_time? == false
           false
         end
