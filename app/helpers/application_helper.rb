@@ -59,6 +59,27 @@ module ApplicationHelper
     end
   end
 
+  def trash_icon
+    content_tag :span, class: "glyphicon glyphicon-trash", 'aria-hidden' => "true" do
+    end
+  end
+
+  def list_icon
+    content_tag :span, class: "glyphicon glyphicon-th-list", 'aria-hidden' => "true" do
+    end
+  end
+
+  def plus_icon
+    content_tag :span, class: "glyphicon glyphicon-plus", 'aria-hidden' => "true" do
+    end
+  end
+
+  def pencil_icon
+    content_tag :span, class: "glyphicon glyphicon-pencil", 'aria-hidden' => "true" do
+    end
+  end
+
+
   def show_checkins?
     if current_user.checkin_ready_goals > 0
       if display_goal_name?

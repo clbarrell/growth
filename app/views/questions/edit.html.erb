@@ -1,6 +1,8 @@
-<%= render '/goals/goal_breadcrumb' %>
+<h4 class='text-center'>Edit Question</h4>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+<p>
+  <%= link_to 'Back', @question, class: "btn btn-primary" %>
+  <%= link_to list_icon.concat(' All Questions'), goal_questions_path(@question.goal), class: "btn btn-info" %>
+</p>

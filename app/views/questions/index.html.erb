@@ -6,9 +6,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="col-sm-2">#</th>
-                    <th class="col-sm-8">Question</th>
-                    <th class="col-sm-2"></th>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +16,8 @@
                 <tr>
                     <td><%= link_to checkin_question.qnorder, checkin_question %>
                         <div class="btn-group btn-group-xs">
-                            <%= link_to "+", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
-                            <%= link_to "-", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "∧", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                            <%= link_to "∨", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
                         </div>
                     </td>
                     <td><%= checkin_question.question %></td>
@@ -37,9 +37,9 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th class="col-sm-2">#</th>
-                    <th class="col-sm-8">Question</th>
-                    <th class="col-sm-2"></th>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -47,8 +47,8 @@
                 <tr>
                     <td><%= link_to review_question.qnorder, review_question %>
                         <div class="btn-group">
-                            <%= link_to "+", increase_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
-                            <%= link_to "-", decrease_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "∧", increase_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
+                            <%= link_to "∨", decrease_question_path(review_question.id), class: "btn btn-default btn-xs", method: :put %>
                         </div>
                     </td>
                     <td><%= review_question.question %></td>
@@ -64,7 +64,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <%= link_to 'Add a question', new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
+        <%= link_to plus_icon.concat(' Add a question'), new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
         <%= link_to 'Reset questions', reset_goal_path(@goal), class: "btn btn-default pull-right" %>
     </div>
 </div>

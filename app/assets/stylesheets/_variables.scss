@@ -128,13 +128,13 @@ $table-cell-padding:            8px !default;
 $table-condensed-cell-padding:  5px !default;
 
 //** Default background color used for all tables.
-$table-bg:                      transparent !default;
+$table-bg:                      rgba(#000000, 0.3) !default;
 //** Background color used for `.table-striped`.
 $table-bg-accent:               #f9f9f9 !default;
 //** Background color used for `.table-hover`.
-$table-bg-hover:                #f5f5f5 !default;
+$table-bg-hover:                #f15252 !default;
 $table-bg-active:               $table-bg-hover !default;
-
+// #f5f5f5
 //** Border color for table and cell borders.
 $table-border-color:            #ddd !default;
 

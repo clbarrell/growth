@@ -34,11 +34,11 @@ class QuestionsController < ApplicationController
       @goal = @question.goal
       # find maximum
       @max_qn_order = @goal.checkin_questions.maximum(:qnorder)
-      if @question.qnorder == 1 || @question.qnorder == @max_qn_order
-          redirect_to goal_path(@question.goal.id), notice: 'Error: order is already at start or maximum.'
+      if @question.qnorder == 1
+          redirect_to goal_questions_url(@question.goal), notice: 'Error: Order is already at 1.'
       else
           @question.increase_order
-          redirect_to goal_path(@question.goal.id), notice: 'Order successfully changed.'
+          redirect_to goal_questions_url(@question.goal), notice: 'Order successfully changed.'
       end
       # end with a redirect
   end
@@ -49,11 +49,11 @@ class QuestionsController < ApplicationController
       @goal = @question.goal
       # find maximum
       @max_qn_order = @goal.checkin_questions.maximum(:qnorder)
-      if @question.qnorder == 1 || @question.qnorder == @max_qn_order
-          redirect_to goal_path(@question.goal.id), notice: 'Error: order is already at start or maximum.'
+      if @question.qnorder == @max_qn_order
+          redirect_to goal_questions_url(@question.goal), notice: 'Error: order is already at start or maximum.'
       else
           @question.decrease_order
-          redirect_to goal_path(@question.goal.id), notice: 'Order successfully changed.'
+          redirect_to goal_questions_url(@question.goal), notice: 'Order successfully changed.'
       end
       # end with a redirect`
   end
@@ -80,7 +80,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to goal_url(@question.goal), notice: 'Question was successfully updated.' }
+        format.html { redirect_to goal_questions_url(@question.goal), notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question.goal }
       else
         format.html { render :edit }

@@ -8,7 +8,8 @@
   </p>
 </div>
 
-<%= link_to 'Edit', edit_question_path(@question), "data-turblinks" => "false" %> | <%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
 <p>
-  <%= link_to 'Back', goal_path(@question.goal) %>
+  <%= link_to pencil_icon.concat(' Edit'), edit_question_path(@question), "data-turblinks" => "false", class: "btn btn-primary" %>
+  <%= link_to list_icon.concat(' All Questions'), goal_questions_path(@question.goal), class: "btn btn-info" %>
+  <%= link_to trash_icon.concat(' Delete'), @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default pull-right" %>
 </p>
