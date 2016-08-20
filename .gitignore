@@ -11,7 +11,6 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /config/database.yml
-/config/secrets.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -21,5 +20,6 @@
 # Ignore the rspec log
 /spec/examples.txt
 
-# Ignore the devise setup
-/config/initializers/devise.rb
+
+# Ignore application configuration
+/config/application.yml
