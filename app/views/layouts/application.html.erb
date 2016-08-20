@@ -28,9 +28,10 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
-                <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
                 <% if show_checkins? %>
-                  <%= link_to_in_li_with_span "Checkins ", goals_path, current_user.checkin_ready_goals, class: "nav-item nav-link" %>
+                  <%= link_to_in_li_with_span "Goals ", goals_path, "checkin needed", class: "nav-item nav-link" %>
+                <% else %>
+                  <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
                 <% end %>
                 <% if display_goal_name? %>
                   <p class='navbar-text goal'> <%= @goal %></p>

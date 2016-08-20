@@ -7,6 +7,7 @@ FactoryGirl.define do
   # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md
   factory :user do
     name "Chris Barrell"
+    password "xjfklsjdf3jrf4"
     sequence(:email) { |n| "person#{n}@example.com" }
   end
 

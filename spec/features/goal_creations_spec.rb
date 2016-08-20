@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "GoalCreations", type: :feature do
-
+# https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
   before(:context) do
     @user = create(:user)
     @user_with_goal = create(:user)
@@ -10,7 +10,7 @@ RSpec.feature "GoalCreations", type: :feature do
   end
   context "user#show" do
     it "should list no goals" do
-      visit(user_path(@user))
+      visit(goals_path)
       expect(page).to have_content "Your Goals"
       expect(page).to have_content "You have not made any goals yet."
     end

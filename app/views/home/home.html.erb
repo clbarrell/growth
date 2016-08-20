@@ -4,7 +4,8 @@
   <p>
     <% if user_signed_in? %>
       <% if current_user.checkin_ready_goals > 0 %>
-        <%= link_to "You have #{current_user.checkin_ready_goals} checkin ready goals!", goals_path, class: "btn-primary btn" %>
+        <p>You have <%= current_user.checkin_ready_goals %> checkin ready goals!</p>
+        <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
       <% else %>
         <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
       <% end %>

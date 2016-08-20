@@ -27,7 +27,7 @@ module ApplicationHelper
 
   def link_to_in_li_with_span(body, url, span, html_options = {})
     active = "active" if current_page?(url)
-    text = "#{body} <span class='badge'>#{span}</span>".html_safe
+    text = "#{body} <span class='label label-info'>#{span}</span>".html_safe
     content_tag :li, class: active do
       link_to text, url, html_options
     end
@@ -84,7 +84,7 @@ module ApplicationHelper
     if current_user.checkin_ready_goals > 0
       if display_goal_name?
         if @goal.is_it_checkin_time? == false
-          false
+          true
         end
       else
         true

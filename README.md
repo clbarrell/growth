@@ -3,17 +3,16 @@
 ## To do next
 
 
-- install a login / logout method - cancancan, devise, clearance
-  - design the experience flow
-  - ensure page flow is good. Adjust as needed.
+
 - GOOOGLE SSO oauth
   - https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 - update home page w. philosophy and text
-- clicking on 'Checkin' only shows goals that need to be checked in
-  - use params[:checkin_only] = true
+  - are these actually focus areas????  NOT GOalS?
+- clicking on 'Checkin' only shows goals that need to  checked in
+  - use params[:checkin_only] = true  
+  - or at least order them by checkin?
+  - if I can make it an attribute you could Goals.group(:need_checkin)
 - comment answers background **make it readable**
-
-my sample goal: Personal Development (focussign on )
 
 
 ## Coming Up
@@ -83,3 +82,5 @@ my sample goal: Personal Development (focussign on )
 - move Goal's questions to it's own page
 - Make checkin count 0 for days without checkins
 - created users page
+- install a login / logout method - cancancan, devise, clearance
+- change the 'checkins 1' to just a label that gets added to Goals
