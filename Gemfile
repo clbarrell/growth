@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # SECURITY
 gem 'devise'
+gem "omniauth-google-oauth2"
+gem 'omniauth'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
