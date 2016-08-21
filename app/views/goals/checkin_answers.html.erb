@@ -21,7 +21,7 @@
         <% if question.scale != "Comment" %>
           <%= graph_question(question) %>
         <% else %>
-          <dl class="dl-horizontal">
+          <dl class="dl-horizontal white-background">
             <% question.comment_answers.order(created_at: :desc).each do |c| %>
               <dt><%= c.created_at.strftime('%h %d') %></dt>
               <dd><%= c.answer %></dd>

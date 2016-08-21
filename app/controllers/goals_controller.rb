@@ -57,7 +57,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       if @goal.update(goal_params)
         @goal.new_checkin
-        format.html { redirect_to checkin_goal_path(params[:id])}
+        format.html { redirect_to checkin_answers_goal_path(params[:id]) }
         # if params.comment_answer.present? then redirect to whereve
         # we want the checkin to goafterwards
         format.json { render :checkin, status: :ok, location: @goal }

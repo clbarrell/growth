@@ -2,10 +2,10 @@
 
 ## To do next
 
-
-
-- GOOOGLE SSO oauth
-  - https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+- Feature tests to ensure whole thing operates as expected
+  - https://github.com/jnicklas/capybara
+  - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
+- small button shows only on xs screen for "Checkin"
 - update home page w. philosophy and text
   - are these actually focus areas????  NOT GOalS?
 - clicking on 'Checkin' only shows goals that need to  checked in
@@ -13,6 +13,8 @@
   - or at least order them by checkin?
   - if I can make it an attribute you could Goals.group(:need_checkin)
 - comment answers background **make it readable**
+- change google button
+  - https://developers.google.com/identity/branding-guidelines
 
 
 ## Coming Up
@@ -21,9 +23,6 @@
   - email'd reminders
   - include calendar invites t0 force people to make space for this
   - What kinds of emails requried?
-- Feature tests to ensure whole thing operates as expected
-  - https://github.com/jnicklas/capybara
-  - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
 - Create a card layout for the goals
   - https://dribbble.com/shots/890839-Sneak-Peek
   - big red header where goal title goes?
@@ -84,3 +83,4 @@
 - created users page
 - install a login / logout method - cancancan, devise, clearance
 - change the 'checkins 1' to just a label that gets added to Goals
+- GOOOGLE SSO oauth

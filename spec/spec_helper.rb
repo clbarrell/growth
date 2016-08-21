@@ -19,6 +19,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'factory_girl_rails'
 require 'capybara/rspec'
+
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
@@ -39,7 +40,9 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
+  config.after :each do
+    Warden.test_reset!
+  end
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
