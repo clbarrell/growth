@@ -5,7 +5,6 @@
 - Feature tests to ensure whole thing operates as expected
   - https://github.com/jnicklas/capybara
   - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
-- small button shows only on xs screen for "Checkin"
 - update home page w. philosophy and text
   - are these actually focus areas????  NOT GOalS?
 - clicking on 'Checkin' only shows goals that need to  checked in
@@ -84,3 +83,4 @@
 - install a login / logout method - cancancan, devise, clearance
 - change the 'checkins 1' to just a label that gets added to Goals
 - GOOOGLE SSO oauth
+- small button shows only on xs screen for "Checkin"

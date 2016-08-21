@@ -46,6 +46,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :development do
