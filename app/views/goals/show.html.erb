@@ -31,7 +31,7 @@
 <!-- SUCCESS -->
 <%= render 'success_description' if @goal.success_description? %>
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 white-background">
     <h4>Questions</h4>
     <p>
       This goal has <%= pluralize(@goal.questions.count, "question") %>, view them <%= link_to "here", goal_questions_path(@goal) %>.
