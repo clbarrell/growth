@@ -1,4 +1,4 @@
 <ul class="breadcrumb">
   <li><%= link_to @goal, goal_path(@goal) %></li>
-  <li class="active"><%= controller.action_name %> question</li>
+  <li class="active"><%= humanize(controller.action_name) %> question</li>
 </ul>

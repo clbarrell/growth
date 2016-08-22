@@ -34,6 +34,7 @@ RSpec.feature "GoalCreations", type: :feature do
       page.fill_in('goal_description', :with => 'This is the description of my new goal')
       page.find(:xpath, '//label[@for="goal_frequency_daily"]').click
       page.find(:xpath, '//label[@for="goal_goaltype_standard"]').click
+      # http://www.w3schools.com/xsl/xpath_syntax.asp
       click_on('Create Goal')
       expect(page).to have_content "This is the description of my new goal"
       expect(page).to have_content "Goal was successfully created"

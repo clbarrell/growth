@@ -3,12 +3,17 @@
   <p>
     <em>With a personal development journal.</em>
   </p>
-  <p><b>Growth</b> is for keeping your development goals in focus and tracking your progress.</p>
+  <p><b>Growth</b> is for keeping your development front of mind and tracking your progress.</p>
   <p>
     <% if user_signed_in? %>
       <% if current_user.checkin_ready_goals > 0 %>
         <p>You have <%= current_user.checkin_ready_goals %> checkin ready goals!</p>
-        <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
+        <p><%= link_to "All Goals", goals_path, class: "btn btn-primary" %></p>
+        <p>
+          <ul><% current_user.goals.each do |goal| %>
+            <% if goal.is_it_checkin_time? %><li><%= link_to "Checkin to #{goal}", checkin_goal_path(goal) %></li><% end %>
+          <% end %></ul>
+        </p>
       <% else %>
         <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
       <% end %>
@@ -18,4 +23,22 @@
     <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
     <% end %>
     </p>
+</div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 white-background">
+    <h3>What is Growth?</h3>
+    <p>Growth gives you focus.</p>
+    <ol>
+      <li>You create a goal to focus on.</li>
+      <li>You choose the frequency you'd like to checkin to it.</li>
+      <li>You choose the questions you want to use.</li>
+      <li>Checkin to your goal and track your progress as you grow.</li>
+    </ol>
+      <p>
+      The idea is that you can use regular checkins to keep the goal & behaviour
+      front of mind and regularly record your progress.</p><p>
+      Reviews are then meta-checkins where you review your previous checkins
+      and reflect on the progress you've made and what you will do differently in the next period.
+    </p>
+  </div>
 </div>
