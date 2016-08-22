@@ -119,11 +119,18 @@ input[type="radio"], .radio input[type="radio"], .radio-inline input[type="radio
   color: #5ebb64;
   text-transform: uppercase;
   letter-spacing: .1em;
-  max-width: 375px;
+  max-width: 365px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0px 15px;
 }
+
+@media (min-width: 768px) {
+  .navbar-default .navbar-text {
+    padding: 0px 0px;
+  }
+ }
 
 a.list-group-item, button.list-group-item {
   background: transparent;
@@ -132,15 +139,6 @@ a.list-group-item, button.list-group-item {
 textarea.form-control, input[type=text].form-control {
   //padding-left: 5px;
   background: rgba(94, 163, 233, 0.05);
-}
-
-.well {
-
-}
-
-
-.goal-title {
-  text-shadow: 0 1px 1px rgba(0,0,0,.15);
 }
 
 .checkbox input[type="checkbox"] {

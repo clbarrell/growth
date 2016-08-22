@@ -34,7 +34,7 @@
                   <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
                 <% end %>
                 <% if display_goal_name? %>
-                  <p class='navbar-text goal'> <%= @goal %></p>
+                  <li><p class='navbar-text goal'> <%= @goal %></p></li>
                 <% end %>
               <% end %>
             </ul>

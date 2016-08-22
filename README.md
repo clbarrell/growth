@@ -2,19 +2,12 @@
 
 ## To do next
 
-- Feature tests to ensure whole thing operates as expected
-  - https://github.com/jnicklas/capybara
-  - https://github.com/eliotsykes/rspec-rails-examples#capybara-examples
-- update home page w. philosophy and text
-  - are these actually focus areas????  NOT GOalS?
 - clicking on 'Checkin' only shows goals that need to  checked in
   - use params[:checkin_only] = true  
   - or at least order them by checkin?
   - if I can make it an attribute you could Goals.group(:need_checkin)
-- comment answers background **make it readable**
 - change google button
   - https://developers.google.com/identity/branding-guidelines
-
 
 ## Coming Up
 
@@ -84,3 +77,5 @@
 - change the 'checkins 1' to just a label that gets added to Goals
 - GOOOGLE SSO oauth
 - small button shows only on xs screen for "Checkin"
+- comment answers background readable
+- Feature tests to ensure checkin operates as expected
