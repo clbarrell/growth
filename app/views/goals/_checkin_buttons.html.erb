@@ -1,0 +1,9 @@
+<div class="visible-xs-block">
+  <%= link_to time_icon.concat(" Checkin to goal"), checkin_goal_path(@goal), class: "btn btn-primary btn-block", "data-turbolinks" => false %><br>
+</div>
+<div class="hidden-xs">
+  <div class="alert alert-warning" role="alert">
+    Hey <%= current_user.name %>, looks like you <%= link_to "need to checkin!", checkin_goal_path(@goal), class: "alert-link", "data-turbolinks" => false %>
+
+  </div>
+</div>

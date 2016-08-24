@@ -6,8 +6,11 @@
   - use params[:checkin_only] = true  
   - or at least order them by checkin?
   - if I can make it an attribute you could Goals.group(:need_checkin)
-- change google button
-  - https://developers.google.com/identity/branding-guidelines
+- rename <goals> to <focus areas>?
+- Move edit goal side menu into own buttons at bottom of goal#view page
+- maybe have a button / alert that shows up when neededing checkin in goal#view
+  -  "You need to checkin"
+
 
 ## Coming Up
 

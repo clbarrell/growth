@@ -9,7 +9,6 @@
 </head>
 <body>
   <div class="container">
-
     <header>
       <!-- NAV -->
       <nav class="navbar navbar-default navbar-fixed-top">
@@ -23,17 +22,13 @@
             </button>
             <%= link_to "Growth", root_path, class: "navbar-brand big-brand" %>
           </div>
-
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
                 <% if show_checkins? %>
-                  <%= link_to_in_li_with_span home_icon, goals_path, "checkin needed", class: "nav-item nav-link" %>
+                  <%= link_to_in_li_with_span home_icon, goals_path, "checkins needed", class: "nav-item nav-link" %>
                 <% else %>
                   <%= link_to_in_li home_icon, goals_path, class: "nav-item nav-link" %>
-                <% end %>
-                <% if display_goal_name? %>
-                  <li><p class='navbar-text goal'> <%= @goal %></p></li>
                 <% end %>
               <% end %>
             </ul>

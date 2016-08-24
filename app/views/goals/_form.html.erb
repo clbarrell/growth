@@ -20,14 +20,15 @@
             <%= f.label :title, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
                 <%= f.text_field :title, class: 'validate form-control', maxlength: 40 %>
-                <span class="help-block">The shorter the goal title the better. Limited to 40 letters.</span>
+                <span class="help-block">The shorter the title the better.<br> <em>E.g. 'Presentation Skills' or 'Writing'</em></span>
             </div>
         </div>
         <div class="form-group">
             <%= f.label :description, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
                 <%= f.text_area :description, class: 'form-control', rows: "2" %>
-                <span class="help-block">Describe what you want to achieve.</span>
+                <span class="help-block">Describe why & what you want to improve.<br>
+                <em>E.g. 'I want to make my presentations and speech smoother and more engaging...'</em></span>
             </div>
         </div>
         <div class="form-group">
@@ -50,32 +51,48 @@
                   <%= f.radio_button :frequency, "Quarterly" %>Quarterly
                   <% end %>
                 </div>
-                <span class="help-block">How frequently do you want to check in against this goal?</span>
+                <span class="help-block">How frequently do you want to check in against this goal?<br>
+                <em>E.g. 'Weekly' if you want to reflect on it weekly.</em></span>
             </div>
         </div>
         <div class="form-group">
             <%= f.label :goaltype, class: 'control-label col-sm-2' %>
             <div class="col-sm-10">
-                <div class="btn-group" data-toggle="buttons">
-                  <%= f.label :goaltype, value: "Standard", class: "btn btn-success" do %>
-                  <%= f.radio_button :goaltype, "Standard" %>Standard
-                  <% end %>
-                  <%= f.label :goaltype, value: "Contextual", class: "btn btn-success" do %>
-                  <%= f.radio_button :goaltype, "Contextual" %>Contextual
-                  <% end %>
+              <div class="btn-group" data-toggle="buttons">
+                <%= f.label :goaltype, value: "Standard", class: "btn btn-success" do %>
+                <%= f.radio_button :goaltype, "Standard" %>Standard
+                <% end %>
+                <%= f.label :goaltype, value: "Contextual", class: "btn btn-success" do %>
+                <%= f.radio_button :goaltype, "Contextual" %>Contextual
+                <% end %>
+              </div>
+              <span class="help-block">
+                <a role="button" data-toggle="collapse" href="#goaltypecollapse" aria-expanded="false" aria-controls="goaltypecollapse">What's the difference between these?
+                </a></span>
+              <div class="collapse" id="goaltypecollapse">
+                <div class="well">
+                  <h4>STANDARD</h4>
+                  <p>A standard gtoal is where you have a goal or focus area that is
+                    applicable and relevant acrosss many contexts.
+                    Something you can focus on regularly in many different situations, day in day out.
+                  <h4>CONTEXTUAL</h4>
+                  <p>Contextual refers to a goal / focus area that is dependent upon a
+                    certain situation or context. If X happens then I will do Y.
+                    For example: <em>"When I'm given feedback, I will not react but listen actively and suspend my emotional reactions"</em></p>
                 </div>
-                <span class="help-block">Is this goal contextual (When X happens, I'll do Y) or standard?</span>
+              </div>
             </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-10 col-sm-offset-2 well">
-            <p class="text-success">Success is...</p>
+          <%= f.label "What does success look like?", class: 'control-label white-background col-sm-2' %>
+          <div class="col-sm-10">
             <%= f.text_area :success_description, class: 'validate form-control' %>
+            <span class="help-block white-background">Reflect on what you would call a successful outcome / progress for this area / goal <span>
           </div>
         </div>
         <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
-                <%= f.submit class: "btn btn-default" %>
+                <%= f.submit class: "btn btn-primary" %>
             </div>
             <% end %>
         </div>
