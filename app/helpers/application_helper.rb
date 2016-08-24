@@ -69,13 +69,28 @@ module ApplicationHelper
     end
   end
 
+  def eye_icon
+    content_tag :span, class: "glyphicon glyphicon-eye-open", 'aria-hidden' => "true" do
+    end
+  end
+
+  def stats_icon
+    content_tag :span, class: "glyphicon glyphicon-stats", 'aria-hidden' => "true" do
+    end
+  end
+
   def plus_icon
     content_tag :span, class: "glyphicon glyphicon-plus", 'aria-hidden' => "true" do
     end
   end
 
   def pencil_icon
-    content_tag :span, class: "glyphicon glyphicon-pencil", 'aria-hidden' => "true" do
+    content_tag :span, class: "glyphicon glyphicon-edit", 'aria-hidden' => "true" do
+    end
+  end
+
+  def home_icon
+    content_tag :span, class: "glyphicon glyphicon-home", 'aria-hidden' => "true" do
     end
   end
 

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3 class="text-center with-padding">Your Goals</h3>
+    <h3 class="text-center with-padding">Your Focus Areas</h3>
   </div>
 </div>
 <!-- NO GOALS -->
@@ -15,9 +15,9 @@
 <% end %>
 <div class="row">
   <div class="col-sm-12">
-    <div class="list-group">
+    <div class="list-group white-background">
       <!-- GOALS -->
-      <% @user.goals.each do |goal| %>
+      <% @goals.each do |goal| %>
         <%= link_to goal, class: "list-group-item" do %>
           <h4 class="list-group-item-heading"><%= checkin_warning(goal) %> <%= goal.title %></h4>
           <p class="list-group-item-text"><%= goal.description %></p>
@@ -26,7 +26,7 @@
       <% end %>
       <!-- NEW GOAL -->
       <%= link_to(new_goal_path, { class: "list-group-item", "data-turbolinks" => "false" }) do %>
-        <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Goal</h4>
+        <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Focus Area</h4>
       <% end %>
     </div>
   </div>

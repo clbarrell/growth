@@ -6,7 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   <meta name="viewport" content="width=device-width">
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   <div class="container">
@@ -29,9 +28,9 @@
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
                 <% if show_checkins? %>
-                  <%= link_to_in_li_with_span "Goals ", goals_path, "checkin needed", class: "nav-item nav-link" %>
+                  <%= link_to_in_li_with_span home_icon, goals_path, "checkin needed", class: "nav-item nav-link" %>
                 <% else %>
-                  <%= link_to_in_li "Goals", goals_path, class: "nav-item nav-link" %>
+                  <%= link_to_in_li home_icon, goals_path, class: "nav-item nav-link" %>
                 <% end %>
                 <% if display_goal_name? %>
                   <li><p class='navbar-text goal'> <%= @goal %></p></li>
@@ -43,8 +42,8 @@
                 <% if @goal.is_it_checkin_time? %>
                   <%= link_to_in_li time_icon.concat(" Checkin"), checkin_goal_path(@goal), class: "nav-item nav-link", "data-turbolinks" => false, id: 'checkin-link' %>
                 <% end %>
-                <%= link_to_in_li "View", goal_path(@goal), class: "nav-item nav-link" %>
-                <%= link_to_in_li "Answers", checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
+                <%= link_to_in_li eye_icon.concat(" View"), goal_path(@goal), class: "nav-item nav-link" %>
+                <%= link_to_in_li stats_icon.concat(" Answers"), checkin_answers_goal_path(@goal), class: "nav-item nav-link" %>
               <% end %>
               <% if user_signed_in? %>
                 <li class="dropdown">

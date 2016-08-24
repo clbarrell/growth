@@ -1,12 +1,9 @@
-<%= render 'goal_head' %>
-<%= render 'success_description' if @goal.success_description? %>
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-        <p class="text-center lead">
-            You've checked into this goal
-            <strong><%= pluralize(@goal.checkin_count, "time") %></strong>
-        </p>
-    </div>
+  <div class="col-sm-12">
+    <h3 class="text-center with-padding"><%= @goal %><br>
+      <small>You've checked in
+      <%= pluralize(@goal.checkin_count, "time") %></small></h3>
+  </div>
 </div>
 <!-- QUESTION GRPAHS -->
 <% @questions.each do |question| %>
@@ -16,12 +13,12 @@
     </h4>
   </div>
   <div class="row">
-    <div class="graph-block">
+    <div class="graph-block white-background">
       <p class="text-center">
         <% if question.scale != "Comment" %>
           <%= graph_question(question) %>
         <% else %>
-          <dl class="dl-horizontal white-background">
+          <dl class="dl-horizontal">
             <% question.comment_answers.order(created_at: :desc).each do |c| %>
               <dt><%= c.created_at.strftime('%h %d') %></dt>
               <dd><%= c.answer %></dd>
