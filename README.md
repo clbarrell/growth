@@ -2,14 +2,8 @@
 
 ## To do next
 
-- clicking on 'Checkin' only shows goals that need to  checked in
-  - use params[:checkin_only] = true  
-  - or at least order them by checkin?
-  - if I can make it an attribute you could Goals.group(:need_checkin)
 - rename <goals> to <focus areas>?
-- Move edit goal side menu into own buttons at bottom of goal#view page
-- maybe have a button / alert that shows up when neededing checkin in goal#view
-  -  "You need to checkin"
+
 
 
 ## Coming Up
@@ -23,11 +17,6 @@
   - big red header where goal title goes?
   - https://dribbble.com/shots/1698678-Apps-Dashboard
 - **Redesign layout - make it more appy**
-  - Side bar
-    - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
-    - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
-  - more background pictures - minimal vibes
-  - http://demos.creative-tim.com/light-bootstrap-dashboard-pro/examples/dashboard.html
   - colour
     - https://www.materialui.co/colors
   - fix the sizing problems of header
@@ -35,11 +24,6 @@
     - For example:  
       - @media (min-width: 768px) { ... }
     - http://www.bootply.com/109653
-- Move checkin_ready_goals to a User column variable
-  - on GOALS create a REQUIRES_CHECKIN flag
-    - would use background jobs to flick the switch?
-  - on User
-    - have a flag - recalculates at each login, checkin, etc.
 - adjust checkin_log graph depending on goal.frequency & amount of checkins
   - set a maximum time frame to capture
 
@@ -56,6 +40,9 @@
 - %goal% variable replacement in question wording
 - integrate Jquery whn needed - http://jquerypp.com/
 - each goal can have multiple milestones
+- Side bar
+  - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
+  - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
 
 ## Completed!
 
@@ -82,3 +69,6 @@
 - small button shows only on xs screen for "Checkin"
 - comment answers background readable
 - Feature tests to ensure checkin operates as expected
+- Move edit goal side menu into own buttons at bottom of goal#view page
+- maybe have a button / alert that shows up when needing checkin in goal#view
+- installed Puma webserver

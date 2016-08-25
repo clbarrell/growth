@@ -31,6 +31,11 @@ gem "omniauth-google-oauth2"
 gem 'omniauth'
 gem "figaro"
 
+group :production do
+  # webserver for production
+  gem 'puma'
+  gem "rack-timeout"
+end
 # Use Unicorn as the app server
 # gem 'unicorn'
 

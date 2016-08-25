@@ -93,6 +93,11 @@ module ApplicationHelper
     content_tag :span, class: "glyphicon glyphicon-home", 'aria-hidden' => "true" do
     end
   end
+  def question_icon
+    content_tag :span, class: "glyphicon glyphicon-question-sign", 'aria-hidden' => "true" do
+    end
+  end
+
 
 
   def show_checkins?
