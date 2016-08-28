@@ -5,8 +5,8 @@
 - validate that people can only see their own things
 - feature tests for
   - sign up
-  - sign in
-
+  - sign in (google auth, manual)
+- a way to educate new uesrs on how ot use goals?
 
 
 ## Coming Up

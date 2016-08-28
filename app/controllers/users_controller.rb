@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save # when save is successful
       flash["notice"] = "New user created."
-      redirect_to @user
+      redirect_to goals_path
     else
       render "new"
     end
