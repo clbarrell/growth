@@ -1,6 +1,7 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
   before_action :authenticate_user!
+  before_action :authorise_user, only: [:show, :checkin, :checkin_answers, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
 
   # GET /goals
   # GET /goals.json
@@ -124,6 +125,13 @@ class GoalsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    # ensure you don't look at other's goals
+    def authorise_user
+      if Goal.find(params[:id]).user != current_user
+        redirect_to goals_path, alert: "You don't have access to this goal."
+      end
+    end
+
     def set_goal
       @goal = Goal.find(params[:id])
     end

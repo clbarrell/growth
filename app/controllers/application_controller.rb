@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # rescue_from User::NotAuthorized, with: :user_not_authorized
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -21,4 +22,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
+
+  private
+
+    def user_not_authorized
+      flash[:error] = "You don't have access to this section."
+      redirect_back(fallback_location: goals_path)
+    end
 end

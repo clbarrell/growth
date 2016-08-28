@@ -1,6 +1,9 @@
 class TemplateQuestionsController < ApplicationController
   before_action :set_template_question, only: [:show, :edit, :update, :destroy]
+  before_action :authorise_user
   before_action :authenticate_user!
+
+
   # GET /template_questions
   # GET /template_questions.json
   def index
@@ -68,6 +71,12 @@ class TemplateQuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_template_question
       @template_question = TemplateQuestion.find(params[:id])
+    end
+
+    def authorise_user
+      if current_user.email != "clbarrell@gmail.com"
+        redirect_to goals_path, alert: "You don't have access to the templated questions."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

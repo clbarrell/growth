@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorise_user, only: [:show, :edit, :update]
+
 
   def index
-    @users = User.all
+    if current_user.email == "clbarrell@gmail.com"
+      @users = User.all
+    else
+      redirect_to goals_path, alert: "You don't have access to this section."
+    end
   end
 
   def show
@@ -42,5 +48,12 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    # ensure the user is correct
+    def authorise_user
+      if params[:id].to_i != current_user.id
+        redirect_to goals_path, alert: "You don't have access to this section."
+      end
     end
 end
