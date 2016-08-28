@@ -2,7 +2,10 @@
 
 ## To do next
 
-- rename <goals> to <focus areas>?
+- validate that people can only see their own things
+- feature tests for
+  - sign up
+  - sign in
 
 
 
