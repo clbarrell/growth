@@ -12,7 +12,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
     it "should list all goals" do
       login_as(@user, :scope => :user)
       visit(goals_path)
-      expect(page).to have_content "Your Goals"
+      expect(page).to have_content "Your Focus Areas"
       expect(page).to have_content "This is a goal title"
       expect(page).to have_content "This is goal two"
     end
@@ -20,7 +20,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
       login_as(@user, :scope => :user)
       visit(goals_path)
       click_on('This is a goal title')
-      expect(page).to have_content "You've checked into this goal 0 times"
+      expect(page).to have_content "You've checked in 0 times"
     end
   end
   context "goal#checkin", js: true do
@@ -29,7 +29,6 @@ RSpec.feature "CheckinToGoal", type: :feature do
       goal = create(:goal, title: "goaltitle", user: @user)
       5.times { create(:question, goal: goal) }
       visit(checkin_goal_path(goal))
-      expect(page).to have_content @goal.description
       # RATING BUTTONS //label[@data-original-title='Strongly Agree']
       page.all(:xpath, "//label[@data-original-title='Strongly Agree']").each do |x|
         x.click

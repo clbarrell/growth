@@ -2,7 +2,6 @@
 
 ## To do next
 
-- validate that people can only see their own things
 - feature tests for
   - sign up
   - sign in (google auth, manual)

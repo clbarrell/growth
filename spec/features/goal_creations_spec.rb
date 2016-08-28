@@ -13,15 +13,15 @@ RSpec.feature "GoalCreations", type: :feature do
       login_as(user, :scope => :user)
 
       visit(goals_path)
-      expect(page).to have_content "Your Goals"
+      expect(page).to have_content "Your Focus Areas"
       expect(page).to have_content "You have not made any goals yet."
     end
     it "should take user to new goal page" do
       user = create(:user)
       login_as(user, :scope => :user)
       visit(goals_path)
-      click_on('New Goal')
-      expect(page).to have_content "New Goal"
+      click_on('New Focus Area')
+      expect(page).to have_content "New Focus Area"
       expect(page).to have_button "Create Goal"
     end
   end
@@ -38,7 +38,7 @@ RSpec.feature "GoalCreations", type: :feature do
       click_on('Create Goal')
       expect(page).to have_content "This is the description of my new goal"
       expect(page).to have_content "Goal was successfully created"
-      expect(page).to have_content "You've checked into this goal 0 times"
+      expect(page).to have_content "You've checked in 0 times"
     end
   end
 
