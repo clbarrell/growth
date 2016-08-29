@@ -56,34 +56,6 @@
             </div>
         </div>
         <div class="form-group">
-            <%= f.label :goaltype, class: 'control-label col-sm-2' %>
-            <div class="col-sm-10">
-              <div class="btn-group" data-toggle="buttons">
-                <%= f.label :goaltype, value: "Standard", class: "btn btn-success" do %>
-                <%= f.radio_button :goaltype, "Standard" %>Standard
-                <% end %>
-                <%= f.label :goaltype, value: "Contextual", class: "btn btn-success" do %>
-                <%= f.radio_button :goaltype, "Contextual" %>Contextual
-                <% end %>
-              </div>
-              <span class="help-block">
-                <a role="button" data-toggle="collapse" href="#goaltypecollapse" aria-expanded="false" aria-controls="goaltypecollapse">What's the difference between these?
-                </a></span>
-              <div class="collapse" id="goaltypecollapse">
-                <div class="well">
-                  <h4>STANDARD</h4>
-                  <p>A standard gtoal is where you have a goal or focus area that is
-                    applicable and relevant acrosss many contexts.
-                    Something you can focus on regularly in many different situations, day in day out.
-                  <h4>CONTEXTUAL</h4>
-                  <p>Contextual refers to a goal / focus area that is dependent upon a
-                    certain situation or context. If X happens then I will do Y.
-                    For example: <em>"When I'm given feedback, I will not react but listen actively and suspend my emotional reactions"</em></p>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="form-group">
           <%= f.label "What does success look like?", class: 'control-label white-background col-sm-2' %>
           <div class="col-sm-10">
             <%= f.text_area :success_description, class: 'validate form-control' %>
