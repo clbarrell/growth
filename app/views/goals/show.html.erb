@@ -26,7 +26,14 @@
         Questions
       </div>
       <div class="panel-body">
-        This goal has <%= pluralize(@goal.questions.count, "question") %>, view them <%= link_to "here", goal_questions_path(@goal) %>.
+        <p>
+          Goals are created with a set of default questions. Right now, this goal has <%= pluralize(@goal.questions.count, "question") %>.
+          That includes both check in questions and review questions.
+        </p>
+        <p>
+          You should edit these questions and ensure they help you focus on your <%= @goal.title %>.
+          <%= link_to "View them here", goal_questions_path(@goal) %>.
+        </p>
       </div>
     </div>
   </div>

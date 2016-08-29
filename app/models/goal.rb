@@ -76,6 +76,17 @@ class Goal < ActiveRecord::Base
     checkin_logs.try(:last).try(:destroy)
   end
 
+  # redo the question orders when one is deleted
+  def reset_question_orders(qntype = "Checkin")
+    if qntype == "Checkin"
+      questions = self.checkin_questions
+    else
+      questions = self.review_questions
+    end
+    questions.order(:qnorder).each_with_index do |qn, index|
+      qn.update(qnorder: index + 1)
+    end
+  end
 
   def is_it_checkin_time?
       # true if enough time has elapsed since last checkin
