@@ -23,7 +23,7 @@
   <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Questions
+        <%= link_to "Questions", goal_questions_path(@goal) %>
       </div>
       <div class="panel-body">
         <p>
@@ -31,8 +31,8 @@
           That includes both check in questions and review questions.
         </p>
         <p>
-          You should edit these questions and ensure they help you focus on your <%= @goal.title %>.
-          <%= link_to "View them here", goal_questions_path(@goal) %>.
+          You should edit these questions and ensure they help you focus on your <%= @goal.title %>.</p><p>
+          <%= link_to "View questions here", goal_questions_path(@goal) %>
         </p>
       </div>
     </div>

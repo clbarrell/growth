@@ -17,6 +17,8 @@ RSpec.feature "CheckinToGoal", type: :feature do
       expect(page).to have_content "This is goal two"
     end
     it "should take user to goal#view" do
+      @user = create(:user)
+      @goal = create(:goal, title: "This is a goal title", user: @user)
       login_as(@user, :scope => :user)
       create(:goal, title: "test goal title", user: @user)
       visit(goals_path)

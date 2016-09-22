@@ -26,8 +26,8 @@ class Goal < ActiveRecord::Base
   # has_many :rating_answers (through :questions)
 
   # SCOPES ~~~~
-  #scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: 'Checkin' }).order(:qnorder) }
-  #scope :review_questions, -> { includes(:questions).where(questions: { qntype: 'Review' }).order(:qnorder) }
+  # scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: 'Checkin' }).order(:qnorder) }
+  # scope :review_questions, -> { includes(:questions).where(questions: { qntype: 'Review' }).order(:qnorder) }
   # will this work?? test it!
   # scope :reviews, -> { where(questions.qntype: 'Review').order(:qnorder)
   # scope :checkin_questions, -> { includes(:questions).where(questions: { qntype: "Checkin"})}
@@ -36,63 +36,62 @@ class Goal < ActiveRecord::Base
   validates :title, :description, :user, presence: true
   validates :frequency, inclusion: { in: %w(Daily Weekly Fortnightly Monthly Quarterly),
                                      message: "You haven't picked a valid frequency" }
-  #validates :goaltype, inclusion: { in: %w(Standard Contextual),
+  # validates :goaltype, inclusion: { in: %w(Standard Contextual),
   #                                  message: "You haven't picked a valid Goal Type"}
   # not validating goaltype yet
 
   after_create :create_default_questions
 
   def checkin_questions
-    questions.where(qntype: "Checkin").order(:qnorder)
+      questions.where(qntype: 'Checkin').order(:qnorder)
   end
 
   def review_questions
-    questions.where(qntype: "Review").order(:qnorder)
+      questions.where(qntype: 'Review').order(:qnorder)
   end
-
 
   # METHODS
   def create_default_questions
       # set the default list of questions
       TemplateQuestion.find_each do |q|
           Question.create(goal_id: id, question: q.text,
-                       qntype: q.qntype, scale: q.scale, qnorder: q.default_order)
-     end
+                          qntype: q.qntype, scale: q.scale, qnorder: q.default_order)
+      end
   end
 
   def checkin_count
-    checkin_logs.count
+      checkin_logs.count
   end
 
   def new_checkin
-    checkin_logs.create(date: Date.today)
+      checkin_logs.create(date: Date.today)
   end
 
   def last_checkin
-    checkin_logs.try(:last).try(:date)
+      checkin_logs.try(:last).try(:date)
   end
 
   def undo_checkin
-    checkin_logs.try(:last).try(:destroy)
+      checkin_logs.try(:last).try(:destroy)
   end
 
   # redo the question orders when one is deleted
-  def reset_question_orders(qntype = "Checkin")
-    if qntype == "Checkin"
-      questions = self.checkin_questions
-    else
-      questions = self.review_questions
-    end
-    questions.order(:qnorder).each_with_index do |qn, index|
-      qn.update(qnorder: index + 1)
-    end
+  def reset_question_orders(qntype = 'Checkin')
+      questions = if qntype == 'Checkin'
+                      checkin_questions
+                  else
+                      review_questions
+                  end
+      questions.order(:qnorder).each_with_index do |qn, index|
+          qn.update(qnorder: index + 1)
+      end
   end
 
   def is_it_checkin_time?
       # true if enough time has elapsed since last checkin
       # calculate time since according to frequency
       if frequency.nil? || last_checkin.nil?
-        true
+          true
       elsif frequency == 'Daily'
           (Date.today - last_checkin) > 0 ? true : false
       elsif frequency == 'Weekly'
@@ -107,6 +106,6 @@ class Goal < ActiveRecord::Base
   end
 
   def to_s
-    title
+      title
   end
 end

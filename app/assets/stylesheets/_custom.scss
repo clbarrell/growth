@@ -13,6 +13,10 @@ body {
   background-position: 50%;
 }
 
+.jumbotron {
+  background-color: #C5CAE9;
+}
+
 @media (min-width: 768px) {
   body {
     background-image: image-url("skyclouds-1500.jpeg");
@@ -153,7 +157,7 @@ textarea.form-control, input[type=text].form-control {
 #checkin-link {
   text-transform: uppercase;
   font-weight: bold;
-  color: maroon;
+  color: #03A9F4;
 }
 
 .white-background {
@@ -170,3 +174,7 @@ dl {
 .panel-heading {
     font-weight: bold;
   }
+
+.label-info {
+  background-color: #03A9F4;
+}

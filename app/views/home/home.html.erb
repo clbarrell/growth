@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
       <% if current_user.checkin_ready_goals > 0 %>
         <p>You have <%= current_user.checkin_ready_goals %> checkin ready goals!</p>
-        <p><%= link_to "All Goals", goals_path, class: "btn btn-primary" %></p>
+        <p><%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %></p>
         <p>
           <ul><% current_user.goals.each do |goal| %>
             <% if goal.is_it_checkin_time? %><li><%= link_to "Checkin to #{goal}", checkin_goal_path(goal), 'data-turbolinks' => false %></li><% end %>
@@ -44,4 +44,13 @@
       NB: Reviews haven't been built in yet.
     </p>
   </div>
+</div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 white-background">
+    <h3>To do list</h3>
+    <p>
+      Follow the to-do list and source code <%= link_to "here", 'https://github.com/clbarrell/growth' %>
+    </p>
+  </div>
+
 </div>

@@ -4,9 +4,15 @@
   </div>
 </div>
 <%= render "/goals/goal_head" %>
+<div class="row">
+    <div class="col-sm-12">
+        <%= link_to plus_icon.concat(' Add a question'), new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
+        <%= link_to 'Reset questions', reset_goal_path(@goal), class: "btn btn-default pull-right" %>
+    </div>
+</div>
 <!-- CHECKIN QUESTIONS -->
 <div class="row">
-    <div class="col-sm-12 white-background">
+    <div class="col-sm-12">
         <h4 class="text-center">Checkin Questions</h4>
         <table class="table table-hover">
             <thead>
@@ -37,7 +43,7 @@
 </div>
 <!-- REVIEW QUESTIONS -->
 <div class="row">
-    <div class="col-sm-12 white-background">
+    <div class="col-sm-12">
         <h4 class="text-center">Review Questions</h4>
         <table class="table table-hover">
             <thead>
@@ -64,12 +70,5 @@
                 <% end %>
             </tbody>
         </table>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <%= link_to plus_icon.concat(' Add a question'), new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
-        <%= link_to 'Reset questions', reset_goal_path(@goal), class: "btn btn-default pull-right" %>
     </div>
 </div>

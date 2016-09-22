@@ -6,6 +6,7 @@
   - sign up
   - sign in (google auth, manual)
 - a way to educate new uesrs on how ot use goals?
+- better title
 
 
 ## Coming Up
@@ -21,6 +22,7 @@
 - **Redesign layout - make it more appy**
   - colour
     - https://www.materialui.co/colors
+    - https://www.materialpalette.com/indigo/light-blue
   - fix the sizing problems of header
     - Add your own class to the <div class="special-container"> and override the width property at one or more viewport sizes.
     - For example:  
