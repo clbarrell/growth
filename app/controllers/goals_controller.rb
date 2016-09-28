@@ -53,8 +53,6 @@ class GoalsController < ApplicationController
   def update_checkin
     # for receiving checkin params
 
-    Rails.logger.debug params.inspect
-
     respond_to do |format|
       if @goal.update(goal_params)
         @goal.new_checkin
@@ -101,7 +99,6 @@ class GoalsController < ApplicationController
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
   def update
-    Rails.logger.debug params.inspect
     respond_to do |format|
       if @goal.update(goal_params)
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }

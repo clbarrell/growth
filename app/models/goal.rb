@@ -63,8 +63,8 @@ class Goal < ActiveRecord::Base
       checkin_logs.count
   end
 
-  def new_checkin
-      checkin_logs.create(date: Date.today)
+  def new_checkin(date = Date.today)
+      checkin_logs.create(date: date)
   end
 
   def last_checkin
@@ -86,6 +86,26 @@ class Goal < ActiveRecord::Base
           qn.update(qnorder: index + 1)
       end
   end
+
+  # updates created_at date for answers
+  # to allow for historical checkins
+  def old_checkin_change(date = "yesterday")
+    if date == "yesterday"
+      timeframe = 1.day.ago
+    else
+      timeframe = 2.days.ago
+    end
+    time_range = (Time.now - 5.hours)..Time.now
+    # get all answers together
+    ratings = rating_answers.where(:created_at => time_range)
+    comments = comment_answers.where(:created_at => time_range)
+    booleans = boolean_answers.where(:created_at => time_range)
+    # ANSWERS.each { |x| x.update(created_at: 1.day.ago) }
+    ratings.each { |x| x.update(created_at: timeframe) }
+    comments.each { |x| x.update(created_at: timeframe) }
+    booleans.each { |x| x.update(created_at: timeframe) }
+  end
+
 
   def is_it_checkin_time?
       # true if enough time has elapsed since last checkin
