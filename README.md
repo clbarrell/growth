@@ -5,12 +5,12 @@
 - change checkin date dropdown
   - needs to change:
     - [x] `created_at` date for all answers
-    - [ ] checkin_log date & [x] created_at date
-    - [ ] don't allow for previous checkin if it was already done!!
+    - [x] checkin_log date & [x] created_at date
+    - [x] don't allow for previous checkin if it was already done!!
     -
   - OPTION
-    - [ ] Dropdown menu -> today / yesterday / day before yesterday
-    - [ ] MENU DATA -> do nothing / update all ratings & answers to `1.day.ago`/ ... change all updated_at to 2.days.ago
+    - [x] Dropdown menu -> today / yesterday / day before yesterday
+    - [x] MENU DATA -> do nothing / update all ratings & answers to `1.day.ago`/ ... change all updated_at to 2.days.ago
     - [x] create Goal function to rewrite all of today's entries
 - a way to educate new uesrs on how ot use goals?
 - better title

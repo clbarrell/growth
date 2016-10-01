@@ -1,0 +1,1 @@
+<%= select_tag "checkin_date", options_for_select([["Today - #{Date.today.strftime("%a %b %e")}", "today"],["Yesterday - #{(Date.today - 1).strftime("%a %b %e")}", "yesterday"], ["Day before yesterday - #{(Date.today - 2).strftime("%a %b %e")}", "two days ago"]], "today"), { class: "form-control" } %>

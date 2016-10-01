@@ -150,6 +150,12 @@ textarea.form-control, input[type=text].form-control {
   background: rgba(94, 163, 233, 0.05);
 }
 
+ select.form-control {
+   background-color: rgba(94, 163, 233, 0.05);
+ }
+
+ select { width: 100%; text-align-last:center; }
+
 .checkbox input[type="checkbox"] {
   margin-left: 0px;
 }

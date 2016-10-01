@@ -72,7 +72,12 @@ class Goal < ActiveRecord::Base
   end
 
   def undo_checkin
-      checkin_logs.try(:last).try(:destroy)
+      last_log = checkin_logs.try(:last) #.try(:destroy)
+      time_range = (last_log.date.midnight)..Time.now
+      last_log.try(:destory)
+      self.comment_answers.where(:created_at => time_range).find_each { |x| x.try(:destroy) }
+      self.rating_answers.where(:created_at => time_range).find_each { |x| x.try(:destroy) }
+      self.boolean_answers.where(:created_at => time_range).find_each { |x| x.try(:destroy) }
   end
 
   # redo the question orders when one is deleted
@@ -91,11 +96,11 @@ class Goal < ActiveRecord::Base
   # to allow for historical checkins
   def old_checkin_change(date = "yesterday")
     if date == "yesterday"
-      timeframe = 1.day.ago
+      timeframe = Time.now - 1.day
     else
-      timeframe = 2.days.ago
+      timeframe = Time.now - 2.days
     end
-    time_range = (Time.now - 5.hours)..Time.now
+    time_range = (Time.now - 2.hours)..Time.now
     # get all answers together
     ratings = rating_answers.where(:created_at => time_range)
     comments = comment_answers.where(:created_at => time_range)

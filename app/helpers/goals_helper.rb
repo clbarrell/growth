@@ -34,4 +34,5 @@ module GoalsHelper
       end
     end
   end
+
 end

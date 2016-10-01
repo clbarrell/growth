@@ -52,10 +52,21 @@ class GoalsController < ApplicationController
 
   def update_checkin
     # for receiving checkin params
-
+    # checkin_date" => "two days ago" / "yesterday" / "today" (or nothing)
     respond_to do |format|
       if @goal.update(goal_params)
-        @goal.new_checkin
+        if params[:checkin_date] == "yesterday"
+          # change to yesterday
+          @goal.new_checkin(Date.yesterday)
+          @goal.old_checkin_change("yesterday")
+        elsif params[:checkin_date] == "two days ago"
+          # change to 2 days ago
+          @goal.new_checkin(2.days.ago)
+          @goal.old_checkin_change("two days ago")
+        else
+          @goal.new_checkin
+        end
+
         format.html { redirect_to checkin_answers_goal_path(params[:id]) }
         # if params.comment_answer.present? then redirect to whereve
         # we want the checkin to goafterwards

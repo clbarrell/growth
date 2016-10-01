@@ -24,8 +24,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'rails_12factor'
-
+gem 'puma'
 # SECURITY
 gem 'devise'
 gem "omniauth-google-oauth2"
@@ -34,8 +33,8 @@ gem "figaro"
 
 group :production do
   # webserver for production
-  gem 'puma'
   gem "rack-timeout"
+  gem 'rails_12factor'
 end
 # Use Unicorn as the app server
 # gem 'unicorn'

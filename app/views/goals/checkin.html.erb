@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3 class="text-center with-padding"><%= @goal %><br><small>Checkin - <%= Date.today.strftime("%B %e") %></small></h3>
+    <h3 class="text-center with-padding"><%= @goal %></h3>
   </div>
 </div>
 <% if @goal.is_it_checkin_time? %>
@@ -8,6 +8,19 @@
       <div class="col-sm-12">
         <div class="form-horizontal">
           <%= form_for @goal, url: {action: "update_checkin"} do |f| %>
+          <div class="row with-padding">
+            <div class="col-sm-4 col-sm-offset-4">
+              <span class="text-center">
+                <% if @goal.last_checkin == Date.today - 1.day %>
+                  <h5>today - <%= Date.today.strftime("%b %e") %></h5>
+                <% elsif @goal.last_checkin == Date.today - 2.days %>
+                  <%= render "/goals/checkin_dates/select_yesterday" %>
+                <% else %>
+                  <%= render "/goals/checkin_dates/select_2_days" %>
+                <% end %>
+              </span>
+            </div>
+          </div>
             <% @questions.each do |question| %>
             <div class="form-group">
               <label class="control-label col-sm-5">
