@@ -29,7 +29,6 @@ RSpec.describe Goal, type: :model do
     it "shouldn't allow wrong errors" do
       expect(build_stubbed(:goal, title: nil)).not_to be_valid
       expect(build_stubbed(:goal, frequency: nil)).not_to be_valid
-      expect(build_stubbed(:goal, goaltype: "yesito")).not_to be_valid
     end
   end
   describe "testing the main methods" do
@@ -48,12 +47,28 @@ RSpec.describe Goal, type: :model do
       goal.new_checkin
       expect(goal.checkin_count).to_not eq 0
     end
-    it "undo should decrease checkin count" do
+  end
+  context "checkking in for previous days" do
+    it "should checkin to today" do
       goal = create(:goal)
+      expect(goal.checkin_count).to eq 0
       goal.new_checkin
       expect(goal.checkin_count).to_not eq 0
-      goal.undo_checkin
+      expect(goal.last_checkin).to eq (Date.today)
+    end
+    it "should checkin to yesterday" do
+      goal = create(:goal)
       expect(goal.checkin_count).to eq 0
+      goal.new_checkin(Date.today - 1)
+      expect(goal.checkin_count).to_not eq 0
+      expect(goal.last_checkin).to eq (Date.today - 1)
+    end
+    it "should checkin to two days ago" do
+      goal = create(:goal)
+      expect(goal.checkin_count).to eq 0
+      goal.new_checkin(Date.today - 2)
+      expect(goal.checkin_count).to_not eq 0
+      expect(goal.last_checkin).to eq (Date.today - 2)
     end
   end
   context "#is_it_checkin_time?" do

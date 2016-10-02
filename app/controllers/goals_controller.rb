@@ -57,11 +57,11 @@ class GoalsController < ApplicationController
       if @goal.update(goal_params)
         if params[:checkin_date] == "yesterday"
           # change to yesterday
-          @goal.new_checkin(Date.yesterday)
+          @goal.new_checkin(Date.today - 1)
           @goal.old_checkin_change("yesterday")
         elsif params[:checkin_date] == "two days ago"
           # change to 2 days ago
-          @goal.new_checkin(2.days.ago)
+          @goal.new_checkin(Date.today - 2)
           @goal.old_checkin_change("two days ago")
         else
           @goal.new_checkin
