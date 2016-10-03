@@ -12,6 +12,8 @@ RSpec.feature "CheckinToGoal", type: :feature do
   context "goal#index" do
     it "should list all goals" do
       login_as(@user, :scope => :user)
+      create(:goal, title: "This is a goal title", user: @user)
+      create(:goal, title: "This is goal two", user: @user)
       visit(goals_path)
       expect(page).to have_content "Your Focus Areas"
       expect(page).to have_content "This is a goal title"
@@ -63,7 +65,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
       # expect(page).to have_content @goal.description
       expect(page).to have_content "You've checked in 1 time"
       expect(page).to have_css "div.graph-block"
-      expect(goal.last_checkin).to eq (Time.zone.today - 2)
+      expect(goal.last_checkin.try(:to_date)).to eq (Time.zone.today - 2)
     end
     it "page should checkin to yesterday" do
       user = create(:user)
@@ -83,7 +85,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
       # expect(page).to have_content @goal.description
       expect(page).to have_content "You've checked in 1 time"
       expect(page).to have_css "div.graph-block"
-      expect(goal.last_checkin).to eq (Time.zone.today - 1)
+      expect(goal.last_checkin.try(:to_date)).to eq (Time.zone.today - 1)
     end
   end
 

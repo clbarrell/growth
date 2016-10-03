@@ -11,9 +11,9 @@
           <div class="row with-padding">
             <div class="col-sm-4 col-sm-offset-4">
               <span class="text-center">
-                <% if @goal.last_checkin.date == Time.zone.today - 1.day %>
+                <% if @goal.last_checkin.try(:to_date) == Time.zone.today - 1.day %>
                   <h5>today - <%= Time.zone.today.strftime("%b %e") %></h5>
-                <% elsif @goal.last_checkin.date == Time.zone.today - 2.days %>
+                <% elsif @goal.last_checkin.try(:to_date) == Time.zone.today - 2.days %>
                   <%= render "/goals/checkin_dates/select_yesterday" %>
                 <% else %>
                   <%= render "/goals/checkin_dates/select_2_days" %>

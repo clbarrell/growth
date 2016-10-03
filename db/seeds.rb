@@ -47,5 +47,5 @@ goal.checkin_questions.each do |q|
     5.times { |x| CommentAnswer.create(answer: text * rand(1..3), created_at: x.days.ago, question: q)}
   end
 end
-5.times { |x| CheckinLog.create(date: (x + 1).days.ago, goal: goal) }
-CheckinLog.create(date: Time.zone.today, goal: goal)
+5.times { |x| CheckinLog.create(checked_in_at: (x + 1).days.ago, goal: goal) }
+CheckinLog.create(checked_in_at: Time.zone.today, goal: goal)

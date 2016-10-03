@@ -115,15 +115,15 @@ class Goal < ActiveRecord::Base
       if frequency.nil? || last_checkin.nil?
           true
       elsif frequency == 'Daily'
-          (Time.zone.now - last_checkin) > 0 ? true : false
+          (Time.zone.today - last_checkin.to_date) > 0 ? true : false
       elsif frequency == 'Weekly'
-          (Time.zone.now - last_checkin) > 6 ? true : false
+          (Time.zone.today - last_checkin.to_date) > 6 ? true : false
       elsif frequency == 'Fortnightly'
-          (Time.zone.now - last_checkin) > 13 ? true : false
+          (Time.zone.today - last_checkin.to_date) > 13 ? true : false
       elsif frequency == 'Monthly'
-          (Time.zone.now - last_checkin) > 29 ? true : false
+          (Time.zone.today - last_checkin.to_date) > 29 ? true : false
       elsif frequency == 'Quarterly'
-          (Time.zone.now - last_checkin) > 89 ? true : false
+          (Time.zone.today - last_checkin.to_date) > 89 ? true : false
       end
   end
 

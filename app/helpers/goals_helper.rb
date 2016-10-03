@@ -17,7 +17,7 @@ module GoalsHelper
   end
 
   def checkin_log_graph(goal)
-    if goal.checkin_count > 1
+    if goal.checkin_count > 2
       content_tag :div, class: "col-sm-12" do
         line_chart CheckinLog.where(goal: goal).group_by_day(:checked_in_at).count, height: "100px", id: "checkin_log_graph"
       end
@@ -25,7 +25,7 @@ module GoalsHelper
   end
 
   def timewordslastcheckin(goal)
-    goal.checkin_count > 0 ? "#{distance_of_time_in_words_to_now(goal.checkin_logs.try(:last).try(:created_at))} ago" : "never"
+    goal.checkin_count > 0 ? "#{distance_of_time_in_words_to_now(goal.last_checkin)} ago" : "never"
   end
 
   def checkin_warning(goal)
