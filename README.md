@@ -18,8 +18,8 @@
     - [1] make use of new column of `goal.last_checkin`
       [1/2] write migration for this too!
       ```Goal.find_each do |g|
-[2] pry(main)*   g.update(last_checkin: g.checkin_logs.try(:last).checked_in_at)
-[2] pry(main)* end```
+           g.update(last_checkin: g.checkin_logs.try(:last).checked_in_at)
+         end```
 - a way to educate new uesrs on how ot use goals?
 - better title
 
