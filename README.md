@@ -13,6 +13,13 @@
     - [x] create Goal function to rewrite all of today's entries
   - problems
     - it looks like the created_at time is using TIme.now which is different to Date.today, used for the checkin_logs
+    - [1/2] write migration to copy from `checkin_log.date` to `checkin_log.checked_in_at` (datetime)
+      [1/2] update(checked_in_at: a.date.to_datetime)
+    - [1] make use of new column of `goal.last_checkin`
+      [1/2] write migration for this too!
+      ```Goal.find_each do |g|
+[2] pry(main)*   g.update(last_checkin: g.checkin_logs.try(:last).checked_in_at)
+[2] pry(main)* end```
 - a way to educate new uesrs on how ot use goals?
 - better title
 

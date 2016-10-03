@@ -48,4 +48,4 @@ goal.checkin_questions.each do |q|
   end
 end
 5.times { |x| CheckinLog.create(date: (x + 1).days.ago, goal: goal) }
-CheckinLog.create(date: Date.today, goal: goal)
+CheckinLog.create(date: Time.zone.today, goal: goal)

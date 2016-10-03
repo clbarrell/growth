@@ -63,17 +63,14 @@ class Goal < ActiveRecord::Base
       checkin_logs.count
   end
 
-  def new_checkin(date = Date.today)
-      checkin_logs.create(date: date)
-  end
-
-  def last_checkin
-      checkin_logs.try(:last).try(:date)
+  def new_checkin(time = Time.zone.now)
+      checkin_logs.create(checked_in_at: time)
+      self.update(last_checkin: time)
   end
 
   def undo_checkin
       last_log = checkin_logs.try(:last) #.try(:destroy)
-      time_range = (last_log.date.midnight)..Time.now
+      time_range = (last_log.created_at - 1.hour)..(last_log.created_at + 1.hour)
       last_log.try(:destory)
       self.comment_answers.where(:created_at => time_range).find_each { |x| x.try(:destroy) }
       self.rating_answers.where(:created_at => time_range).find_each { |x| x.try(:destroy) }
@@ -96,11 +93,11 @@ class Goal < ActiveRecord::Base
   # to allow for historical checkins
   def old_checkin_change(date = "yesterday")
     if date == "yesterday"
-      timeframe = Time.now - 1.day
+      timeframe = Time.current - 1.day
     else
-      timeframe = Time.now - 2.days
+      timeframe = Time.current - 2.days
     end
-    time_range = (Time.now - 2.hours)..Time.now
+    time_range = (Time.current - 2.hours)..Time.current
     # get all answers together
     ratings = rating_answers.where(:created_at => time_range)
     comments = comment_answers.where(:created_at => time_range)
@@ -118,15 +115,15 @@ class Goal < ActiveRecord::Base
       if frequency.nil? || last_checkin.nil?
           true
       elsif frequency == 'Daily'
-          (Date.today - last_checkin) > 0 ? true : false
+          (Time.zone.now - last_checkin) > 0 ? true : false
       elsif frequency == 'Weekly'
-          (Date.today - last_checkin) > 6 ? true : false
+          (Time.zone.now - last_checkin) > 6 ? true : false
       elsif frequency == 'Fortnightly'
-          (Date.today - last_checkin) > 13 ? true : false
+          (Time.zone.now - last_checkin) > 13 ? true : false
       elsif frequency == 'Monthly'
-          (Date.today - last_checkin) > 29 ? true : false
+          (Time.zone.now - last_checkin) > 29 ? true : false
       elsif frequency == 'Quarterly'
-          (Date.today - last_checkin) > 89 ? true : false
+          (Time.zone.now - last_checkin) > 89 ? true : false
       end
   end
 

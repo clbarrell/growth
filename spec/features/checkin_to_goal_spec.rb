@@ -63,7 +63,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
       # expect(page).to have_content @goal.description
       expect(page).to have_content "You've checked in 1 time"
       expect(page).to have_css "div.graph-block"
-      expect(goal.last_checkin).to eq (Date.today - 2)
+      expect(goal.last_checkin).to eq (Time.zone.today - 2)
     end
     it "page should checkin to yesterday" do
       user = create(:user)
@@ -83,7 +83,7 @@ RSpec.feature "CheckinToGoal", type: :feature do
       # expect(page).to have_content @goal.description
       expect(page).to have_content "You've checked in 1 time"
       expect(page).to have_css "div.graph-block"
-      expect(goal.last_checkin).to eq (Date.today - 1)
+      expect(goal.last_checkin).to eq (Time.zone.today - 1)
     end
   end
 

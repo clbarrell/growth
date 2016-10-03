@@ -68,10 +68,10 @@ class Question < ActiveRecord::Base
       # to get into proper array
       if scale == "Agreement"
         # RATING ANSWERSS
-        rating_answers.map { |x| [x.created_at.to_date, x.answer] }
+        rating_answers.map { |x| [Time.zone.at(x.created_at).to_date, x.answer] }
       elsif scale == "True/False"
         # BOOLEAN
-        boolean_answers.map { |x| [x.created_at.to_date, x.to_numbers] }
+        boolean_answers.map { |x| [Time.zone.at(x.created_at).to_date, x.to_numbers] }
       end
     end
 

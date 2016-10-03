@@ -3,6 +3,5 @@ class CheckinLog < ActiveRecord::Base
 
   # VALIDATIONS
 
-  validates :goal, :date, presence: true
-  validates :date, uniqueness: true 
+  validates :goal, :checked_in_at, presence: true
 end

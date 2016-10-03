@@ -19,7 +19,7 @@ module GoalsHelper
   def checkin_log_graph(goal)
     if goal.checkin_count > 1
       content_tag :div, class: "col-sm-12" do
-        line_chart CheckinLog.where(goal: goal).group_by_day(:date).count, height: "100px", id: "checkin_log_graph"
+        line_chart CheckinLog.where(goal: goal).group_by_day(:checked_in_at).count, height: "100px", id: "checkin_log_graph"
       end
     end
   end

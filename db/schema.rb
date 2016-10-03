@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822123453) do
+ActiveRecord::Schema.define(version: 20161003115103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20160822123453) do
   create_table "checkin_logs", force: :cascade do |t|
     t.date     "date"
     t.integer  "goal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "checked_in_at"
   end
 
   add_index "checkin_logs", ["goal_id"], name: "index_checkin_logs_on_goal_id", using: :btree
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160822123453) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.text     "success_description"
+    t.datetime "last_checkin"
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
