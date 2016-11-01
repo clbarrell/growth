@@ -2,34 +2,21 @@
 
 ## To do next
 
-- change checkin date dropdown
-  - needs to change:
-    - [x] `created_at` date for all answers
-    - [x] checkin_log date & [x] created_at date
-    - [x] don't allow for previous checkin if it was already done!!
-  - OPTION
-    - [x] Dropdown menu -> today / yesterday / day before yesterday
-    - [x] MENU DATA -> do nothing / update all ratings & answers to `1.day.ago`/ ... change all updated_at to 2.days.ago
-    - [x] create Goal function to rewrite all of today's entries
-  - problems
-    - it looks like the created_at time is using TIme.now which is different to Date.today, used for the checkin_logs
-    - [1/2] write migration to copy from `checkin_log.date` to `checkin_log.checked_in_at` (datetime)
-      [1/2] update(checked_in_at: a.date.to_datetime)
-    - [1] make use of new column of `goal.last_checkin`
-      [1/2] write migration for this too!
-      ```Goal.find_each do |g|
-           g.update(last_checkin: g.checkin_logs.try(:last).checked_in_at)
-         end```
-- a way to educate new uesrs on how ot use goals?
-- better title
-
+- a way to educate new users on how to use goals?
+- setup mailer
+  - GEMs: Workless & delayed_job
+  - signup to RAILGUN
+  - Sign up emails
+  - after first checkin emails
+  - reminder_email_to_checkin
+  - youre_on_a_roll_email
+- job
+  - create a job that searches through goals and sends reminders to checkin
+- screenshots
 
 ## Coming Up
 
-- setup mailer
-  - email'd reminders
-  - include calendar invites t0 force people to make space for this
-  - What kinds of emails requried?
+
 - Create a card layout for the goals
   - https://dribbble.com/shots/890839-Sneak-Peek
   - big red header where goal title goes?
