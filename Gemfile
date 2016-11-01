@@ -31,6 +31,10 @@ gem "omniauth-google-oauth2"
 gem 'omniauth'
 gem "figaro"
 
+# DELAYED JOBS
+gem 'delayed_job_active_record'
+gem "workless", "~> 1.1.3"
+
 group :production do
   # webserver for production
   gem "rack-timeout"
