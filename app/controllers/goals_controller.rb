@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @user = current_user
-    @goals = @user.goals.order(last_checkin: :desc)
+    @goals = @user.goals.order(last_checkin: :asc)
   end
 
   # GET /goals/1
