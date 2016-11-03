@@ -34,6 +34,7 @@ gem "figaro"
 # DELAYED JOBS
 # https://github.com/collectiveidea/delayed_job
 gem 'delayed_job_active_record'
+gem 'daemons'
 # https://github.com/lostboy/workless
 gem "workless", "~> 1.1.3"
 
