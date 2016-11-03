@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save # when save is successful
+      UserMailer.welcome_email(@user).deliver_later
       flash["notice"] = "New user created."
       redirect_to goals_path
     else
