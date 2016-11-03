@@ -3,10 +3,7 @@
 ## To do next
 
 - a way to educate new users on how to use goals?
-- setup mailer
-  - GEMs: Workless & delayed_job
-  - signup to RAILGUN
-  - Sign up emails
+- setup mailer (heroku addons:open mailgun)
   - after first checkin emails
   - reminder_email_to_checkin
   - youre_on_a_roll_email

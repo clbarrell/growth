@@ -70,10 +70,10 @@ Rails.application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'growth-focus.herokuapp.com',
+    :domain         => 'growth.outofthebarrell.com',
     :authentication => :plain,
   }
-  config.action_mailer.default_url_options = { host: 'growth-focus.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'growth.outofthebarrell.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
