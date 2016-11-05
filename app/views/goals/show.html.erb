@@ -18,25 +18,30 @@
     <!-- CHECKIN LOG -->
     <%= checkin_log_graph(@goal) %>
 </div>
-<!-- SUCCESS -->
-<div class="row">
-  <div class="col-sm-12">
+<!-- questions -->
+<div class="panel-group" role="tablist">
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= link_to "Questions", goal_questions_path(@goal) %>
-      </div>
-      <div class="panel-body">
-        <p>
-          Goals are created with a set of default questions. Right now, this goal has <%= pluralize(@goal.questions.count, "question") %>.
-          That includes both check in questions and review questions.
-        </p>
-        <p>
-          You should edit these questions and ensure they help you focus on your <%= @goal.title %>.</p><p>
-          <%= link_to "View questions here", goal_questions_path(@goal) %>
-        </p>
-      </div>
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+            <h4 class="panel-title"> <a href="#collapseListGroup1" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseListGroup1"> Questions </a> </h4> </div>
+        <div class="panel-collapse collapse" role="tabpanel" id="collapseListGroup1" aria-labelledby="collapseListGroupHeading1" aria-expanded="false" style="height: 0px;">
+            <div class="panel-body">
+              <p>
+                Right now, this goal has <%= pluralize(@goal.questions.count, "question") %>.
+                That includes both check in questions and review questions. Your check in
+                questions are below:
+              </p>
+              <ol>
+                <% @goal.checkin_questions.each do |question| %>
+                  <li><%= question.question %></li>
+                <% end %>
+              </ol>
+              <p>
+                You should edit these questions and ensure they help you focus on your <%= @goal.title %>.</p><p>
+                <%= link_to "View questions here", goal_questions_path(@goal) %>
+              </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="row">
   <div class="col-sm-12">
