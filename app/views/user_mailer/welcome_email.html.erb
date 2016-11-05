@@ -1,17 +1,3 @@
-<!--
-  <body>
-    <h1>Welcome to growth-focus, <%= @user.name %></h1>
-    <p>
-      You have successfully signed up to growth-focus!
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
-</html> -->
-
-
 <!doctype html>
 <html>
   <head>
@@ -35,16 +21,25 @@
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hi there,</p>
-                        <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
+                        <h1>Welcome to growth-focus, <%= @user.name || @user.email %>!</h1>
+                        <p>You have successfully signed up! You're ready to begin tracking your progress and seeing yourself develop.</p>
+                        <h2>Getting Started</h2>
+                        <p>
+                          Here is what you need to do to get started:
+                        </p>
+                        <ol>
+                          <li>Create a goal</li>
+                          <li>Edit your checkin questions</li>
+                          <li>Do your first checkin!</li>
+                        </ol>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
-                              <td align="left">
-                                <table border="0" cellpadding="0" cellspacing="0">
+                              <td align="center">
+                                <table border="0" cellpadding="0" cellspacing="0" style="width:75%">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="http://htmlemail.io" target="_blank">Call To Action</a> </td>
+                                      <td> <a href="<%= @url %>" target="_blank" style="width:100%">Create a goal!</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -52,8 +47,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p>Good luck! Hope it works.</p>
+                        <p>Thanks for joining and have a great day!</p>
+                        <p> - Chris</p>
                       </td>
                     </tr>
                   </table>
@@ -68,18 +63,11 @@
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    <span class="apple-link">Company Inc, 3 Abbey Road, San Francisco CA 94102</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                    <span class="apple-link">Growth-focus. Made in Melbourne.</span>
                   </td>
                 </tr>
               </table>
             </div>
-
             <!-- END FOOTER -->
 
 <!-- END CENTERED WHITE CONTAINER --></div>

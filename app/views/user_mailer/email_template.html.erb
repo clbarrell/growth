@@ -1,3 +1,17 @@
+<!--
+  <body>
+    <h1>Welcome to growth-focus, <%= @user.name %></h1>
+    <p>
+      You have successfully signed up to growth-focus!
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p></p>
+  </body>
+</html> -->
+
+
 <!doctype html>
 <html>
   <head>
@@ -12,7 +26,7 @@
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">Password reset</span>
+            <span class="preheader">You've successfully signed up to growth-focus!</span>
             <table class="main">
 
               <!-- START MAIN CONTENT AREA -->
@@ -21,18 +35,16 @@
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h1>Hello <%= @resource.name || @resource.email %>!</h1>
-                        <p>Someone has requested a link to change your password. You can do this through the link below.</p>
-                        <p>If you didn't request this, please ignore this email.</p>
-                        <p>Your password won't change until you access the link below and create a new one.</p>
+                        <p>Hi there,</p>
+                        <p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
-                              <td align="center">
-                                <table border="0" cellpadding="0" cellspacing="0" style="width:75%">
+                              <td align="left">
+                                <table border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="<%= edit_password_url(@resource, reset_password_token: @token) %>" target="_blank" style="width:100%">Change my password!</a> </td>
+                                      <td> <a href="http://htmlemail.io" target="_blank">Call To Action</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -40,7 +52,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <p> - Chris</p>
+                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
+                        <p>Thanks for joining and have a great day!</p>
                       </td>
                     </tr>
                   </table>

@@ -51,6 +51,8 @@
 
 Using mailcatcher for development email finding. Run `mailcatcher` in dev to see emails, then go to `http://localhost:1080/`.
 
+Preview emails with: `http://localhost:3000/rails/mailers`
+
 ## Completed!
 
 - Template questions (sep) that can be copied to new goals
