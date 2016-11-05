@@ -38,6 +38,10 @@ gem 'daemons'
 # https://github.com/lostboy/workless
 gem "workless", "~> 1.1.3"
 
+# MAIL
+gem 'premailer-rails'
+gem 'nokogiri'
+
 group :production do
   # webserver for production
   gem "rack-timeout"

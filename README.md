@@ -47,6 +47,10 @@
   - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
   - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
 
+# Instructions
+
+Using mailcatcher for development email finding. Run `mailcatcher` in dev to see emails, then go to `http://localhost:1080/`.
+
 ## Completed!
 
 - Template questions (sep) that can be copied to new goals
