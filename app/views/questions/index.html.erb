@@ -5,46 +5,87 @@
 </div>
 <%= render "/goals/goal_head" %>
 <div class="row">
-    <div class="col-sm-12">
+  <div class="col-sm-12">
+    <% if @goal.checkin_count == 0 %>
+      <div class="panel panel-instructions">
+          <div class="panel-heading">
+            You've created a new goal! Now you get to set up it's questions!
+          </div>
+          <div class="panel-body">
+            <p>You'll want to choose the most important ones and remove the rest!
+              Then, think of what else you want to check in to.</p>
+              <p>
+                A good question set will cover:
+                <ol>
+                  <li><strong>Progress and improvement satisfaction</strong> (such as 'happy with progress...', 'prioritised enough..')</li>
+                  <li><strong>Content specifics</strong> (such as 'presented well using XYZ...', 'Did X when Y..')</li>
+                </ol>
+              </p>
+              <p>
+                Go and edit your questions!
+              </p>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row btn-row">
+    <div class="col-sm-6">
         <%= link_to plus_icon.concat(' Add a question'), new_goal_question_path(@goal), class: "btn btn-primary", "data-turbolinks" => "false" %>
-        <%= link_to 'Reset questions', reset_goal_path(@goal), class: "btn btn-default pull-right" %>
+    </div>
+    <div class="col-sm-6">
+      <%= link_to 'Reset to defaults', reset_goal_path(@goal), class: "btn btn-default" %>
     </div>
 </div>
 <!-- CHECKIN QUESTIONS -->
+
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="text-center">Checkin Questions</h4>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Checkin Questions
+        </div>
+        <div class="panel-body">
+          Edit your checkin questions below.
+        </div>
         <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Question</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @checkin_questions.each do |checkin_question| %>
-                <tr>
-                    <td><%= link_to checkin_question.qnorder, checkin_question %>
-                        <div class="btn-group btn-group-xs">
-                            <%= link_to "∧", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
-                            <%= link_to "∨", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
-                        </div>
-                    </td>
-                    <td><%= checkin_question.question %></td>
-                    <td>
-                        <small class="text-muted"><%= checkin_question.scale %></small>
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @checkin_questions.each do |checkin_question| %>
+            <tr class="clickable-row" data-href="<%= question_url(checkin_question) %>">
+              <td><%= checkin_question.qnorder %>
+                <div class="btn-group btn-group-xs">
+                  <%= link_to "∧", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                  <%= link_to "∨", decrease_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>
+                </div>
+              </td>
+              <td><%= checkin_question.question %></td>
+              <td>
+                <small class="text-muted"><%= checkin_question.scale %></small>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
+      </div>
     </div>
 </div>
 <!-- REVIEW QUESTIONS -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="text-center">Review Questions</h4>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Review Questions
+        </div>
+        <div class="panel-body">
+          Edit your review questions below. <em>Note: They aren't used at the moment.</em>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -70,5 +111,6 @@
                 <% end %>
             </tbody>
         </table>
+      </div>
     </div>
 </div>

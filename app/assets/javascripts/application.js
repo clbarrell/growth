@@ -22,3 +22,8 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+// COFFEE example
+//  $(document).on "turbolinks:load", ->
+//    alert "page has loaded!"

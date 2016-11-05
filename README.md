@@ -13,11 +13,6 @@
 
 ## Coming Up
 
-
-- Create a card layout for the goals
-  - https://dribbble.com/shots/890839-Sneak-Peek
-  - big red header where goal title goes?
-  - https://dribbble.com/shots/1698678-Apps-Dashboard
 - **Redesign layout - make it more appy**
   - colour
     - https://www.materialui.co/colors

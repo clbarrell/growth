@@ -11,6 +11,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: 50%;
+  font-size: 15px;
 }
 
 .jumbotron {
@@ -35,6 +36,13 @@ linear-gradient(
     rgba(0, 0, 0, 0.1)
   ),  */
 
+.btn {
+  text-transform: none;
+}
+
+.btn-primay {
+  text-transform: uppercase;
+}
 
 .panel-heading .panel-title {
   font-size: 18px;
@@ -228,4 +236,33 @@ dl {
 .panel-footer-all-good {
   border-top: medium solid lightgreen;
   padding: 10px 15px;
+}
+
+/***        THINGS      **/
+$instruction-colour: #489464;
+
+.panel-instructions {
+  background-color: #c3ffd4;
+  .panel-heading {
+  background-color: $instruction-colour;
+  color: white;
+  }
+}
+
+.no-padding {
+  padding: 0 0;
+}
+.no-margin {
+  margin: 0 0;
+}
+
+.btn-row {
+  margin-bottom: 20px;
+  text-align: center;
+  a {
+    width: 75%;
+  }
+}
+.clickable-row {
+  cursor: pointer;
 }

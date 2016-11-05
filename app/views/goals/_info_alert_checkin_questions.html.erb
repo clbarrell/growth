@@ -1,0 +1,24 @@
+<% if @goal.checkin_count == 0 %>
+  <div class="panel panel-instructions">
+      <div class="panel-heading">
+        You've created a new question! Now you get to set up it's questions!
+      </div>
+      <div class="panel-body">
+        <p>Goals are created with a set of default questions to start you off with reflecting on your progress.</p>
+        <p>Firstly, you need to change the questions to suit your goal!
+          <%= link_to "(1) Change questions", goal_questions_path(@goal), class: "btn btn-info" %></p>
+          <p>
+            Secondly, you will then need to check in for the first time!
+            <%= link_to "(2) Check in", checkin_goal_path(@goal), class: "btn btn-info", "data-turbolinks" => false %>
+          </p>
+          <p>
+            Have fun setting up your focus area!
+          </p>
+      </div>
+  </div>
+<% else %>
+  <div class="alert alert-instructions" role="alert">
+    Hi there, looks like it's time to check in! <%= link_to "Click here to check in ", checkin_goal_path(@goal), class: "alert-link", "data-turbolinks" => false %>
+    <%= time_icon %>
+  </div>
+<% end %>

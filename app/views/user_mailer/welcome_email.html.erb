@@ -1,78 +1,52 @@
-<!doctype html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <%= stylesheet_link_tag "email/email.css" %>
-  </head>
-  <body class="">
-    <table border="0" cellpadding="0" cellspacing="0" class="body">
-      <tr>
-        <td>&nbsp;</td>
-        <td class="container">
-          <div class="content">
+<%= render 'head_stuff' %>
+<!-- START CENTERED WHITE CONTAINER -->
+<span class="preheader">You've successfully signed up to growth-focus!</span>
+<table class="main">
 
-            <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">You've successfully signed up to growth-focus!</span>
-            <table class="main">
-
-              <!-- START MAIN CONTENT AREA -->
-              <tr>
-                <td class="wrapper">
-                  <table border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                      <td>
+    <!-- START MAIN CONTENT AREA -->
+    <tr>
+        <td class="wrapper">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
                         <h1>Welcome to growth-focus, <%= @user.name || @user.email %>!</h1>
                         <p>You have successfully signed up! You're ready to begin tracking your progress and seeing yourself develop.</p>
                         <h2>Getting Started</h2>
                         <p>
-                          Here is what you need to do to get started:
+                            Here is what you need to do to get started:
                         </p>
                         <ol>
-                          <li>Create a goal</li>
-                          <li>Edit your checkin questions</li>
-                          <li>Do your first checkin!</li>
+                            <li>Create a goal</li>
+                            <li>Edit your checkin questions</li>
+                            <li>Do your first checkin!</li>
                         </ol>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                          <tbody>
-                            <tr>
-                              <td align="center">
-                                <table border="0" cellpadding="0" cellspacing="0" style="width:75%">
-                                  <tbody>
-                                    <tr>
-                                      <td> <a href="<%= @url %>" target="_blank" style="width:100%">Create a goal!</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
+                            <tbody>
+                                <tr>
+                                    <td align="center">
+                                        <table border="0" cellpadding="0" cellspacing="0" style="width:75%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <a href="<%= @url_link %>" target="_blank" style="width:100%">Create a goal!</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                         <p>Thanks for joining and have a great day!</p>
-                        <p> - Chris</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <!-- END MAIN CONTENT AREA -->
-              </table>
-
-            <!-- START FOOTER -->
-            <div class="footer">
-              <table border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="content-block">
-                    <span class="apple-link">Growth-focus. Made in Melbourne.</span>
-                  </td>
+                        <p>
+                            - Chris</p>
+                    </td>
                 </tr>
-              </table>
-            </div>
-            <!-- END FOOTER -->
-
-<!-- END CENTERED WHITE CONTAINER --></div>
+            </table>
         </td>
-        <td>&nbsp;</td>
-      </tr>
-    </table>
-  </body>
+    </tr>
+
+    <!-- END MAIN CONTENT AREA -->
+</table>
+
+<%= render 'footer' %>

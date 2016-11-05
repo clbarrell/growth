@@ -3,7 +3,7 @@
     <h3 class="text-center with-padding"><%= @goal %></h3>
   </div>
 </div>
-<%= render 'checkin_buttons' if @goal.is_it_checkin_time? %>
+<%= render 'info_alert_checkin_questions' if @goal.is_it_checkin_time? || @goal.checkin_count == 0 %>
 <%= render 'goal_head' %>
 <!-- YOU"VE CEHCKED IN X TIMES -->
 <div class="row">
