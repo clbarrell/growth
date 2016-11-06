@@ -26,7 +26,7 @@
   - set a maximum time frame to capture
 
 
-m 
+m
 ## Someday features
 
 - create the 'review' module
@@ -47,6 +47,9 @@ m
 Using mailcatcher for development email finding. Run `mailcatcher` in dev to see emails, then go to `http://localhost:1080/`.
 
 Preview emails with: `http://localhost:3000/rails/mailers`
+
+- heroku addons:open scheduler
+- rake task!!! `rake -T -A` gets a list
 
 ## Completed!
 
