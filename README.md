@@ -7,7 +7,7 @@
   - after first checkin emails
   - reminder_email_to_checkin
   - youre_on_a_roll_email
-- job
+- jobs
   - create a job that searches through goals and sends reminders to checkin
 - screenshots
 
