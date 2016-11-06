@@ -37,6 +37,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 # https://github.com/lostboy/workless
 # gem "workless", "~> 1.1.3"
+gem 'platform-api'
 
 # MAIL
 gem 'premailer-rails'

@@ -100,6 +100,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    excon (0.54.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -116,6 +117,12 @@ GEM
     groupdate (3.0.1)
       activesupport (>= 3)
     hashie (3.4.4)
+    heroics (0.0.17)
+      erubis (~> 2.0)
+      excon
+      moneta
+      multi_json (>= 1.9.2)
+      netrc
     htmlentities (4.3.4)
     i18n (0.7.0)
     jbuilder (2.6.0)
@@ -137,9 +144,11 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    moneta (0.8.0)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    netrc (0.11.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -163,6 +172,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.4)
     pkg-config (1.1.7)
+    platform-api (0.8.0)
+      heroics (~> 0.0.17)
     premailer (1.8.7)
       css_parser (>= 1.4.5)
       htmlentities (>= 4.0.0)
@@ -303,6 +314,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   pg
+  platform-api
   premailer-rails
   pry-rails
   puma
