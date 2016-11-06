@@ -36,7 +36,7 @@ gem "figaro"
 gem 'delayed_job_active_record'
 gem 'daemons'
 # https://github.com/lostboy/workless
-gem "workless", "~> 1.1.3"
+# gem "workless", "~> 1.1.3"
 
 # MAIL
 gem 'premailer-rails'
