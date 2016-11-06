@@ -1,67 +1,70 @@
 <div class="row">
-  <div class="col-sm-12">
-    <h3 class="text-center with-padding">Your Focus Areas</h3>
-  </div>
+    <div class="col-sm-12">
+        <h3 class="text-center with-padding">Your Focus Areas</h3>
+    </div>
 </div>
 <!-- NO GOALS -->
 <% if @user.goals.empty? %>
-  <div class="row">
+<div class="row">
     <div class="col-sm-12">
-      <div class="alert alert-info">
-        You have not made any goals yet.
-      </div>
+        <div class="alert alert-info">
+            You have not made any goals yet.
+        </div>
     </div>
-  </div>
+</div>
 <% end %>
 <div class="row">
-  <div class="col-sm-12">
-
-      <!-- GOALS -->
-      <div class="row">
-      <% @goals.each do |goal| %>
-        <% if @goals.count > 1 %>
-          <div class="col-sm-6">
-        <% elsif @goals.count == 1 %>
-          <div class="col-sm-6 col-sm-offset-3">
-        <% end %>
-          <div class="panel panel-default white-background" id="panel-hoverable">
-            <div class="panel-body">
-              <small>Last checkin: <%= timewordslastcheckin(goal) %></small>
-              <h3><%= goal.title %></h3>
-              <p><%= goal.description %></p>
-            </div>
-              <% if goal.is_it_checkin_time? %>
-              <div class="panel-footer panel-footer-need-checkin">
-                <%= link_to(checkin_goal_path(goal), { "data-turbolinks" => "false" }) do %>
-                  <div class="panel-footer-split"><%= time_icon %> Checkin</div>
-                <% end %>
-                <%= link_to(goal) do %>
-                  <div class="panel-footer-split"><%= eye_icon %> View</div>
-                <% end %>
-              </div>
-              <% else %>
-                <%= link_to goal do %>
-                  <div class="panel-footer panel-footer-all-good">
-                    <%= eye_icon %> View
-                  </div>
-                <% end %>
-              <% end %>
-          </div>
-        </div>
-      <% end %>
-      </div>
-      <!-- NEW GOAL -->
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3" id="new-goal-panel">
+    <div class="col-sm-12">
+        <!-- GOALS -->
+            <div class="row">
+                <% @goals.each do |goal| %>
+                  <% if @goals.count > 1 %>
+                    <div class="col-sm-6">
+                  <% elsif @goals.count == 1 %>
+                    <div class="col-sm-6 col-sm-offset-3">
+                  <% end %>
+                    <div class="panel panel-default white-background" id="panel-hoverable">
+                      <div class="panel-body">
+                          <small>Last checkin:
+                              <%= timewordslastcheckin(goal) %></small>
+                          <h3><%= goal.title %></h3>
+                          <p><%= goal.description %></p>
+                      </div>
+                    <!-- start footer -->
+                    <% if goal.is_it_checkin_time? %>
+                      <div class="panel-footer panel-footer-need-checkin">
+                          <%= link_to(checkin_goal_path(goal), { "data-turbolinks" => "false" }) do %>
+                            <div class="panel-footer-split"><%= time_icon %> Checkin</div>
+                          <% end %>
+                          <%= link_to(goal) do %>
+                            <div class="panel-footer-split"><%= eye_icon %> View</div>
+                          <% end %>
+                      </div>
+                    <% else %>
+                      <%= link_to goal do %>
+                        <div class="panel-footer panel-footer-all-good">
+                            <%= eye_icon %> View
+                        </div>
+                      <% end %> <!-- end link to goal -->
+                    <% end %> <!-- end footer -->
+                    <!-- END FOOTER -->
+                  </div> <!-- PANEL END -->
+                </div> <!-- COL END -->
+                <% end %> <!-- goals.each end -->
+            </div> <!-- end row -->
+        </div> <!-- end col -->
+      </div> <!-- end row -->
+<!-- NEW GOAL -->
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3" id="new-goal-panel">
         <%= link_to(new_goal_path, { "data-turbolinks" => "false" }) do %>
-          <div class="panel panel-default white-background" id="panel-hoverable">
+        <div class="panel panel-default white-background" id="panel-hoverable">
             <div class="panel-body">
-              <h4 class="text-center"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Focus Area</h4>
+                <h4 class="text-center">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    New Focus Area</h4>
             </div>
-          </div>
-        <% end %>
         </div>
-      </div>
-
-  </div>
+        <% end %>
+    </div>
 </div>

@@ -2,7 +2,6 @@
 
 ## To do next
 
-- a way to educate new users on how to use goals?
 - setup mailer (heroku addons:open mailgun)
   - after first checkin emails
   - reminder_email_to_checkin
@@ -25,8 +24,6 @@
 - adjust checkin_log graph depending on goal.frequency & amount of checkins
   - set a maximum time frame to capture
 
-
-m
 ## Someday features
 
 - create the 'review' module
@@ -79,3 +76,7 @@ Preview emails with: `http://localhost:3000/rails/mailers`
 - Move edit goal side menu into own buttons at bottom of goal#view page
 - maybe have a button / alert that shows up when needing checkin in goal#view
 - installed Puma webserver
+- set up mailer
+- set up delayed jobs
+- set up scheduler to run those jobs
+- set up a basic welcome email
