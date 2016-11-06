@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    if resource.save?
+    if resource.save
       UserMailer.welcome_email(resource).deliver_later
     end
   end
