@@ -19,9 +19,7 @@
 //= require chartkick
 
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
 
 
 // COFFEE example

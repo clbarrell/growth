@@ -3,9 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #
 
-# $ ->
-#   $(".clickable-row").click (e) ->
-#     window.location = $(this).data("href")
 $ ->
   $(document).on 'click', '.clickable-row', (e) ->
     window.location = $(this).data("href")
