@@ -9,6 +9,8 @@
 - jobs
   - create a job that searches through goals and sends reminders to checkin
 - screenshots
+- adjust checkin_log graph depending on goal.frequency & amount of checkins
+
 
 ## Coming Up
 
@@ -21,8 +23,6 @@
     - For example:  
       - @media (min-width: 768px) { ... }
     - http://www.bootply.com/109653
-- adjust checkin_log graph depending on goal.frequency & amount of checkins
-  - set a maximum time frame to capture
 
 ## Someday features
 

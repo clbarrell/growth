@@ -66,6 +66,10 @@ class Goal < ActiveRecord::Base
   def new_checkin(time = Time.zone.now)
       checkin_logs.create(checked_in_at: time)
       self.update(last_checkin: time)
+      if checkin_count == 1
+        # send email
+        UserMailer.delay(:run_at => 20.hours.from_now).first_checkin(self.user, self)
+      end
   end
 
   def undo_checkin
