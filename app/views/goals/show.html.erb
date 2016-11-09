@@ -16,7 +16,29 @@
 </div>
 <div class="row">
     <!-- CHECKIN LOG -->
-    <%= checkin_log_graph(@goal) %>
+    <% if @goal.frequency == "Daily" %>
+      <div class="col-sm-12">
+        <table id="checkin_count_table">
+          <tr>
+            <% @date_array.each do |date| %>
+              <% if @date_hash[date] == true %>
+                <td data-title="<%= date.strftime("%b %e") %>" data-container="body"
+                data-toggle="tooltip" class="cell-checkedin">
+                  <%= date.day %>
+                </td>
+              <% elsif @date_hash[date] == false %>
+                <td class="cell-not-checkedin" data-title="<%= date.strftime("%b %e") %>" data-container="body"
+                data-toggle="tooltip">
+                  <%= date.day %>
+                </td>
+              <% end %>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    <% else %>
+      <%= checkin_log_graph(@goal) %>
+    <% end %>
 </div>
 <!-- questions -->
 <div class="row">
@@ -44,6 +66,7 @@
       </div>
   </div>
 </div>
+<!-- LINK ROW -->
 <div class="row">
   <div class="col-sm-12">
     <%= link_to pencil_icon.concat(' Edit goal'), edit_goal_path(@goal), "data-turbolinks" => "false", class: "btn btn-default" %>

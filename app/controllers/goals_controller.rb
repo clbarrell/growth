@@ -16,6 +16,24 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
     @checkin_questions = @goal.checkin_questions
     @review_questions = @goal.review_questions
+    # get checkin logs
+    # return max of 28 days ago
+    # only good
+    time = 27.days.ago
+    time = @goal.created_at if @goal.created_at > 27.days.ago
+    @checkin_dates = @goal.checkin_logs.where("checked_in_at > ?", time).pluck(:checked_in_at).map{ |date| date.to_date }
+    @date_array = (time.to_date..Time.zone.today).to_a #can iterate on this
+    # (28.days.ago.to_date..Time.zone.today).map{ |date| date.strftime("%b %d") }
+    @date_hash = Hash.new
+    @date_array.each do |date|
+      if @checkin_dates.include?(date)
+        @date_hash[date] = true
+      else
+        @date_hash[date] = false
+      end
+    end
+    # end up with a hash?
+    # date_hash[20 Oct 2016] => false
   end
 
   # GET /goals/new
