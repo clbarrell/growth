@@ -68,7 +68,7 @@ class Goal < ActiveRecord::Base
       self.update(last_checkin: time)
       if checkin_count == 1
         # send email
-        UserMailer.delay(:run_at => 20.hours.from_now).first_checkin(self.user, self)
+        UserMailer.delay(:run_at => 1.day.from_now.at_midnight).first_checkin(self.user, self)
       end
   end
 
