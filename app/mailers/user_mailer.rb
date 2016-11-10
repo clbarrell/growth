@@ -14,4 +14,6 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Nice work on that check in!")
     #delay(run_at: 5.minutes.from_now)
   end
+
+  
 end

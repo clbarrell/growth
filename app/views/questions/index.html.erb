@@ -63,7 +63,7 @@
           </thead>
           <tbody>
             <% @checkin_questions.each do |checkin_question| %>
-            <tr class="clickable-row" data-href="<%= question_url(checkin_question) %>">
+            <tr class="clickable-row" data-href="<%= edit_question_url(checkin_question) %>">
               <td><%= checkin_question.qnorder %>
                 <div class="btn-group btn-group-xs">
                   <%= link_to "∧", increase_question_path(checkin_question.id), class: "btn btn-default btn-group-xs", method: :put %>

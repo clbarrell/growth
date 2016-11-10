@@ -16,8 +16,9 @@
 <div class="row">
     <div class="col-sm-12">
         <!-- GOALS -->
-            <div class="row">
-                <% @goals.each do |goal| %>
+            <% @goals.in_groups_of(2, false) do |goal| %>
+                <div class="row">
+                  <!-- START FIRST CARD -->
                   <% if @goals.count > 1 %>
                     <div class="col-sm-6">
                   <% elsif @goals.count == 1 %>
@@ -26,32 +27,67 @@
                     <div class="panel panel-default white-background" id="panel-hoverable">
                       <div class="panel-body">
                           <small>Last checkin:
-                              <%= timewordslastcheckin(goal) %></small>
-                          <h3><%= goal.title %></h3>
-                          <p><%= goal.description %></p>
+                              <%= timewordslastcheckin(goal[0]) %></small>
+                          <h3><%= goal[0].title %></h3>
+                          <p><%= goal[0].description %></p>
                       </div>
                     <!-- start footer -->
-                    <% if goal.is_it_checkin_time? %>
+                    <% if goal[0].is_it_checkin_time? %>
                       <div class="panel-footer panel-footer-need-checkin">
-                          <%= link_to(checkin_goal_path(goal), { "data-turbolinks" => "false" }) do %>
+                          <%= link_to(checkin_goal_path(goal[0]), { "data-turbolinks" => "false" }) do %>
                             <div class="panel-footer-split"><%= time_icon %> Checkin</div>
                           <% end %>
-                          <%= link_to(goal) do %>
+                          <%= link_to(goal[0]) do %>
                             <div class="panel-footer-split"><%= eye_icon %> View</div>
                           <% end %>
                       </div>
                     <% else %>
-                      <%= link_to goal do %>
+                      <%= link_to goal[0] do %>
                         <div class="panel-footer panel-footer-all-good">
                             <%= eye_icon %> View
                         </div>
-                      <% end %> <!-- end link to goal -->
+                      <% end %> <!-- end link to goal[0] -->
                     <% end %> <!-- end footer -->
-                    <!-- END FOOTER -->
                   </div> <!-- PANEL END -->
                 </div> <!-- COL END -->
-                <% end %> <!-- goals.each end -->
-            </div> <!-- end row -->
+                <!-- END FIRST CARD -->
+                <!-- START SECOND CARD -->
+                <% if goal[1] %>
+                  <% if @goals.count > 1 %>
+                    <div class="col-sm-6">
+                  <% elsif @goals.count == 1 %>
+                    <div class="col-sm-6 col-sm-offset-3">
+                  <% end %>
+                    <div class="panel panel-default white-background" id="panel-hoverable">
+                      <div class="panel-body">
+                          <small>Last checkin:
+                              <%= timewordslastcheckin(goal[1]) %></small>
+                          <h3><%= goal[1].title %></h3>
+                          <p><%= goal[1].description %></p>
+                      </div>
+                    <!-- start footer -->
+                    <% if goal[1].is_it_checkin_time? %>
+                      <div class="panel-footer panel-footer-need-checkin">
+                          <%= link_to(checkin_goal_path(goal[1]), { "data-turbolinks" => "false" }) do %>
+                            <div class="panel-footer-split"><%= time_icon %> Checkin</div>
+                          <% end %>
+                          <%= link_to(goal[1]) do %>
+                            <div class="panel-footer-split"><%= eye_icon %> View</div>
+                          <% end %>
+                      </div>
+                    <% else %>
+                      <%= link_to goal[1] do %>
+                        <div class="panel-footer panel-footer-all-good">
+                            <%= eye_icon %> View
+                        </div>
+                      <% end %> <!-- end link to goal[1] -->
+                    <% end %> <!-- end footer -->
+                  </div> <!-- PANEL END -->
+                </div> <!-- COL END -->
+              <% end %>
+              <!-- END SECOND CARD -->
+              </div> <!-- end row -->
+            <% end %> <!-- goals.in_groups_of end -->
         </div> <!-- end col -->
       </div> <!-- end row -->
 <!-- NEW GOAL -->

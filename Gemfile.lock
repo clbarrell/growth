@@ -125,6 +125,8 @@ GEM
       netrc
     htmlentities (4.3.4)
     i18n (0.7.0)
+    intercom-rails (0.3.4)
+      activesupport (> 3.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -308,6 +310,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   figaro
   groupdate
+  intercom-rails
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri

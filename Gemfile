@@ -43,6 +43,9 @@ gem 'platform-api'
 gem 'premailer-rails'
 gem 'nokogiri'
 
+# LOGGING
+gem "intercom-rails"
+
 group :production do
   # webserver for production
   gem "rack-timeout"

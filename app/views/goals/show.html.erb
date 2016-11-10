@@ -22,7 +22,7 @@
           <tr>
             <% @date_array.each do |date| %>
               <% if @date_hash[date] == true %>
-                <td data-title="<%= date.strftime("%b %e") %>" data-container="body"
+                <td data-title="<%= date.strftime("%b %e") %> #winning" data-container="body"
                 data-toggle="tooltip" class="cell-checkedin">
                   <%= date.day %>
                 </td>
