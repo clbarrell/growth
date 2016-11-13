@@ -42,6 +42,11 @@ class GoalsController < ApplicationController
     @goal = Goal.new
   end
 
+  def social
+    # to edit and change SGRs
+    
+  end
+
   # goals/1/checkin
   def checkin
     # view for checkin
@@ -164,7 +169,8 @@ class GoalsController < ApplicationController
     def authorise_user_answer_view
       if Goal.find(params[:id]).user != current_user
         if not SocialGoalRecord.users_with_access(params[:id]).includes?(current_user.id)
-        redirect_to goals_path, alert: "You don't have access to this goal."
+          redirect_to goals_path, alert: "You don't have access to this goal."
+        end
       end
     end
 

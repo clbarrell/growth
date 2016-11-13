@@ -9,11 +9,15 @@ class User < ActiveRecord::Base
   has_many :social_goal_records
 
   def to_s
-    self.name
+    if self.name
+      "#{self.name} <#{self.email}>"
+    else
+      self.email
+    end
   end
 
   # social_goal_records stuff
-  
+
 
 
   # TURN THIS INTO A COLUMN variable

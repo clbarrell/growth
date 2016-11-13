@@ -9,4 +9,8 @@ class SocialGoalRecord < ActiveRecord::Base
     where(goal: goal).pluck(:user_id)
   end
 
+  def title
+    goal.title
+  end
+
 end

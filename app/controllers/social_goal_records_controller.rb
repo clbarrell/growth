@@ -5,6 +5,7 @@ class SocialGoalRecordsController < ApplicationController
   # GET /social_goal_records.json
   def index
     @social_goal_records = SocialGoalRecord.where(user: current_user)
+    @goals = current_user.goals
   end
 
   # GET /social_goal_records/1

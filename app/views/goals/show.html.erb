@@ -14,11 +14,12 @@
         </p>
     </div>
 </div>
-<div class="row hidden-xs">
+<div class="row">
     <!-- CHECKIN LOG -->
     <% if @goal.frequency == "Daily" %>
       <div class="col-sm-12">
-        <table id="checkin_count_table">
+        <div class="table-responsive">
+        <table class="table" id="checkin_count_table">
           <tr>
             <% @date_array.each do |date| %>
               <% if @date_hash[date] == true %>
@@ -35,6 +36,7 @@
             <% end %>
           </tr>
         </table>
+        </div>
       </div>
     <% else %>
       <%= checkin_log_graph(@goal) %>

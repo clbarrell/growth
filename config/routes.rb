@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :goals do
     resources :questions, only: [:new, :index]
     member do
+      get 'social'
       get 'checkin'
       patch 'update_checkin'
       get 'reset'

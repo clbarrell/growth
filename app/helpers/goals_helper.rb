@@ -1,5 +1,10 @@
 module GoalsHelper
 
+  def people_with_access_list(goal)
+    people = SocialGoalRecord.where(goal: goal).pluck(:user_id).map { |u| User.select(:id, :name, :email).find(u) }
+    people.empty? ? "none" : people
+  end
+
   def goal_type
     %w(Standard Contextual)
   end
