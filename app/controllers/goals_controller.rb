@@ -1,7 +1,8 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
   before_action :authenticate_user!
-  before_action :authorise_user, only: [:show, :checkin, :checkin_answers, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :authorise_user, only: [:show, :checkin, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :authorise_user_answer_view, only: :checkin_answers
 
   # GET /goals
   # GET /goals.json
@@ -156,6 +157,13 @@ class GoalsController < ApplicationController
     # ensure you don't look at other's goals
     def authorise_user
       if Goal.find(params[:id]).user != current_user
+        redirect_to goals_path, alert: "You don't have access to this goal."
+      end
+    end
+
+    def authorise_user_answer_view
+      if Goal.find(params[:id]).user != current_user
+        if not SocialGoalRecord.users_with_access(params[:id]).includes?(current_user.id)
         redirect_to goals_path, alert: "You don't have access to this goal."
       end
     end

@@ -4,7 +4,7 @@ class SocialGoalRecordsController < ApplicationController
   # GET /social_goal_records
   # GET /social_goal_records.json
   def index
-    @social_goal_records = SocialGoalRecord.all
+    @social_goal_records = SocialGoalRecord.where(user: current_user)
   end
 
   # GET /social_goal_records/1
@@ -14,7 +14,7 @@ class SocialGoalRecordsController < ApplicationController
 
   # GET /social_goal_records/new
   def new
-    @social_goal_record = SocialGoalRecord.new
+    @social_goal_record = SocialGoalRecord.new(user: current_user)
   end
 
   # GET /social_goal_records/1/edit
@@ -25,7 +25,7 @@ class SocialGoalRecordsController < ApplicationController
   # POST /social_goal_records.json
   def create
     @social_goal_record = SocialGoalRecord.new(social_goal_record_params)
-
+    @social_goal_record.user = current_user
     respond_to do |format|
       if @social_goal_record.save
         format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }

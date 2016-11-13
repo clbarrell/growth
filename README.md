@@ -4,7 +4,6 @@
 
 - Social Goals
   - data models (`user.social_goals...`)
-    - social_goals join table??
   - handle registration / adding people things - sending "please set a password" emails
   - Social Goals page
   - social goals > give access

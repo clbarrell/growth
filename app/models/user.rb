@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
     self.name
   end
 
+  # social_goal_records stuff
+  
+
 
   # TURN THIS INTO A COLUMN variable
   # takes too much data loading
