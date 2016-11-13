@@ -16,13 +16,6 @@
   <p><b>Growth</b> is for keeping your development front of mind and tracking your progress.</p>
     <p>
       <% if user_signed_in? == false %>
-        <% if current_user.checkin_ready_goals > 0 %>
-          <p>You have <%= current_user.checkin_ready_goals %> checkin ready goals!</p>
-          <p><%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %></p>
-        <% else %>
-          <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
-        <% end %>
-
       <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-link" %> <br><br>
       <%= link_to image_tag('btn_google_signin_light_normal_web.png'), user_google_oauth2_omniauth_authorize_path, id: "google-login" %>
