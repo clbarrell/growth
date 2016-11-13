@@ -3,7 +3,6 @@
 ## To do next
 
 - setup mailer (heroku addons:open mailgun)
-  - after first checkin emails
   - reminder_email_to_checkin
   - youre_on_a_roll_email
 - jobs
@@ -18,11 +17,6 @@
   - colour
     - https://www.materialui.co/colors
     - https://www.materialpalette.com/indigo/light-blue
-  - fix the sizing problems of header
-    - Add your own class to the <div class="special-container"> and override the width property at one or more viewport sizes.
-    - For example:  
-      - @media (min-width: 768px) { ... }
-    - http://www.bootply.com/109653
 
 ## Someday features
 
@@ -32,12 +26,7 @@
     - Are you satisfied with this progress?
     - How much closer are you to your next milestone?
     - How will you make better progress next week?
-- %goal% variable replacement in question wording
-- integrate Jquery whn needed - http://jquerypp.com/
 - each goal can have multiple milestones
-- Side bar
-  - https://blackrockdigital.github.io/startbootstrap-simple-sidebar/
-  - https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/index.html
 
 # Instructions
 
