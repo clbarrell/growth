@@ -1,7 +1,7 @@
 module GoalsHelper
 
   def people_with_access_list(goal)
-    people = SocialGoalRecord.where(goal: goal).pluck(:user_id).map { |u| User.select(:id, :name, :email).find(u) }
+    people = User.joins(:social_goal_records).where(social_goal_records: { goal: goal })
     people.empty? ? "none" : people
   end
 

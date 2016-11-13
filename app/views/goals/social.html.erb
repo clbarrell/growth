@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="text-center with-padding"><%= @goal %></h3>
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 text-center">
+      <p>Enter their email to search:</p>
+      <p>
+        text box here
+      </p>
+      <button type="button" name="button">press to search DB with emails</button>
+      <div class="user_found_or_not" id="user_found_or_not">
+        found or not found...here email@email.com
+        <a href="#" class="btn btn-default">invite user / give access</a>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          People with access
+        </div>
+        <div class="panel-body">
+          The following people have access to this goal:
+          <ul>
+            <%= people_with_access_list(@goal).each do |person| %>
+            <li><%= person %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>

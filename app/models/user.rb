@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   end
 
   # social_goal_records stuff
-
+  def social_goals
+    Goal.joins(:social_goal_records).where(social_goal_records: { user: current_user })
+  end
 
 
   # TURN THIS INTO A COLUMN variable

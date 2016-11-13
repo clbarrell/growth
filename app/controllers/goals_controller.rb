@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset, :social]
   before_action :authenticate_user!
   before_action :authorise_user, only: [:show, :checkin, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
   before_action :authorise_user_answer_view, only: :checkin_answers
@@ -9,6 +9,7 @@ class GoalsController < ApplicationController
   def index
     @user = current_user
     @goals = @user.goals.order(last_checkin: :asc)
+    @social_goals = @user.social_goals
   end
 
   # GET /goals/1
@@ -44,7 +45,7 @@ class GoalsController < ApplicationController
 
   def social
     # to edit and change SGRs
-    
+
   end
 
   # goals/1/checkin
