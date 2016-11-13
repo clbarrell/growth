@@ -1,7 +1,7 @@
 IntercomRails.config do |config|
   # == Intercom app_id
   #
-  config.app_id = ENV["INTERCOM_APP_ID"] || "yw3qpg3y"
+  config.app_id = ENV["INTERCOM_APP_ID"]
 
   # == Intercom session_duration
   #
@@ -23,6 +23,7 @@ IntercomRails.config do |config|
   #
   # config.user.current = Proc.new { current_user }
   # config.user.current = [Proc.new { current_user }]
+
 
   # == Include for logged out Users
   # If set to true, include the Intercom messenger on all pages, regardless of whether
@@ -56,6 +57,10 @@ IntercomRails.config do |config|
   #   :plan => Proc.new { |current_user| current_user.plan.name },
   #   :favorite_color => :favorite_color
   # }
+  config.user.custom_data = {
+    :goal_count => Proc.new { |user| user.goals.count },
+    :checkin_ready_goals => :checkin_ready_goals
+  }
 
   # == Current company method/variable
   # The method/variable that contains the current company for the current user,

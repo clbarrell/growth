@@ -33,7 +33,7 @@
                       </div>
                     <!-- start footer -->
                     <% if goal[0].is_it_checkin_time? %>
-                      <div class="panel-footer panel-footer-need-checkin">
+                      <div class="panel-footer panel-footer-need-checkin white-background">
                           <%= link_to(checkin_goal_path(goal[0]), { "data-turbolinks" => "false" }) do %>
                             <div class="panel-footer-split"><%= time_icon %> Checkin</div>
                           <% end %>
@@ -43,7 +43,7 @@
                       </div>
                     <% else %>
                       <%= link_to goal[0] do %>
-                        <div class="panel-footer panel-footer-all-good">
+                        <div class="panel-footer panel-footer-all-good white-background">
                             <%= eye_icon %> View
                         </div>
                       <% end %> <!-- end link to goal[0] -->
@@ -67,7 +67,7 @@
                       </div>
                     <!-- start footer -->
                     <% if goal[1].is_it_checkin_time? %>
-                      <div class="panel-footer panel-footer-need-checkin">
+                      <div class="panel-footer panel-footer-need-checkin white-background">
                           <%= link_to(checkin_goal_path(goal[1]), { "data-turbolinks" => "false" }) do %>
                             <div class="panel-footer-split"><%= time_icon %> Checkin</div>
                           <% end %>
@@ -77,7 +77,7 @@
                       </div>
                     <% else %>
                       <%= link_to goal[1] do %>
-                        <div class="panel-footer panel-footer-all-good">
+                        <div class="panel-footer panel-footer-all-good white-background">
                             <%= eye_icon %> View
                         </div>
                       <% end %> <!-- end link to goal[1] -->
