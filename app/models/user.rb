@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :goals
+  has_many :social_goal_records
 
   def to_s
     self.name
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
     end
     count
   end
- 
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first

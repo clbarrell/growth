@@ -1,0 +1,1 @@
+json.array! @social_goal_records, partial: 'social_goal_records/social_goal_record', as: :social_goal_record

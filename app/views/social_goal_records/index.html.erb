@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Social Goal Records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Goal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @social_goal_records.each do |social_goal_record| %>
+      <tr>
+        <td><%= social_goal_record.user %></td>
+        <td><%= social_goal_record.goal %></td>
+        <td><%= link_to 'Show', social_goal_record %></td>
+        <td><%= link_to 'Edit', edit_social_goal_record_path(social_goal_record) %></td>
+        <td><%= link_to 'Destroy', social_goal_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Social goal record', new_social_goal_record_path %>

@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :social_goal_record do
+    user nil
+    goal nil
+  end
   factory :checkin_log do
     sequence(:date) { |x| x.days.ago }
     goal

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :comment_answers
   resources :rating_answers
   resources :boolean_answers
+  resources :social_goal_records
   resources :goals do
     resources :questions, only: [:new, :index]
     member do

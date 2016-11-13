@@ -2,6 +2,13 @@
 
 ## To do next
 
+- Social Goals
+  - data models (`user.social_goals...`)
+    - social_goals join table??
+  - handle registration / adding people things - sending "please set a password" emails
+  - Social Goals page
+  - social goals > give access
+  - Goals#index page changes
 - setup mailer (heroku addons:open mailgun)
   - reminder_email_to_checkin
   - youre_on_a_roll_email
