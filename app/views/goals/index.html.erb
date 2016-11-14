@@ -105,17 +105,27 @@
     </div>
 </div>
 <!-- SOCIAL GOALS -->
-<div class="row">
-  <div class="col-sm-12">
-    Others' Goals
+<% if current_user.social_goals.any? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="text-center">Others' Goals</h3>
+    </div>
   </div>
-</div>
-<!-- SOCIAL LIST GOALS -->
-<div class="row">
-  <div class="col-sm-12">
-    list groupdate
-    <% @social_goals.each do |sg| %>
-
-    <% end %>
-  </div>
-</div>
+  <!-- SOCIAL LIST GOALS -->
+  <% @goal_owners.each do |user| %>
+    <div class="row">
+      <div class="col-sm-4">
+        <h4><%= user %></h4>
+      </div>
+      <div class="col-sm-8">
+        <div class="list-group">
+          <%= @social_goals.where(user: user).find_each do |goal| %>
+            <%= link_to checkin_answers_goal_path(goal), class: "list-group-item" do %>
+            <%= goal.title %> <span class="pull-right">Last check in: <%= timewordslastcheckin(goal) %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

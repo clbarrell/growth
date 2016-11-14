@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :goals
   has_many :social_goal_records
+  has_many :goal_owners, through: :social_goal_records
+  # goal_owners are people who's goals you can access
 
   def to_s
     if self.name
@@ -18,7 +20,7 @@ class User < ActiveRecord::Base
 
   # social_goal_records stuff
   def social_goals
-    Goal.joins(:social_goal_records).where(social_goal_records: { user: current_user })
+    Goal.joins(:social_goal_records).where(social_goal_records: { user: self })
   end
 
 

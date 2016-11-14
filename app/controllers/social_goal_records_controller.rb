@@ -27,6 +27,7 @@ class SocialGoalRecordsController < ApplicationController
   def create
     @social_goal_record = SocialGoalRecord.new(social_goal_record_params)
     @social_goal_record.user = current_user
+    @social_goal_record.goal_owner = @social_goal_record.goal.user
     respond_to do |format|
       if @social_goal_record.save
         format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }

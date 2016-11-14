@@ -10,6 +10,7 @@ class GoalsController < ApplicationController
     @user = current_user
     @goals = @user.goals.order(last_checkin: :asc)
     @social_goals = @user.social_goals
+    @goal_owners = @user.goal_owners
   end
 
   # GET /goals/1
@@ -169,7 +170,7 @@ class GoalsController < ApplicationController
 
     def authorise_user_answer_view
       if Goal.find(params[:id]).user != current_user
-        if not SocialGoalRecord.users_with_access(params[:id]).includes?(current_user.id)
+        if not SocialGoalRecord.users_with_access(params[:id]).include?(current_user.id)
           redirect_to goals_path, alert: "You don't have access to this goal."
         end
       end
