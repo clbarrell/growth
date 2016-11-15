@@ -8,6 +8,8 @@
   - Social Goals page
   - social goals > give access
   - Goals#index page changes
+  - all the headers etc small things
+  - seeds
 - setup mailer (heroku addons:open mailgun)
   - reminder_email_to_checkin
   - youre_on_a_roll_email

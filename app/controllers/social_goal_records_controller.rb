@@ -6,6 +6,10 @@ class SocialGoalRecordsController < ApplicationController
   def index
     @social_goal_records = SocialGoalRecord.where(user: current_user)
     @goals = current_user.goals
+
+    @user = current_user
+    @social_goals = @user.social_goals
+    @goal_owners = @user.goal_owners
   end
 
   # GET /social_goal_records/1

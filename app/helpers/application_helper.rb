@@ -98,6 +98,14 @@ module ApplicationHelper
     end
   end
 
+  def briefcase_icon
+    content_tag :span, class: "glyphicon glyphicon-briefcase", 'aria-hidden' => "true" do
+    end
+  end
+  def share_icon
+    content_tag :span, class: "glyphicon glyphicon-share", 'aria-hidden' => "true" do
+    end
+  end
 
 
   def show_checkins?

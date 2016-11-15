@@ -1,8 +1,34 @@
 <div class="row">
     <div class="col-sm-12">
-        <h2 class="text-center with-padding">Make Your Focus Areas Social</h2>
+        <h2 class="text-center with-padding">Social Focus Areas</h2>
     </div>
 </div>
+<!-- SOCIAL GOALS -->
+<% if current_user.social_goals.any? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="text-center">Others' Goals</h3>
+    </div>
+  </div>
+  <!-- SOCIAL LIST GOALS -->
+  <% @goal_owners.each do |user| %>
+    <div class="row">
+      <div class="col-sm-4 user-list">
+        <strong><%= user %></strong>
+      </div>
+      <div class="col-sm-8">
+        <div class="list-group">
+          <%= @social_goals.where(user: user).find_each do |goal| %>
+            <%= link_to checkin_answers_goal_path(goal), class: "list-group-item", id: "panel-hoverable" do %>
+            <%= goal.title %> <span class="pull-right">Last check in: <%= timewordslastcheckin(goal) %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %> <!-- END SOCIAL GOALS -->
+
 <!-- NO GOALS -->
 <% if current_user.goals.empty? %>
   <div class="row">
@@ -13,9 +39,10 @@
       </div>
   </div>
 <% end %>
-<!-- GOAL LIST -->
+<!-- MAKE GOAL SOCIAL LIST -->
 <div class="row">
   <div class="col-sm-12">
+    <h3 class="text-center">Your goals</h3>
     <table class="table table-hover">
       <!-- GOAL > EACH -->
       <% @goals.each do |goal| %>

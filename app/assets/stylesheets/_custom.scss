@@ -2,8 +2,6 @@ a {
     text-decoration: none;
 }
 
-
-
 body {
   padding-top: 70px;
   background-image: image-url("skyclouds-750cropped.jpeg");
@@ -15,7 +13,7 @@ body {
 }
 
 .jumbotron {
-  background-color: #254b53;
+  background-color: #184d7b;
   color: white;
 }
 
@@ -318,4 +316,8 @@ $instruction-colour: #489464;
   margin: 5px auto;
   font-size: .9em;
   width: 80%;
+}
+
+.user-list {
+  padding: 15px;
 }

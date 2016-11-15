@@ -1,13 +1,13 @@
 <% if user_signed_in? %>
-<div class="alert alert-success text-center">
-    You're logged in!
-    <% if current_user.checkin_ready_goals > 0 %>
-    You have
-    <%= current_user.checkin_ready_goals %>
-    that need checking in:
-    <% end %>
-    <%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %>
-</div>
+  <div class="alert alert-success text-center">
+      You're logged in!
+      <% if current_user.checkin_ready_goals > 0 %>
+        You have
+        <%= current_user.checkin_ready_goals %> goals
+        that need checking in:
+      <% end %>
+      <%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <div class="jumbotron">
@@ -38,7 +38,7 @@
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <div class="panel panel-default white-background">
+        <div class="panel panel-primary white-background">
             <div class="panel-heading">
                 What is Growth?
             </div>
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="panel panel-default white-background">
+        <div class="panel panel-primary white-background">
             <div class="panel-heading">
                 Screenshots
             </div>
@@ -112,13 +112,13 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="panel panel-default white-background">
+        <div class="panel panel-primary white-background">
             <div class="panel-heading">
                 Todo list
             </div>
             <div class="panel-body">
-                Follow the to-do list and source code
-                <%= link_to "here", 'https://github.com/clbarrell/growth' %>
+                Follow the to-do list and source code at
+                <%= link_to "github.com/clbarrell/growth", 'https://github.com/clbarrell/growth' %>
             </div>
         </div>
     </div>
