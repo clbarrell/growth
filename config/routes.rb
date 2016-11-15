@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'home/help'
   root 'home#home'
   resources :users
+  post 'search_for_email' => 'goals#search_for_email'
   get '/users' => 'users#index', as: :user_root #devise root path
   resources :comment_answers
   resources :rating_answers

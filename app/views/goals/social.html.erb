@@ -6,10 +6,11 @@
 <div class="row">
     <div class="col-sm-12 text-center">
       <p>Enter their email to search:</p>
-      <p>
-        text box here
-      </p>
-      <button type="button" name="button">press to search DB with emails</button>
+      <%= form_for(@user_to_find, remote: true, url: search_for_email_path) do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.submit "Search" %>
+      <% end %>
       <div class="user_found_or_not" id="user_found_or_not">
         found or not found...here email@email.com
         <a href="#" class="btn btn-default">invite user / give access</a>
@@ -24,12 +25,18 @@
           People with access
         </div>
         <div class="panel-body">
+          <% if anyone_have_access?(@goal) %>
           The following people have access to this goal:
           <ul>
-            <%= people_with_access_list(@goal).each do |person| %>
-            <li><%= person %></li>
-            <% end %>
+              <%= people_with_access(@goal).find_each do |person| %>
+              <li><%= person.to_s %></li>
+              <% end %>
           </ul>
+          <% else %>
+          <p>
+            No one has access to this goal yet.
+          </p>
+          <% end %>
         </div>
       </div>
     </div>

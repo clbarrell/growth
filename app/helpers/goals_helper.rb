@@ -1,10 +1,5 @@
 module GoalsHelper
 
-  def people_with_access_list(goal)
-    people = User.joins(:social_goal_records).where(social_goal_records: { goal: goal })
-    people.empty? ? "none" : people
-  end
-
   def goal_type
     %w(Standard Contextual)
   end

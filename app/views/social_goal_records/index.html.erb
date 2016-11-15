@@ -48,12 +48,12 @@
       <% @goals.each do |goal| %>
         <tr>
           <td><h5><%= goal.title %> <span class="label label-default"><%= SocialGoalRecord.users_with_access(goal).count %> </span></h5></td>
-          <td><a href="#goal_<%= goal.id %>" data-toggle="collapse" class="btn btn-default">Show users with access</a></td>
+          <td><a href="#goal_<%= goal.id %>" data-toggle="collapse" class="btn btn-default <%= disabled_link(goal) %>">Show users with access</a></td>
           <td><%= link_to "Edit Access", social_goal_path(goal), class: "btn btn-default" %></td>
         </tr>
         <tr>
           <td colspan="3" class="hiddenRow">
-            <div class="people_list collapse" id="goal_<%= goal.id %>"> <%= people_with_access(goal) %> </div>
+            <div class="people_list collapse" id="goal_<%= goal.id %>"> <%= list_people_with_access(goal) %> </div>
           </td>
         </tr>
       <% end %>
