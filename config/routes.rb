@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'home#home'
   resources :users
   post 'search_for_email' => 'goals#search_for_email'
+  post 'new_social_goal' => 'social_goal_records#new_social_goal'
   get '/users' => 'users#index', as: :user_root #devise root path
   resources :comment_answers
   resources :rating_answers

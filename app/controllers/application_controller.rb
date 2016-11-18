@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
   # signin url == http://localhost:3000/users/sign_in
   # singin url all good when signing in
 
+  def valid_email?(email)
+    (email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i)
+  end
+
+
   def after_sign_out_path_for(_resource_or_scope)
       root_path
   end

@@ -47,28 +47,27 @@ class GoalsController < ApplicationController
   def social
     # to edit and change SGRs
     @user_to_find = User.new
+    @sgr = SocialGoalRecord.new
   end
 
   def search_for_email
     # does email match an excisting user
     user = params["user"]
-
-    user_found = User.exists?(email: user[:email])
-    if user_found == true
-      # do something
-      @target_user = User.find_by(email: user[:email])
-      puts "USER FOUND"
-    else
-      # return false
-    end
-
-    respond_to do |format|
-      if user_found
-        #format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }
-        format.json { render :show, status: :created, location: @social_goal_record }
-      else
-        #format.html { render :new }
-        format.json { render json: @social_goal_record.errors, status: :unprocessable_entity }
+    valid_email?(user[:email]).present? ? @email_valid=true : @email_valid=false
+    unless @email_valid == false
+      @user_found = User.exists?(email: user[:email])
+      respond_to do |format|
+        if @user_found == true
+          # format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }
+          @target_user = User.find_by(email: user[:email])
+          # format.json { render json: @target_user, status: :created }
+          format.js   { }
+        else
+          @target_user = User.new(email: user[:email])
+            # format.html { render :new }
+          # format.json { render json: @social_goal_record.errors, status: :unprocessable_entity }
+          format.js   { }
+        end
       end
     end
 
