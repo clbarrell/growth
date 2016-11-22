@@ -50,6 +50,7 @@ class SocialGoalRecordsController < ApplicationController
         format.html { redirect_to social_goal_path(params[:goal_id]), notice: "Error. Social record wasn't able to be created." }
       end
     end
+  end
 
 
   # POST /social_goal_records

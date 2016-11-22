@@ -52,6 +52,7 @@ class GoalsController < ApplicationController
 
   def search_for_email
     # does email match an excisting user
+    goal = Goal.find(params[:goal_id])
     user = params["user"]
     valid_email?(user[:email]).present? ? @email_valid=true : @email_valid=false
     unless @email_valid == false
@@ -61,6 +62,8 @@ class GoalsController < ApplicationController
           # format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }
           @target_user = User.find_by(email: user[:email])
           # format.json { render json: @target_user, status: :created }
+          # Does the user already have access?
+          @already_has_access = true if @target_user.social_goals.include?(goal)
           format.js   { }
         else
           @target_user = User.new(email: user[:email])

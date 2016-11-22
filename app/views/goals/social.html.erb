@@ -9,6 +9,7 @@
       <%= form_for(@user_to_find, remote: true, url: search_for_email_path, html: { class: "form-inline" }) do |f| %>
         <div class="form-group">
           <%= f.email_field :email, class: "form-control", style: "min-width:250px" %>
+          <%= hidden_field_tag :goal_id, params[:id] %>
         </div>
         <%= f.submit "Search", class: "btn btn-primary" %>
       <% end %>
@@ -22,10 +23,10 @@
       <%= form_tag(new_social_goal_path) do %>
         <%= hidden_field_tag :goal_id, params[:id] %>
         <div class="form-group">
-          <%= email_field_tag :email, nil, id: "email-field", class: "form-control", style: "max-width:250px", readonly: true %> <br>
-          <%= submit_tag "", id: "submit-button-form", class: "btn btn-info" %>
+          <%= email_field_tag :email, nil, id: "email-field", class: "form-control", style: "max-width:250px", readonly: true %>
         </div>
-      <% end %>
+        <%= submit_tag "", id: "submit-button-form", class: "btn btn-info" %>
+      <% end %><br>
     </div>
   </div>
 </div>
