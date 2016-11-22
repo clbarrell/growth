@@ -15,5 +15,22 @@ class UserMailer < ApplicationMailer
     #delay(run_at: 5.minutes.from_now)
   end
 
-  
+  def access_to_new_goal(user, goal, goal_owner)
+    # you have access to a new goal
+    @current_user = user
+    @goal = goal
+    @goal_owner = goal_owner
+    @url_link = checkin_answers_goal_path(goal)
+    mail(to: @current_user.email, subject: "Someone gave you access to their goal!")
+  end
+
+  def please_set_password(user, goal_to_access, goal_owner)
+    # someone gave you a goal, please set up PW
+    @current_user = user
+    @goal = goal_to_access
+    @goal_owner = goal_owner
+    @url_link = new_user_password_path
+    mail(to: @current_user.email, subject: "Someone gave you access to their growth-focus goal!")
+  end
+
 end

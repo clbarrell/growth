@@ -35,12 +35,18 @@ class SocialGoalRecordsController < ApplicationController
       if User.exists?(email: params[:email])
         @social_goal_record.user = User.find_by(email: params[:email])
         # send the "you've got a new goal email"
+        UserMailer.access_to_new_goal(@social_goal_record.user,
+                                      @social_goal_record.goal,
+                                      @social_goal_record.goal_owner).deliver_later
       else
         # create user
         user = User.create(email: params[:email],
                     password: Devise.friendly_token[0,20])
         @social_goal_record.user = user
-        # send email
+        # send email "new goal access - please set up account"
+        UserMailer.please_set_password(@social_goal_record.user,
+                                      @social_goal_record.goal,
+                                      @social_goal_record.goal_owner).deliver_later
       end
     respond_to do |format|
       # create sgr

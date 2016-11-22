@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def email_name
+    if self.name
+      self.name
+    else
+      self.email
+    end
+  end
+  
   # social_goal_records stuff
   def social_goals
     Goal.joins(:social_goal_records).where(social_goal_records: { user: self })
