@@ -63,7 +63,9 @@ class GoalsController < ApplicationController
           @target_user = User.find_by(email: user[:email])
           # format.json { render json: @target_user, status: :created }
           # Does the user already have access?
-          @already_has_access = true if @target_user.social_goals.include?(goal)
+          if @target_user.social_goals.include?(goal) || @target_user == current_user
+            @already_has_access = true
+          end
           format.js   { }
         else
           @target_user = User.new(email: user[:email])

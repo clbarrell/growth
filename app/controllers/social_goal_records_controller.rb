@@ -51,7 +51,7 @@ class SocialGoalRecordsController < ApplicationController
     respond_to do |format|
       # create sgr
       if @social_goal_record.save
-        format.html { redirect_to social_goal_path(params[:goal_id]), notice: '#{@social_goal_record.user.email} was given access to this goal.' }
+        format.html { redirect_to social_goal_path(params[:goal_id]), notice: @social_goal_record.user.email.concat(" was given access to this goal.") }
       else
         format.html { redirect_to social_goal_path(params[:goal_id]), notice: "Error. Social record wasn't able to be created." }
       end

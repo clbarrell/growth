@@ -8,7 +8,13 @@ module ApplicationHelper
     people_with_access(goal).any? ? true : false
   end
 
-
+  def whose_goal(goal)
+    if current_user == goal.user
+      "you've"
+    else
+      goal.user.email_name.concat(" has")
+    end
+  end
 
   #Turns alerts into bootstrap ones
   def bootstrap_class_for flash_type
