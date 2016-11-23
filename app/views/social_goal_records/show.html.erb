@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @social_goal_record.user %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @social_goal_record.goal %>
+</p>
+
+<%= link_to 'Edit', edit_social_goal_record_path(@social_goal_record) %> |
+<%= link_to 'Back', social_goal_records_path %>

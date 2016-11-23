@@ -2,6 +2,8 @@
 
 ## To do next
 
+- Social Goals
+  - seeds
 - setup mailer (heroku addons:open mailgun)
   - reminder_email_to_checkin
   - youre_on_a_roll_email

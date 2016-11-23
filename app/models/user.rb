@@ -6,9 +6,29 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :goals
+  has_many :social_goal_records
+  has_many :goal_owners, through: :social_goal_records
+  # goal_owners are people who's goals you can access
 
   def to_s
-    self.name
+    if self.name
+      "#{self.name} <#{self.email}>"
+    else
+      self.email
+    end
+  end
+
+  def email_name
+    if self.name
+      self.name
+    else
+      self.email
+    end
+  end
+  
+  # social_goal_records stuff
+  def social_goals
+    Goal.joins(:social_goal_records).where(social_goal_records: { user: self })
   end
 
 
@@ -21,7 +41,7 @@ class User < ActiveRecord::Base
     end
     count
   end
- 
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first

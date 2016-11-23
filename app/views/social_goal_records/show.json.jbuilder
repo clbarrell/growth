@@ -1,0 +1,1 @@
+json.partial! "social_goal_records/social_goal_record", social_goal_record: @social_goal_record

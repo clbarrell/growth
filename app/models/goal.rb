@@ -2,6 +2,7 @@ class Goal < ActiveRecord::Base
   belongs_to :user
   has_many :questions, dependent: :destroy
   has_many :checkin_logs, dependent: :destroy
+  has_many :social_goal_records, dependent: :destroy
 
   has_many :rating_answers, through: :questions
   has_many :comment_answers, through: :questions

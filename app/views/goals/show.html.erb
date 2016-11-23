@@ -14,11 +14,12 @@
         </p>
     </div>
 </div>
-<div class="row hidden-xs">
+<div class="row">
     <!-- CHECKIN LOG -->
     <% if @goal.frequency == "Daily" %>
       <div class="col-sm-12">
-        <table id="checkin_count_table">
+        <div class="table-responsive">
+        <table class="table" id="checkin_count_table">
           <tr>
             <% @date_array.each do |date| %>
               <% if @date_hash[date] == true %>
@@ -35,6 +36,7 @@
             <% end %>
           </tr>
         </table>
+        </div>
       </div>
     <% else %>
       <%= checkin_log_graph(@goal) %>
@@ -71,6 +73,7 @@
   <div class="col-sm-12">
     <%= link_to pencil_icon.concat(' Edit goal'), edit_goal_path(@goal), "data-turbolinks" => "false", class: "btn btn-default" %>
     <%= link_to list_icon.concat(' Show questions'), goal_questions_path(@goal), class: "btn btn-default" %>
+    <%= link_to share_icon.concat(' Change social access'), social_goal_path(@goal), class: "btn btn-default" %>
     <%= link_to trash_icon.concat(' Delete goal'), @goal,
     data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-default pull-right" %>
   </div>

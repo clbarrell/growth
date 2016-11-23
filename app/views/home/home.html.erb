@@ -1,67 +1,125 @@
 <% if user_signed_in? %>
-<div class="alert alert-success text-center">
-    You're logged in!
-    <% if current_user.checkin_ready_goals > 0 %>
-    You have <%= current_user.checkin_ready_goals %> that need checking in:
-    <% end %>
-    <%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %>
-</div>
+  <div class="alert alert-success text-center">
+      You're logged in!
+      <% if current_user.checkin_ready_goals > 0 %>
+        You have
+        <%= current_user.checkin_ready_goals %> goals
+        that need checking in:
+      <% end %>
+      <%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <div class="jumbotron">
-  <h2>How do you track your progress?</h2>
-  <p>
-    <em>With a personal development journal.</em>
-  </p>
-  <p><b>Growth</b> is for keeping your development front of mind and tracking your progress.</p>
+    <h2>How do you track your progress?</h2>
     <p>
-      <% if user_signed_in? == false %>
-      <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-link" %> <br><br>
-      <%= link_to image_tag('btn_google_signin_light_normal_web.png'), user_google_oauth2_omniauth_authorize_path, id: "google-login" %>
-      <% end %>
-      </p>
+        <em>With a personal development journal.</em>
+    </p>
+    <p>
+        <b>Growth</b>
+        is for keeping your development front of mind and tracking your progress.</p>
+    <p>
+        <% if user_signed_in? == true %>
+          <% if current_user.checkin_ready_goals > 0 %>
+            <p>You have
+                <%= current_user.checkin_ready_goals %>
+                checkin ready goals!</p>
+            <p><%= link_to home_icon.concat(" View your goals"), goals_path, class: "btn btn-primary" %></p>
+          <% else %>
+            <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default" %>
+          <br><br>
+          <%= link_to image_tag('btn_google_signin_light_normal_web.png'), user_google_oauth2_omniauth_authorize_path, id: "google-login" %>
+        <% end %>
+    </p>
 </div>
 <div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-default white-background" id="panel-hoverable">
-      <div class="panel-heading">
-        What is Growth?
-      </div>
-      <div class="panel-body">
-        <p>Growth gives you focus.</p>
-        <ol>
-          <li>Create a focus area.</li>
-          <li>Choose the frequency you'd like to checkin.</li>
-          <li>Choose the questions you want to use.</li>
-          <li>Checkin to your goal and track your progress as you grow.</li>
-        </ol>
-        <p>
-          Use Growth to checkin to your goals regularly, keeping them front-of-mind.
-        </p>
-      </div>
-  </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="panel panel-default white-background" id="panel-hoverable">
-      <div class="panel-heading">
-        Screenshots
-      </div>
-      <div class="panel-body">
-
-      </div>
+    <div class="col-sm-6">
+        <div class="panel panel-primary white-background">
+            <div class="panel-heading">
+                What is Growth?
+            </div>
+            <div class="panel-body">
+                <p>Growth gives you focus.</p>
+                <ol>
+                    <li>Create a focus area.</li>
+                    <li>Choose the frequency you'd like to checkin.</li>
+                    <li>Choose the questions you want to use.</li>
+                    <li>Checkin to your goal and track your progress as you grow.</li>
+                </ol>
+                <p>
+                    Use Growth to checkin to your goals regularly, keeping them front-of-mind.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="col-sm-6">
+        <div class="panel panel-primary white-background">
+            <div class="panel-heading">
+                Screenshots
+            </div>
+            <div class="panel-body">
+                <!-- THUMB NAILS -->
+                <a data-toggle="modal" href="#Your_focus_areas">
+                    <%= image_tag "Your_focus_areas.png", style: "width:120px" %>
+                </a>
+                <a data-toggle="modal" href="#Goal_view">
+                    <%= image_tag "Goal_view.png", style: "width:120px" %>
+                </a>
+                <a data-toggle="modal" href="#checkin_page">
+                    <%= image_tag "checkin_page.png", style: "width:120px" %>
+                </a>
+                <a data-toggle="modal" href="#goal_answers_view">
+                    <%= image_tag "goal_answers_view.png", style: "width:120px" %>
+                </a>
+
+                <!-- MODAL -->
+                <div class="modal fade" tabindex="-1" id="goal_answers_view" role="dialog" aria-labelledby="mySmallModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <%= image_tag "goal_answers_view.png", style: "width:100%" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" tabindex="-1" id="Goal_view" role="dialog" aria-labelledby="mySmallModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <%= image_tag "Goal_view.png", style: "width:100%" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" tabindex="-1" id="Your_focus_areas" role="dialog" aria-labelledby="mySmallModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <%= image_tag "Your_focus_areas.png", style: "width:100%" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" tabindex="-1" id="checkin_page" role="dialog" aria-labelledby="mySmallModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <%= image_tag "checkin_page.png", style: "width:100%" %>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- end panel-body -->
+        </div>
+    </div>
 </div>
 <div class="row">
-  <div class="col-sm-12">
-      <div class="panel panel-default white-background" id="panel-hoverable">
-        <div class="panel-heading">
-          Todo list
+    <div class="col-sm-12">
+        <div class="panel panel-primary white-background">
+            <div class="panel-heading">
+                Todo list
+            </div>
+            <div class="panel-body">
+                Follow the to-do list and source code at
+                <%= link_to "github.com/clbarrell/growth", 'https://github.com/clbarrell/growth' %>
+            </div>
         </div>
-        <div class="panel-body">
-          Follow the to-do list and source code <%= link_to "here", 'https://github.com/clbarrell/growth' %>
-        </div>
-      </div>
-  </div>
+    </div>
 </div>

@@ -7,4 +7,12 @@ class UserMailerPreview < ActionMailer::Preview
   def first_checkin
     UserMailer.first_checkin(User.first, User.first.goals.first)
   end
+
+  def access_to_new_goal
+    UserMailer.access_to_new_goal(User.first, Goal.last, User.third)
+  end
+
+  def please_set_password
+    UserMailer.please_set_password(User.first, Goal.last, User.third)
+  end
 end

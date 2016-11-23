@@ -2,8 +2,6 @@ a {
     text-decoration: none;
 }
 
-
-
 body {
   padding-top: 70px;
   background-image: image-url("skyclouds-750cropped.jpeg");
@@ -13,9 +11,17 @@ body {
   background-position: 50%;
   font-size: 15px;
 }
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  vertical-align: middle;
+}
 
 .jumbotron {
-  background-color: #254b53;
+  background-color: #184d7b;
   color: white;
 }
 
@@ -238,11 +244,11 @@ dl {
 }
 
 .panel-footer-need-checkin {
-  border-top: medium solid lightsalmon;
+  border-bottom: medium solid lightsalmon;
 }
 
 .panel-footer-all-good {
-  border-top: medium solid lightgreen;
+  border-bottom: medium solid lightgreen;
   padding: 10px 15px;
 }
 
@@ -304,4 +310,30 @@ $instruction-colour: #489464;
   .cell-not-checkedin:hover {
     background-color: #ffffff;
   }
+}
+
+
+// SOCIAL GOAL RECORD
+
+.hiddenRow {
+    padding: 0 !important;
+    border-top: none !important;
+}
+
+.people_list {
+  //text-align: center;
+  margin: 5px auto;
+  font-size: .9em;
+  width: 40%;
+}
+
+.user-list {
+  padding: 15px;
+}
+
+.user_found_or_not {
+  margin: 15px auto;
+}
+.email-field, .submit-button-form {
+  margin: 0 auto !important;
 }

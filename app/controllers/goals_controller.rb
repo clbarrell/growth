@@ -1,13 +1,16 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset, :social]
   before_action :authenticate_user!
-  before_action :authorise_user, only: [:show, :checkin, :checkin_answers, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :authorise_user, only: [:show, :checkin, :edit, :update, :destroy, :update_checkin, :undo_checkin, :reset]
+  before_action :authorise_user_answer_view, only: :checkin_answers
 
   # GET /goals
   # GET /goals.json
   def index
     @user = current_user
     @goals = @user.goals.order(last_checkin: :asc)
+    @social_goals = @user.social_goals
+    @goal_owners = @user.goal_owners
   end
 
   # GET /goals/1
@@ -39,6 +42,41 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
+  end
+
+  def social
+    # to edit and change SGRs
+    @user_to_find = User.new
+    @sgr = SocialGoalRecord.new
+    @sgrs = SocialGoalRecord.where(goal: params[:id])
+  end
+
+  def search_for_email
+    # does email match an excisting user
+    goal = Goal.find(params[:goal_id])
+    user = params["user"]
+    valid_email?(user[:email]).present? ? @email_valid=true : @email_valid=false
+    unless @email_valid == false
+      @user_found = User.exists?(email: user[:email])
+      respond_to do |format|
+        if @user_found == true
+          # format.html { redirect_to @social_goal_record, notice: 'Social goal record was successfully created.' }
+          @target_user = User.find_by(email: user[:email])
+          # format.json { render json: @target_user, status: :created }
+          # Does the user already have access?
+          if @target_user.social_goals.include?(goal) || @target_user == current_user
+            @already_has_access = true
+          end
+          format.js   { }
+        else
+          @target_user = User.new(email: user[:email])
+            # format.html { render :new }
+          # format.json { render json: @social_goal_record.errors, status: :unprocessable_entity }
+          format.js   { }
+        end
+      end
+    end
+
   end
 
   # goals/1/checkin
@@ -157,6 +195,14 @@ class GoalsController < ApplicationController
     def authorise_user
       if Goal.find(params[:id]).user != current_user
         redirect_to goals_path, alert: "You don't have access to this goal."
+      end
+    end
+
+    def authorise_user_answer_view
+      if Goal.find(params[:id]).user != current_user
+        if not SocialGoalRecord.users_with_access(params[:id]).include?(current_user.id)
+          redirect_to goals_path, alert: "You don't have access to this goal."
+        end
       end
     end
 

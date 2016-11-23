@@ -1,0 +1,36 @@
+// AJAX JS JQUERY
+console.log("Adding the returned user");
+
+// clear all html
+$('div.user_found_or_not').html("");
+$(".form-group").removeClass("has-success");
+$(".form-group").removeClass("has-warning");
+$(".form-group").removeClass("has-error");
+$('div.user_found_or_not').attr('class', 'user_found_or_not');
+<% if @email_valid == true && @already_has_access != true %>
+  // Set variables
+  $('.email-field').val("<%= @target_user.email %>");
+  <% if @user_found == true %>
+    $('.submit-button-form').val("Give user access & let them know!");
+    $('div.user_found_or_not').html("Yes! <%= @target_user %> was found.");
+    $(".form-group").addClass("has-success");
+  <% else %>
+    $('.submit-button-form').val("Invite user to growth-focus & let them know");
+    $('div.user_found_or_not').html("Almost... user wasn't found but we can invite them!");
+    $(".form-group").addClass("has-warning");
+  <% end %>
+  // show form
+  $('#sgr_form_hidden').css('display', 'block');
+<% elsif @already_has_access == true %>
+  console.log("User already has access");
+  $('div.user_found_or_not').attr('class', 'user_found_or_not alert alert-warning');
+  $('div.user_found_or_not').html("<%= @target_user.email %> already has access!");
+  $(".form-group").addClass("has-warning");
+<% else %>
+  // email not valid
+  console.log("Email not valid");
+  $('div.user_found_or_not').attr('class', 'user_found_or_not alert alert-warning');
+  $('div.user_found_or_not').html("That email is invalid! Try again!");
+  $(".form-group").addClass("has-error");
+<% end %>
+$("#resultsModal").modal("show");

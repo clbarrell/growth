@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101110134) do
+ActiveRecord::Schema.define(version: 20161114115144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,17 @@ ActiveRecord::Schema.define(version: 20161101110134) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
+  create_table "social_goal_records", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "goal_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "goal_owner_id"
+  end
+
+  add_index "social_goal_records", ["goal_id"], name: "index_social_goal_records_on_goal_id", using: :btree
+  add_index "social_goal_records", ["user_id"], name: "index_social_goal_records_on_user_id", using: :btree
+
   create_table "template_questions", force: :cascade do |t|
     t.string   "text"
     t.string   "qntype"
@@ -137,4 +148,6 @@ ActiveRecord::Schema.define(version: 20161101110134) do
 
   add_foreign_key "checkin_logs", "goals"
   add_foreign_key "goals", "users"
+  add_foreign_key "social_goal_records", "goals"
+  add_foreign_key "social_goal_records", "users"
 end

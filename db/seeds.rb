@@ -28,11 +28,19 @@ end
 
 # user
 user = User.create(name: "Chris Barrell", email: "clbarrell@gmail.com", password: "kankyman")
+user2 = User.create(name: "Josh Barrell", email: "josh@josh.com", password: "joshjosh")
+user3 = User.create(name: "Nick Tommy", email: "nick@nick.com", password: "nicknick")
 
 # GOAL
 goal = Goal.create(description: "I want to speak clearly, concisely and with impact. I don't want to muddle my words.",
-            frequency: "Daily", goaltype: "Standard",
-            success_description: "To be successful, I will have created this awesome interface....", title: "I am a goal!", user: user)
+            frequency: "Daily",
+            success_description: "When I've done a presentation at a conference", title: "Speak clearer!", user: user)
+goal2 = Goal.create(description: "I need to work on my personal development. I'm not giving it enough attention.",
+            frequency: "Daily",
+            success_description: "When I've done a course & conference", title: "Personal development", user: user2)
+goal3 = Goal.create(description: "I want to improve my writing",
+            frequency: "Daily",
+            success_description: "When I've written a blog post", title: "Writing skills", user: user3)
 
 # CHECKIN
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus sapien nec ultricies feugiat. "
@@ -49,3 +57,14 @@ goal.checkin_questions.each do |q|
 end
 5.times { |x| CheckinLog.create(checked_in_at: (x + 1).days.ago, goal: goal) }
 CheckinLog.create(checked_in_at: Time.zone.today, goal: goal)
+
+# Social goal records
+SocialGoalRecord.create(user: user,
+                        goal: goal2,
+                        goal_owner: user2)
+SocialGoalRecord.create(user: user2,
+                        goal: goal,
+                        goal_owner: user)
+SocialGoalRecord.create(user: user3,
+                    goal: goal,
+                    goal_owner: user)

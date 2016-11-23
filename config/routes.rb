@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   get 'home/help'
   root 'home#home'
   resources :users
+  post 'search_for_email' => 'goals#search_for_email'
+  post 'new_social_goal' => 'social_goal_records#new_social_goal'
   get '/users' => 'users#index', as: :user_root #devise root path
   resources :comment_answers
   resources :rating_answers
   resources :boolean_answers
+  resources :social_goal_records
   resources :goals do
     resources :questions, only: [:new, :index]
     member do
+      get 'social'
       get 'checkin'
       patch 'update_checkin'
       get 'reset'

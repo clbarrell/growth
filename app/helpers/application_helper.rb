@@ -1,5 +1,20 @@
 module ApplicationHelper
 
+  def people_with_access(goal)
+    User.joins(:social_goal_records).where(social_goal_records: { goal: goal })
+  end
+
+  def anyone_have_access?(goal)
+    SocialGoalRecord.where(goal: goal).any?
+  end
+
+  def whose_goal(goal)
+    if current_user == goal.user
+      "you've"
+    else
+      goal.user.email_name.concat(" has")
+    end
+  end
 
   #Turns alerts into bootstrap ones
   def bootstrap_class_for flash_type
@@ -34,6 +49,22 @@ module ApplicationHelper
   end
 
   def display_goal_name?
+    if controller.controller_name == "goals" || controller.controller_name == "questions"
+      # controller
+      if ["show", "edit", "checkin", "checkin_answers", "social"].include?(controller.action_name)
+        # ACTION
+        true if current_user == @goal.user #only show if owner of goal
+      elsif controller.controller_name == "questions" && ["new", "index"].include?(controller.action_name)
+        true if current_user == @goal.user #only show if owner of goal
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+
+  def display_goal_answers?
     if controller.controller_name == "goals" || controller.controller_name == "questions"
       # controller
       if ["show", "edit", "checkin", "checkin_answers"].include?(controller.action_name)
@@ -98,6 +129,14 @@ module ApplicationHelper
     end
   end
 
+  def briefcase_icon
+    content_tag :span, class: "glyphicon glyphicon-briefcase", 'aria-hidden' => "true" do
+    end
+  end
+  def share_icon
+    content_tag :span, class: "glyphicon glyphicon-share", 'aria-hidden' => "true" do
+    end
+  end
 
 
   def show_checkins?
