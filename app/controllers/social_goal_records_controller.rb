@@ -92,9 +92,10 @@ class SocialGoalRecordsController < ApplicationController
   # DELETE /social_goal_records/1
   # DELETE /social_goal_records/1.json
   def destroy
+    goal = @social_goal_record.goal
     @social_goal_record.destroy
     respond_to do |format|
-      format.html { redirect_to social_goal_records_url, notice: 'Social goal record was successfully destroyed.' }
+      format.html { redirect_to social_goal_path(goal), notice: 'Social goal record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

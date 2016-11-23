@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def anyone_have_access?(goal)
-    people_with_access(goal).any? ? true : false
+    SocialGoalRecord.where(goal: goal).any?
   end
 
   def whose_goal(goal)
@@ -51,7 +51,7 @@ module ApplicationHelper
   def display_goal_name?
     if controller.controller_name == "goals" || controller.controller_name == "questions"
       # controller
-      if ["show", "edit", "checkin", "checkin_answers"].include?(controller.action_name)
+      if ["show", "edit", "checkin", "checkin_answers", "social"].include?(controller.action_name)
         # ACTION
         true if current_user == @goal.user #only show if owner of goal
       elsif controller.controller_name == "questions" && ["new", "index"].include?(controller.action_name)

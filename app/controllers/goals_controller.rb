@@ -48,6 +48,7 @@ class GoalsController < ApplicationController
     # to edit and change SGRs
     @user_to_find = User.new
     @sgr = SocialGoalRecord.new
+    @sgrs = SocialGoalRecord.where(goal: params[:id])
   end
 
   def search_for_email

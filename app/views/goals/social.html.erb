@@ -40,8 +40,8 @@
           <% if anyone_have_access?(@goal) %>
           The following people have access to this goal:
           <ul>
-              <%= people_with_access(@goal).find_each do |person| %>
-              <li><%= person.to_s %></li>
+              <%= @sgrs.find_each do |sgr| %>
+              <li><%= sgr.user.to_s %> - <%= link_to "remove", sgr, method: :delete, data: { confirm: 'Are you sure? Remove their access?' } %></li>
               <% end %>
           </ul>
           <% else %>

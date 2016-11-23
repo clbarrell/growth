@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
                 <% if show_checkins? %>
-                  <%= link_to_in_li_with_span home_icon, goals_path, "checkins needed", class: "nav-item nav-link" %>
+                  <%= link_to_in_li_with_span home_icon, goals_path, " ! ", class: "nav-item nav-link" %>
                   <%= link_to_in_li briefcase_icon, social_goal_records_path, class: "nav-item nav-link" %>
                 <% else %>
                   <%= link_to_in_li home_icon, goals_path, class: "nav-item nav-link" %>
