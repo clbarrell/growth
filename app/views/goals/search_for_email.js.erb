@@ -7,7 +7,6 @@ $(".form-group").removeClass("has-success");
 $(".form-group").removeClass("has-warning");
 $(".form-group").removeClass("has-error");
 $('div.user_found_or_not').attr('class', 'user_found_or_not');
-$('#sgr_form_hidden').css('display', 'none');
 <% if @email_valid == true && @already_has_access != true %>
   // Set variables
   $('.email-field').val("<%= @target_user.email %>");
