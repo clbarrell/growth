@@ -1,40 +1,43 @@
+<h2 class="text-center with-padding">Social Goals</h2>
 <!-- SOCIAL GOALS -->
 <% if current_user.social_goals.any? %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">Others' Goals</h2>
+  </div>
+  <div class="panel-body">
+    These are the focus areas that other people have given you access to.
+  </div>
+  <table class="table table-hover">
+    <tr>
+      <th>
+        User
+      </th>
+      <th>
+        Focus area
+      </th>
+      <th>
+        Last checkin
+      </th>
+      <th>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <h3 class="text-center">Social Goals</h3>
-      <table class="table table-hover">
+      </th>
+    </tr>
+    <!-- GOAL > EACH -->
+    <% @goal_owners.each do |user| %>
+      <% @social_goals.where(user: user).find_each do |goal| %>
         <tr>
-          <th>
-            User
-          </th>
-          <th>
-            Focus area
-          </th>
-          <th>
-            Last checkin
-          </th>
-          <th>
-
-          </th>
+          <td><h5><%= user %></h5></td>
+          <td><%= goal.title %></td>
+          <td>
+            <%= timewordslastcheckin(goal) %>
+          </td>
+          <td><%= link_to "View goal answers", checkin_answers_goal_path(goal), class: "btn btn-default" %></td>
         </tr>
-        <!-- GOAL > EACH -->
-        <% @goal_owners.each do |user| %>
-          <% @social_goals.where(user: user).find_each do |goal| %>
-            <tr>
-              <td><h5><%= user %></h5></td>
-              <td><%= goal.title %></td>
-              <td>
-                <%= timewordslastcheckin(goal) %>
-              </td>
-              <td><%= link_to "View goal answers", checkin_answers_goal_path(goal), class: "btn btn-default" %></td>
-            </tr>
-          <% end %>
-        <% end %> <!-- goal owers end -->
-        <!-- end -->
-      </table>
-    </div>
+      <% end %>
+    <% end %> <!-- goal owers end -->
+    <!-- end -->
+    </table>
   </div>
 <% end %> <!-- END SOCIAL GOALS -->
 
@@ -51,23 +54,30 @@
 <!-- MAKE GOAL SOCIAL LIST -->
 <div class="row">
   <div class="col-sm-12">
-    <h3 class="text-center">Your goals</h3>
-    <table class="table table-hover">
-      <!-- GOAL > EACH -->
-      <% @goals.each do |goal| %>
-        <tr>
-          <td><h5><%= goal.title %> <span class="label label-default"><%= SocialGoalRecord.users_with_access(goal).count %> </span></h5></td>
-          <td><a href="#goal_<%= goal.id %>" data-toggle="collapse" class="btn btn-default <%= disabled_link(goal) %>">Show users with access</a></td>
-          <td><%= link_to "Edit Access", social_goal_path(goal), class: "btn btn-default" %></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="hiddenRow">
-            <div class="people_list collapse" id="goal_<%= goal.id %>"> <%= list_people_with_access(goal) %> </div>
-          </td>
-        </tr>
-      <% end %>
-      <!-- end -->
-    </table>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Your Goals</h2>
+      </div>
+      <div class="panel-body">
+        These are your goals. See who has access below.
+      </div>
+      <table class="table table-hover">
+        <!-- GOAL > EACH -->
+        <% @goals.each do |goal| %>
+          <tr>
+            <td><h5><%= goal.title %> <span class="label label-default"><%= SocialGoalRecord.users_with_access(goal).count %> </span></h5></td>
+            <td><a href="#goal_<%= goal.id %>" data-toggle="collapse" class="btn btn-default <%= disabled_link(goal) %>">Show users with access</a></td>
+            <td><%= link_to "Edit Access", social_goal_path(goal), class: "btn btn-default" %></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="hiddenRow">
+              <div class="people_list collapse" id="goal_<%= goal.id %>"> <%= list_people_with_access(goal) %> </div>
+            </td>
+          </tr>
+        <% end %>
+        <!-- end -->
+      </table>
   </div>
+</div>
 </div>
 <% end %>
