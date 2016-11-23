@@ -6,18 +6,17 @@ $('div.user_found_or_not').html("");
 $(".form-group").removeClass("has-success");
 $(".form-group").removeClass("has-warning");
 $(".form-group").removeClass("has-error");
+$('div.user_found_or_not').attr('class', 'user_found_or_not');
 $('#sgr_form_hidden').css('display', 'none');
 <% if @email_valid == true && @already_has_access != true %>
   // Set variables
-  $('#email-field').val("<%= @target_user.email %>");
+  $('.email-field').val("<%= @target_user.email %>");
   <% if @user_found == true %>
-    $('#submit-button-form').val("Give user access & let them know!");
-    $('div.user_found_or_not').attr('class', 'user_found_or_not alert alert-success');
+    $('.submit-button-form').val("Give user access & let them know!");
     $('div.user_found_or_not').html("Yes! <%= @target_user %> was found.");
     $(".form-group").addClass("has-success");
   <% else %>
-    $('#submit-button-form').val("Invite user to growth-focus & let them know");
-    $('div.user_found_or_not').attr('class', 'user_found_or_not alert alert-info');
+    $('.submit-button-form').val("Invite user to growth-focus & let them know");
     $('div.user_found_or_not').html("Almost... user wasn't found but we can invite them!");
     $(".form-group").addClass("has-warning");
   <% end %>
@@ -35,3 +34,4 @@ $('#sgr_form_hidden').css('display', 'none');
   $('div.user_found_or_not').html("That email is invalid! Try again!");
   $(".form-group").addClass("has-error");
 <% end %>
+$("#resultsModal").modal("show");

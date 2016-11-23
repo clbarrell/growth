@@ -40,6 +40,9 @@ class SocialGoalRecordsController < ApplicationController
                                       @social_goal_record.goal_owner).deliver_later
       else
         # create user
+        if params[:email].blank?
+          redirect_to social_goal_path(params[:goal_id]), notice: "ERROR: User wasn't in params." and return
+        end
         user = User.create(email: params[:email],
                     password: Devise.friendly_token[0,20])
         @social_goal_record.user = user

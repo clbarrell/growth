@@ -334,10 +334,6 @@ $instruction-colour: #489464;
 .user_found_or_not {
   margin: 15px auto;
 }
-
-#sgr_form_hidden {
-  display: none;
-  input#email-field {
-    margin: 0 auto;
-  }
+.email-field, .submit-button-form {
+  margin: 0 auto !important;
 }

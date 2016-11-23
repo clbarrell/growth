@@ -27,12 +27,12 @@
     <% @goal_owners.each do |user| %>
       <% @social_goals.where(user: user).find_each do |goal| %>
         <tr>
-          <td><h5><%= user %></h5></td>
+          <td><%= user %></td>
           <td><%= goal.title %></td>
           <td>
             <%= timewordslastcheckin(goal) %>
           </td>
-          <td><%= link_to "View goal answers", checkin_answers_goal_path(goal), class: "btn btn-default" %></td>
+          <td><%= link_to "View goal answers", checkin_answers_goal_path(goal), class: "btn btn-primary" %></td>
         </tr>
       <% end %>
     <% end %> <!-- goal owers end -->
@@ -65,9 +65,9 @@
         <!-- GOAL > EACH -->
         <% @goals.each do |goal| %>
           <tr>
-            <td><h5><%= goal.title %> <span class="label label-default"><%= SocialGoalRecord.users_with_access(goal).count %> </span></h5></td>
+            <td><%= goal.title %> <span class="label label-default"><%= SocialGoalRecord.users_with_access(goal).count %> </span></td>
             <td><a href="#goal_<%= goal.id %>" data-toggle="collapse" class="btn btn-default <%= disabled_link(goal) %>">Show users with access</a></td>
-            <td><%= link_to "Edit Access", social_goal_path(goal), class: "btn btn-default" %></td>
+            <td><%= link_to "Edit Access", social_goal_path(goal), class: "btn btn-primary" %></td>
           </tr>
           <tr>
             <td colspan="3" class="hiddenRow">

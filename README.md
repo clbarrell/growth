@@ -3,7 +3,6 @@
 ## To do next
 
 - Social Goals
-  - need a 'delete' button!
   - seeds
 - setup mailer (heroku addons:open mailgun)
   - reminder_email_to_checkin
