@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     @current_user = user
     @goal = goal
     @goal_owner = goal_owner
-    @url_link = checkin_answers_goal_path(goal)
+    @url_link = checkin_answers_goal_url(goal)
     mail(to: @current_user.email, subject: "Someone gave you access to their goal!")
   end
 
@@ -29,7 +29,7 @@ class UserMailer < ApplicationMailer
     @current_user = user
     @goal = goal_to_access
     @goal_owner = goal_owner
-    @url_link = new_user_password_path
+    @url_link = new_user_password_url
     mail(to: @current_user.email, subject: "Someone gave you access to their growth-focus goal!")
   end
 
